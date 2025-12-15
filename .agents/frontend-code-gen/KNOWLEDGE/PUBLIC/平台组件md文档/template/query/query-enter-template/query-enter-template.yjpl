@@ -1,0 +1,183 @@
+<template>
+  <page extends="yjpl-template/page/query/index.yjpl">
+    <!-- <plugins type="append" target=".query-search-panel">
+      <template slot="solution">
+        <tl-search-panel-solution
+          :vip-address="'/jt/mapp/tleadcpdemo'"
+          yw-key="20230724"
+          user-id="132325"
+          :data="dataModel.query"
+          @set-default="defaultSelectValue"
+        ></tl-search-panel-solution>
+      </template>
+    </plugins>
+
+    <plugins type="append" target=".query-btns">
+      <tl-popover trigger="click" width="450" @show="popoverShow">
+        <tl-button slot="reference">更多</tl-button>
+        <yj-container
+          v-if="pshow"
+          :cols="1"
+          :auto-width="false"
+          v-model="dataModel.query"
+          label-postion="right"
+          slot="content"
+          :data="formItem">
+        </yj-container>
+      </tl-popover>
+    </plugins> -->
+
+    <plugins type="append" target=".query-page">
+      <toolbar>
+        <button type="primary">保存</button>
+      </toolbar>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import ListTemplate from 'yjpl-template/page/query/index.yjpl';
+import ListTemplateBs from './query-enter-template';
+import { Export, Import } from 'yjpl-ui';
+
+export default class ListExample extends ListTemplate {
+  constructor () {
+    super();
+    this.bs = new ListTemplateBs();
+  }
+
+  data () {
+    return {
+      ...this.bs.getData(),
+      dialogVisible: false,
+      pageModel: {
+        title: '列表录入',
+        // 表单区域
+        form: [],
+        // 表格区域
+        grid: {},
+        // 按钮区域
+        btns: [],
+        labelSuffix: '：'
+      },
+      formItem: [
+      {
+        label: '总金额',
+        dataType: 'tl-range-number',
+        name: 'T_SUMMONEY',
+        precision: 2,
+        format: {
+          type: 'separation'
+        }
+      }],
+      // 用于关联 business 内组件的事件，以组件的 key 为 key
+      eventsModel: {
+        delete: {
+          click: this.handleDelete
+        },
+        import: {
+          click: this.handleImport
+        },
+        export: {
+          click: this.handleExport
+        }
+      }
+    };
+  }
+
+  async created () {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('query', ['T_YWDJTYPE', 'T_TTIME', 'T_BILLID']);
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['add', 'delete', 'import', 'export']);
+    this.$pageModel.set('tree', 'tree');
+    this.dataModel.grid = await this.bs.getGridData();
+    this.dataModel.tree = await this.bs.getTreeData();
+    this.$refs.grid.ui.setTransIDName('T_BZWC', {
+      1: '已完成',
+      0: '未完成'
+    });
+    this.pageModel.searchPanel = {
+      subTitle: '查询条件：无'
+    }
+    const that = this;
+  }
+  methods () {
+    return {
+      popoverShow() {
+        this.pshow = true;
+      },
+      defaultSelectValue(value) {
+        this.dataModel.query = value;
+      },
+      handleDelete() {},
+      handleImport() {
+        Import();
+      },
+      handleExport() {
+        Export();
+      }
+    };
+  }
+
+  watch() {
+    return {
+      'dataModel.query': {
+        handler(val) {
+          const strings = [];
+          const keys = Object.keys(val);
+          keys.forEach(item => {
+            if (val[item] && (typeof val[item] === 'number' || val[item].length > 0)) {
+              let valString = val[item];
+              if (typeof val[item] === 'object') {
+                let value = val[item];
+                if (item === 'T_TTIME') value = value.map(v => Utils.dateToStr(v));
+                if (item === 'T_FISTYHDM') {
+                  valString = value.join(',');
+                } else {
+                  valString = value.join('至');
+                }
+              }
+              // if (item === 'T_BZWC') {
+              //   valString = val[item] === 1 ? '已完成' : '未完成';
+              // }
+              strings.push(`${this.metaModel[item].label}:${valString}`)
+            }
+          });
+          if (strings.length > 0) {
+            this.pageModel.searchPanel = {
+              subTitle: `查询条件(${strings.length})：${strings.join(',')}`
+            };
+          } else {
+            this.pageModel.searchPanel = {
+              subTitle: '查询条件：无'
+            };
+          }
+        },
+        deep: true
+      }
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  .operate-form {
+    position: relative;
+    font-size: 14px;
+
+    span {
+      color: #2663ff;
+    }
+  }
+
+  .operate-btns {
+    margin-right: 20px;
+  }
+
+  .operate-slot {
+    position: absolute;
+    bottom: 22px;
+    right: 16px;
+  }
+</style>

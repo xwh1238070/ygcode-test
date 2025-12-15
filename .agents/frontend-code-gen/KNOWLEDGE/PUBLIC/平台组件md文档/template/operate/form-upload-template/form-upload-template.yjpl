@@ -1,0 +1,112 @@
+<template>
+  <page extends="yjpl-template/page/operate/form.yjpl">
+    <plugins type="remove" target=".operate-grid-body">
+    </plugins>
+    <plugins type="append" target=".operate-body">
+      <div class="upload-demo-class">
+        <tl-upload class="upload-demo" drag :vip-address="'/jt/mapp/tleadcpdemo'"
+          :ywkey="'67b0b280-4909-11ed-99bb-95558563b1de'" :data="{}" multiple>
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">请将要导入的模板拖到此处，或<em>点击上传</em></div>
+        </tl-upload>
+        <div class="footer">
+          <div>
+            <i class="el-icon-info" style="color: #409EFF; margin-right: 5px;"
+            ></i> 仅支持固定报表及附加项目导入
+          </div>
+          <tl-button type="primary" @click="doImport">导入</tl-button>
+        </div>
+      </div>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+  import QueryFormTemplate from 'yjpl-template/page/query/form.yjpl';
+  import QueryFormTemplateBs from './form-upload-template';
+
+  export default class QueryFormExampleUpload extends QueryFormTemplate {
+    constructor() {
+      super();
+      this.bs = new QueryFormTemplateBs();
+    }
+
+    data() {
+      return {
+        ...this.bs.getData(),
+        radio: '全部',
+        pageModel: {
+          title: '表单上传样例',
+          // 表单区域
+          form: [],
+        },
+      };
+    }
+
+    async created() {
+      // 设置组件至对应 pageModel 区域
+      this.$pageModel.set('form', ['start', 'units']);
+     
+    }
+    methods() {
+      return {
+        handleChange(val) {
+          console.log(val);
+          if (typeof val !== 'number') {
+            this.$nextTick(() => {
+              this.dataModel.form.start = '';
+            });
+          } else if (typeof val === 'string') {
+            // 将输入的数字转化成int
+            this.$nextTick(() => {
+              this.dataModel.form.start = parseInt(val);
+            });
+          }
+        },
+        doImport(){
+
+        }
+  
+      };
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .operate-form {
+    position: relative;
+    font-size: 14px;
+
+  }
+
+  .operate-btns {
+    margin-right: 20px;
+  }
+
+  .operate-slot {
+    position: absolute;
+    bottom: 22px;
+    right: 16px;
+  }
+
+  .upload-demo-class {
+    width: 100%;
+    height: 60%;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer{
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0px;
+    padding: 20px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top : 1px solid #a8a8a8;
+  }
+</style>

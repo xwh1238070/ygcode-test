@@ -1,0 +1,41 @@
+<template>  
+  <tl-dialog title="稽核结果" :visible.sync="dialogFormVisible" :width="width" show-fullscreen>
+    <div class="dialog-content">
+      <grid-template-dialog-example/>
+    </div>
+    <div slot="footer" class="dialog-footer">
+      <tl-button @click="dialogFormVisible = false">关闭</tl-button>
+    </div>
+  </tl-dialog>
+</template>
+
+
+<script>
+import GridTemplateDialogExample from './grid-template-page.yjpl';
+export default {
+    components: {
+      GridTemplateDialogExample,
+    },
+    data() {
+        return {
+        dialogFormVisible: true, 
+        width:'80%',  
+        };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .dialog-content{
+    width:100%;
+    height:500px;
+  }
+  .grid-body{
+    min-width:auto;
+    height:500px;
+    background-color:#fff;
+  }
+  tl-dialog{
+    height:600px;
+  }
+ 
+</style>

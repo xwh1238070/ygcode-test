@@ -1,0 +1,72 @@
+<template>
+  <page extends="yjpl-template/page/operate/tree.yjpl">
+  </page>
+</template>
+
+<script>
+import QueryFormTemplate from 'yjpl-template/page/operate/tree.yjpl';
+import QueryFormTemplateBs from './tree-grid-template';
+
+export default class QueryFormExample extends QueryFormTemplate {
+  constructor () {
+    super();
+    this.bs = new QueryFormTemplateBs();
+  }
+
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel: {
+        title: '操作列表树表样例',
+        // 是否查询表格
+        isQueryGrid: true,
+        // 工具栏
+        toolbar: {
+          layout: ['button', '->', 'search']
+        },
+        // 树区域
+        tree: {},
+        // 表格区域
+        grid: {},
+        // 按钮区域
+        btns: [],
+        // 树按钮区域
+        treeBtns: []
+      },
+      // 用于关联 business 内组件的事件，以组件的 name 为 key
+      eventsModel: {}
+    };
+  }
+
+  async created () {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('tree', 'tree');
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['add', 'edit', 'delete']);
+    this.$pageModel.set('treeBtns', ['treeAdd', 'treeDelete']);
+    this.dataModel.grid = await this.bs.getGridData();
+    this.dataModel.tree = await this.bs.getTreeData();
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  .operate-form {
+    position: relative;
+    font-size: 14px;
+
+    span {
+      color: #2663ff;
+    }
+  }
+
+  .operate-btns {
+    margin-right: 20px;
+  }
+
+  .operate-slot {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+</style>

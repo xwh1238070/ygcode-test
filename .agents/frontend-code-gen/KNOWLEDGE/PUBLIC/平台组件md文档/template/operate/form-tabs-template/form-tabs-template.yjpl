@@ -1,0 +1,140 @@
+<template>
+  <page extends="yjpl-template/page/operate/form.yjpl">
+    <plugins type="insert" target=".operate-form" position="before">
+      <div class="tabs-panel">
+        <tl-tabs type="border-card">
+          <tl-tab-pane>
+            <span slot="label"><i class="el-icon-date"></i> 工作安排</span>
+          </tl-tab-pane>
+          <tl-tab-pane label="选项卡2"></tl-tab-pane>
+          <tl-tab-pane label="选项卡3"></tl-tab-pane>
+          <tl-tab-pane label="选项卡4"></tl-tab-pane>
+        </tl-tabs>
+      </div>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+  import QueryFormTemplate from 'yjpl-template/page/query/form.yjpl';
+  import QueryFormTemplateTabsBs from './form-tabs-template';
+
+  export default class QueryFormTabsExample extends QueryFormTemplate {
+    constructor() {
+      super();
+      this.bs = new QueryFormTemplateTabsBs();
+    }
+
+    data() {
+      return {
+        ...this.bs.getData(),
+        radio: '全部',
+        pageModel: {
+          title: '表单tabs模板',
+          // 表单列数
+          cols: 4,
+          // 是否查询表格
+          isQueryGrid: true,
+          // 工具栏
+          toolbar: {
+            layout: ['title', 'content', '->', 'button', 'content-switch', 'view-switch', 'search']
+          },
+          // 表单区域
+          form: [],
+          // 表格区域
+          grid: {},
+          // 按钮区域
+          btns: []
+        },
+        // 用于关联 business 内组件的事件，以组件的 key 为 key
+        eventsModel: {
+          start: {
+            change: this.handleChange
+          },
+          cancelAudit: {
+            click: this.handleCancelAudit
+          }
+        }
+      };
+    }
+
+    async created() {
+      // 设置组件至对应 pageModel 区域
+      this.$pageModel.set('form', ['start', 'units']);
+      this.$pageModel.set('grid', 'grid');
+      this.$pageModel.set('btns', ['audit', 'cancelAudit', 'export', 'print']);
+      this.dataModel.grid = await this.bs.getGridData();
+    }
+    methods() {
+      return {
+        handleChange(val) {
+          console.log(val);
+          if (typeof val !== 'number') {
+            this.$nextTick(() => {
+              this.dataModel.form.start = '';
+            });
+          } else if (typeof val === 'string') {
+            // 将输入的数字转化成int
+            this.$nextTick(() => {
+              this.dataModel.form.start = parseInt(val);
+            });
+          }
+        },
+        handleAudit() {
+          this.$confirm('是否确认审批?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            this.$message({
+              type: 'success',
+              message: '审批成功!'
+            });
+          });
+        },
+        handleCancelAudit() {
+          this.$confirm('是否确认取消审批?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            this.$message({
+              type: 'success',
+              message: '取消审批!'
+            });
+          });
+        }
+      };
+    }
+  }
+</script>
+
+<style lang="scss" scoped >
+  .operate-form {
+    position: relative;
+    font-size: 14px;
+
+    span {
+      color: #2663ff;
+    }
+  }
+
+  .operate-btns {
+    margin-right: 20px;
+  }
+
+  .operate-slot {
+    position: absolute;
+    bottom: 22px;
+    right: 16px;
+  }
+  .tabs-panel{
+    .el-tabs--border-card {
+        border: none;
+        box-shadow: none;
+        ::v-deep .el-tabs__content  {
+          display:none;
+        }
+      }
+  }
+</style>

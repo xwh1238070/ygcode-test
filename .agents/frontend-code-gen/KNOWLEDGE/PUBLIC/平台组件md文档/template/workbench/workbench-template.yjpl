@@ -1,0 +1,53 @@
+<template>
+    <page extends="yjpl-template/page/workbench/index.yjpl">
+        <plugins type="append" target=".main-filter_content">
+            <div>
+                已办插入的内容
+            </div>
+        </plugins>
+    </page>
+</template>
+
+<script lang="ts">
+import WorkbenchTemplate from "yjpl-template/page/workbench/index.yjpl"
+import WorkbenchTemplateBs from './workbench-template.ts'
+export default class WorkbenchDemoTemplate extends WorkbenchTemplate {
+    constructor() {
+        super();
+        this.bs = new WorkbenchTemplateBs()
+    }
+    data() {
+        return {
+            ...this.bs.getData(),
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.workbench-common-function_header {
+    display: flex;
+    justify-content: space-between;
+
+    .header-title {
+        width: 66px;
+        height: 22px;
+        font-family: system;
+        color: #333333;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .header-operate {
+        height: 20px;
+        font-family: system;
+        color: #2663ff;
+        font-size: 14px;
+        line-height: 20px;
+
+        .add {
+            margin-right: 10px;
+        }
+    }
+}
+</style>

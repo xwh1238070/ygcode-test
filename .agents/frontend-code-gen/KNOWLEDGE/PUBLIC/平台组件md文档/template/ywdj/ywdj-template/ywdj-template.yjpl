@@ -1,0 +1,83 @@
+<template>
+  <page extends="yjpl-template/page/ywdj/index.yjpl">
+    <plugins type="remove" target=".bill-leader"></plugins>
+
+    <plugins type="append" target=".bill-user">
+      <span class="name">张三</span>
+      DAP研发中心-产品管理部
+      <font></font>
+      信用：90分
+      <span class="bill-mark">B</span>
+      上笔扣分事件：填单不规范
+      <font></font>
+      当前单据状态：新建中
+    </plugins>
+
+    <plugins type="append" target=".bill-new-aside">
+      <span class="name">张三</span><br>
+      DAP研发中心-产品管理部<br>
+      <font></font>
+      信用：90分
+      <span class="bill-mark">B</span><br>
+      上笔扣分事件：填单不规范<br>
+      <font></font>
+      当前单据状态：新建中<br>
+    </plugins>
+
+    <plugins type="append" target=".bill-upload">
+      <upload-panel></upload-panel>
+    </plugins>
+
+    <plugins type="remove" target=".bill-workflow"></plugins>
+  </page>
+</template>
+
+<script>
+import YwdjTemplate from 'yjpl-template/page/ywdj/index.yjpl';
+import YwdjBs from './ywdj-template.ts';
+
+export default class YwdjPage extends YwdjTemplate {
+  constructor() {
+    super();
+    this.bs = new YwdjBs();
+  }
+  data() {
+    return {
+      ...this.bs.getData(),
+      pageModel: {
+        title: '业务单据',
+        qrcode: '111',
+        area: {
+          form: {
+            title: '主表信息'
+          }
+        },
+        form: [],
+        btns: [],
+        grid: {},
+        toolbar: []
+      },
+    };
+  }
+
+  async created () {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('form', ['T_YWDJTYPE', 'T_TTIME', 'T_BILLID',  'T_FISTYHDM']);
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['add', 'delete']);
+    this.$pageModel.set('toolbar', ['export']);
+    console.log(this.pageModel);
+    this.dataModel.grid = await this.bs.getGridData();
+  }
+  
+}
+</script>
+
+<style scoped>
+.bill-aside {
+  position: absolute !important;
+}
+.bill-page.app-main {
+  overflow: hidden;
+}
+</style>

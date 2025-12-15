@@ -1,0 +1,117 @@
+<template>
+  <page extends="yjpl-template/page/form/group.yjpl">
+    <plugins type="insert" target="tl-section" position="before">
+    <div class="steps-content">
+      <tl-steps :active="active" direction="vertical">
+        <tl-step
+          :key="key"
+          :title="item.title"
+          :description="item.description"
+          v-for="(item, key) in stepDatas"
+          @click.native="active = key"
+        >
+          <template #icon v-if="item.icon">
+            <i :class="item.icon"></i>
+          </template>
+        </tl-step>
+      </tl-steps>  
+    </div>       
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+
+import GroupFormTemplate from 'yjpl-template/page/form/group.yjpl';
+import GroupStepsTemplateBs from './group-steps-template';
+
+export default class GroupStepsExample extends GroupFormTemplate {
+  constructor () {
+    super();
+    this.bs = new GroupStepsTemplateBs();
+  }
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel:{
+        title: '分步和分组', 
+        // 查询面板的配置项,具体参考tl-searchPanel组件文档
+        searchPanel: {},      
+        cols: 3,
+        tabletoolsbtn: [],
+        form:[]
+      }, 
+      active: 0,
+      stepDatas: [
+        {
+          title: '已完成步骤1',
+          description: '我是描述描述描述描述描述描述',
+        },
+        {
+          title: '已完成步骤2',
+          description: '我是描述描述描述描述描述描述描述',
+        },
+        {
+          title: '进行步骤',
+          description: '我是描述描述描述描述描述描述描述',
+        },
+        {
+          title: '进行步骤',
+          description: '我是描述描述描述描述描述描述描述',
+        },
+        {
+          title: '结束步骤',
+          description: '我是描述描述描述描述描述描述描述描',
+        }
+      ],
+      eventsModel: {
+        operate2: {
+          click: this.next
+        },
+        operate1: {
+          click: this.last
+        }
+      },       
+    }
+  }
+  async created () {
+    this.$pageModel.set('query', ['makeDate']);
+    this.$pageModel.set('btns', ['operate1', 'operate2']);
+    this.pageModel.form = await this.bs.getFormData();
+  }
+ 
+  methods () {
+    return {
+      query() {
+        console.log('query.....', this.dataModel);
+      },
+      // 模板重置方法
+      reset() {
+        console.log('reset.....', this.dataModel);
+      },
+      last(){
+        if (this.active-- < 1) this.active = 0;
+      },
+      next(){
+        if (this.active++ > 3) this.active = 0;
+      }
+    }
+  }
+ 
+}
+</script>
+<style lang="scss" scoped>
+  .steps-content{
+    float:left;
+    width:25%;
+    height:90%;
+    margin:15px;
+    padding:15px;
+    border:1px solid #cbd1dc;   
+  }
+  .tl-section{
+    float:right;
+    width:65%;
+  }
+</style>
+

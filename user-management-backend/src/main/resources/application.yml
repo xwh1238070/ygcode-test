@@ -1,0 +1,171 @@
+# ============================================
+# 用户管理后端服务配置文件
+# ============================================
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /user-management
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 200
+    min-spare-threads: 10
+
+# Spring 配置
+spring:
+  application:
+    name: user-management
+  
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user_management?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    # 连接池配置
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: UserManagementHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  
+  # JPA 配置
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+  
+  # Jackson 配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+      fail-on-empty-beans: false
+    deserialization:
+      fail-on-unknown-properties: false
+  
+  # 文件上传配置
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 100MB
+      file-size-threshold: 2KB
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.ygsoft.user.management: DEBUG
+    org.springframework.web: INFO
+    org.springframework.data: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n'
+  file:
+    name: logs/user-management.log
+    max-size: 100MB
+    max-history: 30
+
+# Swagger 配置
+swagger:
+  enabled: true
+  title: 用户管理 API 文档
+  description: 用户管理后端服务接口文档
+  version: 1.0.0
+  contact:
+    name: 开发团队
+    email: dev@example.com
+  base-package: com.ygsoft.user.management.controller
+
+# 业务配置
+user:
+  # 默认密码
+  default-password: 123456
+  # 密码加密强度
+  password-strength: 10
+  # 批量操作最大数量
+  max-batch-size: 100
+  # 用户名规则
+  username:
+    min-length: 3
+    max-length: 50
+    pattern: ^[a-zA-Z0-9_]+$
+
+# 分页配置
+page:
+  default-size: 20
+  max-size: 1000
+
+# 文件存储配置
+file:
+  upload-dir: /data/uploads
+  download-dir: /data/downloads
+  temp-dir: /data/temp
+  allowed-extensions: .xlsx,.xls,.csv
+
+---
+# 开发环境配置
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/user_management?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+logging:
+  level:
+    com.ygsoft.user.management: DEBUG
+
+---
+# 测试环境配置
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://test-db:3306/user_management?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: test_user
+    password: test_password
+  jpa:
+    show-sql: false
+logging:
+  level:
+    com.ygsoft.user.management: INFO
+
+---
+# 生产环境配置
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://prod-db:3306/user_management?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Shanghai
+    username: prod_user
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: false
+logging:
+  level:
+    root: WARN
+    com.ygsoft.user.management: INFO
+  file:
+    name: /var/log/user-management/application.log

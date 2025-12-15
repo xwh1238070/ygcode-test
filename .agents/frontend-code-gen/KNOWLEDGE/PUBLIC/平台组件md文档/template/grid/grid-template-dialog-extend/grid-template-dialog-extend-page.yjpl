@@ -1,0 +1,60 @@
+<template>
+  <page extends="yjpl-template/page/grid.yjpl">
+   <plugins type="remove" target="el-header"></plugins>
+    <plugins type="append" target=".grid-toolbar">
+      <template slot="content">
+        <tl-select
+        v-model="pageModel.value1"
+        :data="pageModel.selectdata"
+        id-field="id"
+        text-field="text"
+        >
+        </tl-select>
+      </template>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import GridTemplate from 'yjpl-template/page/grid.yjpl';
+import GridTemplateDialogExtendBs from './grid-template-dialog-extend.ts';
+
+export default class GridTemplateDialogExtendExample extends GridTemplate {
+  constructor () {
+    super();
+    this.bs = new GridTemplateDialogExtendBs();
+  }
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel:{
+          // 是否查询表格
+          isQueryGrid: true,
+            // 工具栏
+          toolbar: {
+            layout: ['content', '->','button', 'search']
+          },
+          selectdata:  [
+            { id: 1, text: '江苏电力' },
+            { id: 2, text: '湖北电力' },
+            { id: 3, text: '大宇物流' },
+            { id: 4, text: '风尖' },
+            { id: 5, text: '威然' },
+            { id: 6, text: '喆大电力' }
+           ]  ,
+           value1: '',
+           value2: [],   
+        },
+      eventsModel: {},
+    
+    }
+  }
+  async created () {
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['moveup', 'movedown', 'up', 'down','more']);
+    this.dataModel.grid = await this.bs.getGridData();
+  }
+ 
+}
+</script>
+

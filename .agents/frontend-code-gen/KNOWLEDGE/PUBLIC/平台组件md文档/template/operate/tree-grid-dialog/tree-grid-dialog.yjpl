@@ -1,0 +1,37 @@
+<template>  
+  <tl-dialog title="指定任务" :visible.sync="dialogFormVisible" :width="width">
+    <div class="dialog-content">
+      <tree-grid-example/>
+    </div>
+    <div slot="footer" class="dialog-footer">
+      <tl-button @click="dialogFormVisible = false">取消</tl-button>
+      <tl-button type="primary" @click="dialogFormVisible = false">确定</tl-button>
+    </div>
+  </tl-dialog>
+</template>
+
+
+<script>
+import TreeGridExample from './tree-grid-dialog-template.yjpl';
+export default {
+    components: {
+      TreeGridExample,
+    },
+    data() {
+        return {
+        dialogFormVisible: true, 
+        width:'80%',     
+        };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .dialog-content{
+    width:100%;
+  }
+  .operate-page{
+    min-width:auto;
+    height:500px;
+    background-color:#fff;
+  }
+</style>

@@ -1,0 +1,46 @@
+<template>
+  <page extends="yjpl-template/page/detail/list.yjpl">
+  </page>
+</template>
+
+<script>
+import ShowTemplate from 'yjpl-template/page/detail/list.yjpl';
+export default class Backs extends ShowTemplate {
+  constructor() {
+    super();
+    this.dataModel = {
+      title: '导入报表模板',
+      label: '文件名',
+      url: '/file.ntask',
+      colcount: 3,
+      conditions: [
+        { label: '任务编码', value: '2023YDBB' },
+        { label: '导出单位', value: 'XX集团总部' },
+        { label: '导出人', value: 'admin090' },
+        { label: '任务名称', value: '2023年快报任务' },
+        { label: '导出时间', value: '2023-03-22' }
+      ],
+      list: [
+        { label: '任务信息', status: 'success', message: '完成', datetime: '完成时间：2023-03-22' },
+        { label: '报表格式', status: 'success', message: '完成', datetime: '完成时间：2023-03-22' },
+        { label: '枚举字典', status: 'warn', message: '导入失败。', detail: '点击查看详情', datetime: '完成时间：2023-03-22' },
+        { label: '运行公式', status: 'loading', message: '共2个报表，正在导入第1个', datetime: '' },
+        { label: '稽核公式', status: 'waiting', message: '', datetime: '' },
+        { label: '取数公式', status: 'waiting', icon: 'el-icon-help', iconcolor: 'red', message: '', datetime: '' },
+      ]
+    };
+  }
+  data () {
+    return {
+      dataModel: this.dataModel
+    };
+  }
+  methods () {
+    return {
+      showDetail (item) {
+        console.info('1', item);
+      }
+    };
+  }
+}
+</script>

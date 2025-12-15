@@ -1,0 +1,91 @@
+<template>
+  <page extends="yjpl-template/page/guide/index.yjpl">
+    <plugins type="remove" target="el-footer"></plugins>
+  </page>
+</template>
+<script>
+  import GuideTemplateDialogBs from './guide-vertical'
+  import GuideTemplateDialog from 'yjpl-template/page/guide/index.yjpl';
+
+  export default class GuideVerticalDialogTemplateDemo extends GuideTemplateDialog {
+    constructor() {
+      super();
+      this.bs = new GuideTemplateDialogBs();
+    }
+
+    data() {
+      return {
+        ...this.bs.getData(),
+        grid: null,
+        pageModel: {
+          direction: 'vertical',
+          title: '查询表单样例123',
+          // 表单列数
+          cols: 4,
+          // 是否查询表格 
+          isQueryGrid: false,
+          // 工具栏 
+          toolbar: {
+            layout: ['title', 'content', 'button', '->', 'content-switch', 'view-switch', 'search']
+          },
+          // 表格区域
+          grid: {},
+          // 按钮区域
+          btns: [],
+          footerBtns: [],
+        },
+        eventsModel: {
+          moveUp: { click: this.moveUp },
+          moveDown: { click: this.moveDown },
+          previous: { click: this.handlePrevious },
+          next: { click: this.handleNext }
+        }
+      }
+    }
+
+    async created() {
+      // 设置组件至对应 pageModel 区域
+      this.$pageModel.set('grid', 'grid');
+      this.$pageModel.set('btns', ['moveUp', 'moveDown']);
+      this.$pageModel.set('footerBtns', ['previous', 'next']);
+      this.dataModel.grid = await this.bs.getGridData();
+    }
+
+
+    methods() {
+      return {
+        handlePrevious() {
+          if (--this.metaModel.steps.active < 0) {
+            this.metaModel.steps.active = 0;
+          }
+        },
+        handleNext() {
+          const len = this.metaModel.steps.stepData.length - 1;
+          if (++this.metaModel.steps.active > len) {
+            this.metaModel.steps.active = len;
+          }
+        },
+        moveUp() {
+          this.grid = this.$refs.grid.ui;
+          this.grid.moveRecord(-1);
+          this.updateIndex();
+        },
+        moveDown() {
+          this.grid = this.$refs.grid.ui;
+          this.grid.moveRecord(1);
+          this.updateIndex();
+        },
+        updateIndex() {
+          this.grid = this.$refs.grid.ui;
+          this.grid.each(function (node) {
+            this.setValue('rn', this.getIndex());
+          });
+        },
+      }
+    }
+
+  }
+</script>
+<style lang="scss">
+
+</style>

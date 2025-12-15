@@ -1,0 +1,116 @@
+<template>
+  <page extends="yjpl-template/page/operate/tree.yjpl">
+    <plugins type="remove" target=".operate-header"></plugins>
+    <plugins type="remove" target="yj-button-list"></plugins>
+    <plugins type="insert" target=".operate-body" position="before">
+      <tl-tabs>
+        <tl-tab-pane label="基类型动作" name="0"></tl-tab-pane>
+        <tl-tab-pane label="服务方法" name="1"></tl-tab-pane>
+        <tl-tab-pane label="模型动作" name="2"></tl-tab-pane>
+        <tl-tab-pane label="服务组件" name="3"></tl-tab-pane>
+      </tl-tabs>
+    </plugins>
+    <plugins type="remove" target=".operate-tree-toolbar"></plugins>
+    <plugins type="append" target="tl-table-tools">
+      <tl-form label-position="left" class="tree-grid-tabs-template-form">
+        <el-row :gutter="20">
+          <el-col :span="10">
+            <tl-form-item label="微服务：">
+              <tl-input v-model="pageModel.wfw"></tl-input>
+            </tl-form-item>
+          </el-col>
+          <el-col :span="10">
+            <tl-form-item label="服务名称：">
+              <tl-input v-model="pageModel.ffmc"></tl-input>
+            </tl-form-item>
+          </el-col>
+          <el-col :span="4">
+            <tl-button type="primary" @click="search">搜索</tl-button>
+          </el-col>
+        </el-row>
+      </tl-form>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import QueryFormTemplate from 'yjpl-template/page/operate/tree.yjpl';
+import treeGridTabsDialogBs from './tree-grid-tabs-dialog.ts';
+
+export default class TreeGridTabsExample extends QueryFormTemplate {
+  constructor() {
+    super();
+    this.bs = new treeGridTabsDialogBs();
+  }
+  data() {
+    return {
+      ...this.bs.getData(),
+      pageModel: {
+        title: '操作列表树表样例',
+        // 是否查询表格
+        isQueryGrid: true,
+        labelSuffix: '',
+        // 树区域
+        tree: {},
+        // 表格区域
+        grid: {},
+        // 按钮区域
+        //btns: [],
+        ffmc: '',
+        // 树按钮区域
+        treeBtns: []
+      },
+      // 用于关联 business 内组件的事件，以组件的 name 为 key
+      eventsModel: {}
+    };
+  }
+
+  async created() {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('tree', 'tree');
+    this.$pageModel.set('grid', 'grid');
+    // this.$pageModel.set('query', ['wfw', 'fwmc']);
+    // this.$pageModel.set('btns', ['set', 'print']);
+    this.dataModel.grid = await this.bs.getGridData();
+    this.dataModel.tree = await this.bs.getTreeData();
+  }
+  methods() {
+    return {
+      search() {
+        console.log('search.....', this.dataModel);
+      }
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.operate-page {
+  flex-direction: column;
+}
+
+.operate-form {
+  position: relative;
+  font-size: 14px;
+
+  span {
+    color: #2663ff;
+  }
+}
+
+.operate-btns {
+  margin-right: 20px;
+}
+
+.operate-slot {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+</style>
+
+<style>
+.tree-grid-tabs-template-form .el-form-item {
+  margin-bottom: 0px;
+}
+</style>

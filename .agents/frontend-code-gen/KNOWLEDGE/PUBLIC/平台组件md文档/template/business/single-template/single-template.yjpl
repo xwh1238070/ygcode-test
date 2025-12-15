@@ -1,0 +1,127 @@
+<template>
+  <page extends="yjpl-template/business/single-template.yjpl" class="single-page">
+    <plugins type="remove" target=".bill-aside"></plugins>
+    <plugins type="remove" target=".bill-leader"></plugins>
+    <plugins type="append" target=".bill-title">
+      <yj-button-list :data="metaModel.titleBtnList"></yj-button-list>
+    </plugins>
+    <plugins type="replace" target=".bill-user">
+      <yj-panel>
+        <div class="bill-user">
+          <span class="name">张三</span>
+          DAP研发中心-产品管理部
+          <font></font>
+          信用：90分
+          <span class="bill-mark">B</span>
+          上笔扣分事件：填单不规范
+          <font></font>
+          当前单据状态：新建中
+        </div>
+      </yj-panel>
+    </plugins>
+    <plugins type="append" target=".bill-form">
+      <template slot="title">
+        单据信息
+        <span class="custom-font">
+          本次调用规则
+          <em>3</em>
+          个，通过
+          <font>3</font>
+          个。
+        </span>
+      </template>
+      <yj-container
+        v-model="dataModel.businessForm"
+        :data="metaModel.businessForm"
+        label-suffix="："
+        :col="4"
+      ></yj-container>
+      <p>探亲资格时间</p>
+      <yj-container
+        v-model="dataModel.visitingForm"
+        :data="metaModel.visitingForm"
+        label-suffix="："
+        :col="3"
+      ></yj-container>
+    </plugins>
+    <plugins type="append" target=".bill-info">
+      <template slot="title">
+        费用信息
+        <span class="custom-font">
+          本次调用规则
+          <em>3</em>
+          个，通过
+          <font>3</font>
+          个。
+        </span>
+      </template>
+      <tabs type="card">
+        <tab-pane label="费用明细">
+          <yj-container-card
+            ref="card"
+            show-card
+            show-list
+            :option="metaModel.grid"
+            :data="dataModel.grid"
+            height="500px"
+          >
+            <yj-button-list slot="toolbar" :data="metaModel.gridBtnList"></yj-button-list>
+            <div slot="card" slot-scope="scope">
+              <span style="color: #162b41; font-size: 16px; font-weight: bold">交通工具：{{ scope.data.traffic }}</span>
+              <p style="color: #162b41">目的地：{{ scope.data.origin }} - {{ scope.data.destination }}</p>
+              <p style="color: #162b41; text-align: right">
+                <span style="float: left">费用：</span>
+                <span style="color: #f0760c; font-weight: bold; font-size: 22px; width: 100%">
+                  <font style="font-size: 12px">￥</font>
+                  {{ scope.data.cost }}
+                </span>
+              </p>
+              <span style="color: #162b41">出发日期：{{ scope.data.date }}</span>
+            </div>
+          </yj-container-card>
+        </tab-pane>
+        <tl-tab-pane label="费用核销">
+          <yj-container-card :option="metaModel.grid" :data="[]" height="300px">
+            <yj-button-list slot="button" :data="metaModel.gridBtnList"></yj-button-list>
+          </yj-container-card>
+        </tl-tab-pane>
+      </tabs>
+    </plugins>
+    <plugins type="append" target=".bill-upload">
+      <upload-panel></upload-panel>
+    </plugins>
+    <plugins type="remove" target=".bill-workflow"></plugins>
+    <plugins type="append" target=".bill-footer">
+      <yj-button-list :data="metaModel.footerBtnList"></yj-button-list>
+      <div>
+        报销金额：
+        <b>
+          ￥
+          <span class="price">100.00</span>
+        </b>
+      </div>
+      <div>
+        支付金额：
+        <b>
+          ￥
+          <span class="price">120.00</span>
+        </b>
+      </div>
+    </plugins>
+  </page>
+</template>
+
+<script>
+import SingleTemplate from 'yjpl-template/business/single-template.yjpl';
+import SinglePageBs from './single-template';
+
+export default class SinglePage extends SingleTemplate {
+  constructor() {
+    super();
+    this.bs = new SinglePageBs();
+  }
+  data() {
+    return this.bs.getData();
+  }
+}
+</script>

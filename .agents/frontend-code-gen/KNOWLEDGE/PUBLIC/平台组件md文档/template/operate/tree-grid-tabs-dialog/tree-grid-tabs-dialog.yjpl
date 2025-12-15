@@ -1,0 +1,37 @@
+<template>  
+  <tl-dialog title="弹窗标题" :visible.sync="dialogFormVisible" :width="width">
+    <div class="dialog-content">
+      <tree-grid-tabs-example/>
+    </div>
+    <div slot="footer" class="dialog-footer">
+      <tl-button @click="dialogFormVisible = false">取 消</tl-button>
+      <tl-button type="primary" @click="dialogFormVisible = false">确定</tl-button>
+    </div>
+  </tl-dialog>
+</template>
+
+
+<script>
+import TreeGridTabsExample from './tree-grid-tabs-template.yjpl';
+export default {
+    components: {
+      TreeGridTabsExample,
+    },
+    data() {
+        return {
+        dialogFormVisible: true, 
+        width:'80%',     
+        };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .dialog-content{
+    width:100%;
+  }
+  .operate-page{
+    min-width:auto;
+    height:500px;
+    background-color:#fff;
+  }
+</style>

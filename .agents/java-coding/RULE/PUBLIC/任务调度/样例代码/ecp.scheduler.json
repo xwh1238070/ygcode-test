@@ -1,0 +1,24 @@
+[
+  {
+    "jobName": "MyTaskIEcpJob",
+    "jobClass": "com.ygsoft.jt.mapp.sample.impl.component.scheduler.MyTaskIEcpJob",
+    "jobMethod": "execute",
+    "jobGroup": "sample",
+    "jobDesc": "获取执行任务参数，实现了IEcpJob接口",
+    "cronExpression": "",
+    "startTime": "2020-03-18",
+    "endTime": "2022-09-20",
+    "priority": "9",
+    "startDelay": "0",
+    "repeatCount": "0",
+    "repeatInterval": "",
+    "jobDataDef": [
+      {
+        "desc": "方案编号",
+        "name": "reportAutoFetchSchemeId",
+        "type": "字符",
+        "value": ""
+      }
+    ]
+  }
+]

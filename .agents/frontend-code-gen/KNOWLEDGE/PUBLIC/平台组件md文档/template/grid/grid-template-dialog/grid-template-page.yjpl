@@ -1,0 +1,41 @@
+<template>
+  <page extends="yjpl-template/page/grid.yjpl">
+   <plugins type="remove" target="el-header"></plugins>
+    <plugins type="append" target=".grid-toolbar">
+      <template slot="title">共24条稽核不通过</template>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import GridTemplate from 'yjpl-template/page/grid.yjpl';
+import GridTemplateDialogBs from './grid-template-dialog.ts';
+
+export default class GridTemplateDialogExample extends GridTemplate {
+  constructor () {
+    super();
+    this.bs = new GridTemplateDialogBs();
+  }
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel:{
+          // 是否查询表格
+          isQueryGrid: true,
+            // 工具栏
+          toolbar: {
+            layout: ['title','->','button', 'search']
+          },
+      },
+      eventsModel: {},     
+    }
+  }
+  async created () {
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['audit', 'cancelAudit', 'export', 'print']);
+    this.dataModel.grid = await this.bs.getGridData();
+  }
+ 
+}
+</script>
+

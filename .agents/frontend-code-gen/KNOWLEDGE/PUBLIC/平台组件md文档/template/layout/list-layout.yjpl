@@ -1,0 +1,23 @@
+<template>
+  <page class="standard-layout-template v-flex h_all scroll" ref="page">
+    <page-header class="flex-none head">page-header</page-header>
+    <page-content class="flex-auto-size h-flex body">
+      <page-content class="body_left">page-content-left</page-content>
+      <page-content class="flex-auto-size body_right">page-content-right</page-content>
+    </page-content>
+    <page-footer class="footer">page-footer</page-footer>
+  </page>
+</template>
+
+<script lang="ts">
+import { YJPage } from 'yjpl-core';
+export default class ListLayout extends YJPage {}
+</script>
+
+<style lang="scss" scoped>
+.standard-layout-template {
+  .head {
+    color: #fff;
+  }
+}
+</style>>

@@ -1,0 +1,49 @@
+<template>
+  <page extends="yjpl-template/page/form/group.yjpl">
+  </page>
+</template>
+
+<script lang="ts">
+import GroupFormTemplate from 'yjpl-template/page/form/group.yjpl';
+import GroupFormTemplateBs from './group-form-template';
+
+export default class GroupFormExample extends GroupFormTemplate {
+  constructor () {
+    super();
+    this.bs = new GroupFormTemplateBs();
+  }
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel:{
+        title: '分组',
+        // 查询面板的配置项,具体参考tl-searchPanel组件文档
+        searchPanel: {}, 
+        cols: 4,
+        tabletoolsbtn: [],
+        form:[]
+      },
+      eventsModel: {},     
+    }
+  }
+  async created () {
+    this.$pageModel.set('query', ['organization', 'makeDate']);
+    this.$pageModel.set('btns', ['operate1', 'operate2']);
+    this.pageModel.form = await this.bs.getFormData();
+  }
+ 
+  methods () {
+    return {
+      query() {
+        console.log('query.....', this.dataModel);
+      },
+      // 模板重置方法
+      reset() {
+        console.log('reset.....', this.dataModel);
+      },
+    }
+  }
+ 
+}
+</script>
+

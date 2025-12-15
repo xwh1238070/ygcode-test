@@ -1,0 +1,336 @@
+<template>
+  <page extends="yjpl-template/page/ywdj/index.yjpl" class="expense-reimbursement-page">
+    <!-- 移除侧边栏 -->
+    <plugins type="remove" target=".bill-aside"></plugins>
+    <!-- 移除领导信息 -->
+    <plugins type="remove" target=".bill-leader"></plugins>
+    
+    <!-- 自定义经办人信息 -->
+    <plugins type="replace" target=".bill-user">
+      <yj-panel class="bill-head-form">
+        <div class="bill-user">
+          <span class="name">经办人：{{dataModel.billUser.name}}</span>
+          <span class="dept">所属部门：{{dataModel.billUser.dept}}</span>
+          <font></font>
+          <span class="dept">当前操作员：{{dataModel.billUser.operator}}</span>
+        </div>
+      </yj-panel>
+    </plugins>
+
+    <!-- 报销信息区域 -->
+    <plugins type="append" target=".bill-form">
+      <template slot="title">
+        <div class="title">
+          <div class="title-text">报销信息</div>
+          <div class="rule-tips">
+            报销单状态：<span :class="getBillStatusClass(dataModel.businessForm.status)">{{getBillStatusText(dataModel.businessForm.status)}}</span>
+          </div>
+        </div>
+      </template>
+      <yj-form 
+        :meta-model="metaModel.billForm" 
+        :data-model="dataModel.businessForm"
+        :state-model="stateModel.formState"
+        :form-config="pageModel.form"
+      ></yj-form>
+    </plugins>
+
+    <!-- 费用明细区域 -->
+    <plugins type="append" target=".bill-info">
+      <template slot="title">
+        <div class="title">
+          <div class="title-text">费用明细</div>
+          <div class="rule-tips">
+            共{{dataModel.expenseDetails.length}}项费用，合计<span class="text-primary">￥{{dataModel.businessForm.totalAmount}}</span>
+          </div>
+        </div>
+      </template>
+      <yj-grid 
+        :meta-model="metaModel.billInfo"
+        :data-model="dataModel.expenseDetails"
+        :state-model="stateModel.gridState"
+        :grid-config="pageModel.grid"
+        :btn-config="pageModel.btns"
+      ></yj-grid>
+    </plugins>
+
+    <!-- 附件信息区域 -->
+    <plugins type="append" target=".bill-upload">
+      <upload-panel></upload-panel>
+    </plugins>
+
+    <!-- 审批轨迹区域 -->
+    <plugins type="replace" target=".bill-workflow">
+      <yj-panel title="审批轨迹" :collapsible="true">
+        <div class="workflow">
+          <div class="his-title">
+            <span>操作类型</span>
+            <span>完成时间</span>
+            <span>组织名称</span>
+            <span>操作角色</span>
+            <span>操作用户</span>
+            <span>操作意见</span>
+            <span>停留时长</span>
+          </div>
+          <div class="his-item" v-for="(item,index) in dataModel.workflowData" :key="index">
+            <template v-if="item.status === 'none'">
+              <span class="none-icon"></span>
+            </template>
+            <template v-else>
+              <span :class="item.status ==='wait' ? 'wait-icon': item.status ==='refuse' ? 'refuse-icon' : 'pass-icon'"></span>
+              <span>{{item.status ==='wait' ? '待处理':item.status ==='refuse'? '拒绝': '通过'}}</span>
+              <span>{{item.finishTime}}</span>
+              <span>{{item.organizationName}}</span>
+              <span>{{item.rule}}</span>
+              <span>{{item.person}}</span>
+              <span :class="item.status=='pass' ? 'text-primary' : item.status=='refuse' ? 'red-color' : 'green-color'">{{item.comment}}</span>
+              <span>{{item.waitTime}}</span>
+            </template>
+          </div>
+        </div>
+      </yj-panel>
+    </plugins>
+    
+    <!-- 财务审核区域 -->
+    <plugins type="append" target=".bill-workflow">
+      <yj-panel title="财务审核" :collapsible="true">
+        <yj-form 
+          :meta-model="metaModel.billFinance" 
+          :data-model="dataModel.financeInfo"
+          :state-model="{}"
+          :form-config="[
+            {
+              name: 'approver',
+              dataType: 'text',
+              label: '财务审核人',
+              readonly: true
+            },
+            {
+              name: 'approveTime',
+              dataType: 'text',
+              label: '审核时间',
+              readonly: true
+            },
+            {
+              name: 'paymentAmount',
+              dataType: 'number',
+              label: '实付金额',
+              readonly: true
+            },
+            {
+              name: 'paymentDate',
+              dataType: 'text',
+              label: '支付日期',
+              readonly: true
+            },
+            {
+              name: 'remarks',
+              dataType: 'textarea',
+              label: '审核备注',
+              cols: 3,
+              readonly: true
+            }
+          ]"
+        ></yj-form>
+      </yj-panel>
+    </plugins>
+
+    <!-- 底部区域 -->
+    <plugins type="append" target=".bill-footer">
+      <div class="tswan-foot">
+        报销金额：
+        <b>
+          ￥
+          <span class="price">{{dataModel.businessForm.totalAmount}}</span>
+        </b>
+      </div>
+      <div class="tswan-foot">
+        支付方式：
+        <b>
+          {{getPaymentMethodText(dataModel.businessForm.paymentMethod)}}
+        </b>
+      </div>
+    </plugins>
+  </page>
+</template>
+
+<script>
+  import SingleTemplate from 'yjpl-template/page/ywdj/index.yjpl';
+  import ExpenseReimbursementBs from './Business';
+
+  export default class ExpenseReimbursement extends SingleTemplate {
+    constructor() {
+      super();
+      this.yw = new ExpenseReimbursementBs();
+    }
+    
+    data() {
+      return this.yw.getData();
+    }
+
+    // 获取单据状态文本
+    getBillStatusText(status) {
+      const statusMap = {
+        'draft': '草稿',
+        'submitted': '已提交',
+        'approved': '已通过',
+        'rejected': '已拒绝'
+      };
+      return statusMap[status] || '未知';
+    }
+
+    // 获取单据状态样式类
+    getBillStatusClass(status) {
+      const classMap = {
+        'draft': '',
+        'submitted': 'text-warning',
+        'approved': 'text-success',
+        'rejected': 'red-color'
+      };
+      return classMap[status] || '';
+    }
+
+    // 获取支付方式文本
+    getPaymentMethodText(method) {
+      const methodMap = {
+        'cash': '现金',
+        'bank': '银行转账',
+        'check': '支票'
+      };
+      return methodMap[method] || '未选择';
+    }
+    
+    // 创建时计算总金额
+    created() {
+      this.yw.calculateTotalAmount();
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .expense-reimbursement-page {
+    .text-warning {
+      color: #E6A23C;
+    }
+    .text-success {
+      color: #67C23A;
+    }
+    .text-primary {
+      color: #409EFF;
+    }
+    .red-color {
+      color: #F56C6C;
+    }
+    
+    .bill-head-form {
+      margin-bottom: 10px;
+      
+      .bill-user {
+        display: flex;
+        align-items: center;
+        
+        span {
+          margin-right: 20px;
+          
+          &.name {
+            font-weight: bold;
+          }
+        }
+        
+        font {
+          flex: 1;
+        }
+      }
+    }
+    
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      .title-text {
+        font-weight: bold;
+        font-size: 16px;
+      }
+      
+      .rule-tips {
+        font-size: 14px;
+        color: #606266;
+        
+        .text-primary, .text-warning, .text-success, .red-color {
+          font-weight: bold;
+        }
+      }
+    }
+    
+    .workflow {
+      .his-title {
+        display: flex;
+        padding: 10px 0;
+        border-bottom: 1px solid #EBEEF5;
+        font-weight: bold;
+        
+        span {
+          flex: 1;
+          text-align: center;
+        }
+      }
+      
+      .his-item {
+        display: flex;
+        padding: 10px 0;
+        border-bottom: 1px solid #EBEEF5;
+        
+        span {
+          flex: 1;
+          text-align: center;
+        }
+        
+        .none-icon {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-color: #C0C4CC;
+          border-radius: 50%;
+        }
+        
+        .wait-icon {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-color: #E6A23C;
+          border-radius: 50%;
+        }
+        
+        .pass-icon {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-color: #67C23A;
+          border-radius: 50%;
+        }
+        
+        .refuse-icon {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-color: #F56C6C;
+          border-radius: 50%;
+        }
+      }
+    }
+    
+    .tswan-foot {
+      display: inline-block;
+      margin-right: 30px;
+      
+      b {
+        color: #409EFF;
+        
+        .price {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+</style>

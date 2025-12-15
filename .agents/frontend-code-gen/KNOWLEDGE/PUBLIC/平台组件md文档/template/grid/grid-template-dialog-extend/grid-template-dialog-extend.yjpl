@@ -1,0 +1,58 @@
+<template>  
+  <tl-dialog title="排序管理" :visible.sync="dialogFormVisible" :width="width">
+    <div class="dialog-content">
+      <grid-template-dialog-extend-example/>
+    </div>
+    <div slot="footer" class="dialog-footer">
+      <div class="dialog-footer-left">
+        <i class="el-icon-warning"></i>
+        <span>不连续勾选多个报表时，不允许调整排序</span>
+      </div>     
+        <tl-button @click="dialogFormVisible = false">取消</tl-button>
+        <tl-button @click="dialogFormVisible = false" type="primary">确定</tl-button>     
+    </div>
+  </tl-dialog>
+</template>
+
+
+<script>
+import GridTemplateDialogExtendExample from './grid-template-dialog-extend-page.yjpl';
+export default {
+    components: {
+      GridTemplateDialogExtendExample,
+    },
+    data() {
+        return {
+        dialogFormVisible: true, 
+        width:'80%',  
+        };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .dialog-content{
+    width:100%;
+    height:500px;
+  }
+  .grid-body{
+    min-width:auto;
+    height:500px;
+    background-color:#fff;
+  }
+  tl-dialog{
+    height:600px;
+  }
+  .dialog-footer{
+    position:relative;
+  }
+  .dialog-footer-left{
+    position:absolute;
+    left:20px;
+    top:5px;
+    i{
+      background:#fff;
+      color:#2663ff;
+    }
+  }
+ 
+</style>

@@ -1,0 +1,53 @@
+<template>
+  <page extends="yjpl-template/tswan/bill-template.yjpl"></page>
+</template>
+
+<script>
+import YwdjTemplate from 'yjpl-template/tswan/bill-template.yjpl';
+import YwdjJson from './tswan-bill.json';
+import YwdjMetaModel from './tswan-bill-metamodel.json';
+
+export default class YwdjPage extends YwdjTemplate {
+  constructor() {
+    super();
+  }
+  data() {
+    return {
+      folder: false,
+      rightFolder: false,
+      dataModel: {},
+      viewMetaData: {},
+      metaModel: {},
+      pageModel: {},
+      stateModel: {},
+      eventsModel: {},
+      headAreaShowInRight: true,
+      layoutDraggable: true,
+      labelPosition: 'top'
+    };
+  }
+
+  mounted () {
+    setTimeout(() => {
+      this.viewMetaData = YwdjJson;
+      // YwdjJson.left_aside_area = {};
+      // YwdjJson.right_aside_area = {};
+      this.metaModel = YwdjMetaModel;
+
+      console.log(this.viewMetaData);
+    }, 200);
+  }
+
+  methods() {
+    return {
+      click() {}
+    }
+  }
+}
+</script>
+
+<style scoped>
+.bill-aside {
+  position: absolute !important;
+}
+</style>

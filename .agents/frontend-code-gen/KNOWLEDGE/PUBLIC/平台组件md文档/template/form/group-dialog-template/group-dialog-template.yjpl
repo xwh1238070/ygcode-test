@@ -1,0 +1,41 @@
+<template>  
+  <tl-dialog title="收货地址" :visible.sync="dialogFormVisible">
+    <div class="dialog-content">
+      <group-dialog-example/>
+    </div>
+    <div slot="footer" class="dialog-footer">
+      <tl-button @click="dialogFormVisible = false">取 消</tl-button>
+      <tl-button type="primary" @click="dialogFormVisible = false">保存</tl-button>
+    </div>
+  </tl-dialog>
+</template>
+
+
+<script>
+import GroupDialogExample from './group-dialog-page.yjpl';
+export default {
+    components: {
+      GroupDialogExample,
+    },
+    data() {
+        return {
+        dialogFormVisible: true,      
+        };
+    }
+  };
+</script>
+<style lang="scss" scoped>
+  .dialog-content{
+    width:100%;
+    .form-page{
+      min-width:auto;
+      background-color:#fff;
+    }
+    .form-body{
+      margin-top:-20px;
+    }
+    .tl-section{
+        margin-top: 0;
+      }
+  }
+</style>

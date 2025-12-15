@@ -1,0 +1,42 @@
+<template>
+  <page extends="yjpl-template/page/grid.yjpl"></page>
+</template>
+
+<script lang="ts">
+import GridTemplate from 'yjpl-template/page/grid.yjpl';
+import GridTemplateBs from './grid-template';
+
+export default class GridExample extends GridTemplate {
+  constructor () {
+    super();
+    this.bs = new GridTemplateBs();
+  }
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel:{
+        title: '单表样例',
+      },
+      eventsModel: {
+        grid: {
+          'search-data': this.handleTest
+        }
+      },     
+    }
+  }
+  async created () {
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['audit', 'cancelAudit', 'export', 'print']);
+    this.dataModel.grid = await this.bs.getGridData();
+  }
+  methods() {
+    return {
+      handleTest() {
+        alert();
+      }
+    }
+  }
+ 
+}
+</script>
+

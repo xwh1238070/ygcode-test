@@ -1,0 +1,207 @@
+<template>
+  <page extends="yjpl-template/business/list-template.yjpl">
+    <!-- 查询方案扩展 -->
+    <plugins type="append" target=".query-search-panel">
+      <template slot="solution">
+        <tl-search-panel-solution ref="searchPanelSolution" show-solution show-setting :setting-data="metaModel.query" :state="stateModel" @state-change="onStateChange" :vip-address="'/jt/mapp/tleadcpdemo'" :data="dataModel.query" yw-key="20230724" user-id="132325" @set-default="metaModel.defaultSelectValue">
+        </tl-search-panel-solution>
+      </template>
+    </plugins>
+    <!-- 多视图切换按钮 -->
+    <plugins type="append" target=".query-toolbar">
+      <yfx-pivot-buttons :yfxPivotRef='metaModel.pivotRef' v-if="metaModel.showView == 'yfxPivot'" style="white-space: nowrap;"></yfx-pivot-buttons>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import ListTemplate from 'yjpl-template/business/list-template.yjpl';
+import Business from './Business';
+import {
+  YJState
+} from 'yjpl-core';
+
+export default class OrderQueryPage extends ListTemplate {
+  constructor() {
+    super();
+    this.bs = new Business();
+  }
+
+  data() {
+    return {
+      ...this.bs.getData(),
+      // 用于关联 business 内组件的事件，以组件的 name 为 key
+      eventsModel: {
+        add: {
+          click: this.handleAdd
+        },
+        edit: {
+          click: this.handleEdit
+        },
+        delete: {
+          click: this.handleDelete
+        },
+        export: {
+          click: this.handleExport
+        },
+        import: {
+          click: this.handleImport
+        },
+        // 二次搜索事件
+        grid: {
+          'search-data': this.handleSearchData,
+          'view-switch': this.handleViewSwitch
+        }
+      }
+    };
+  }
+
+  async created() {
+    // 初始化数据
+    this.dataModel.query = await this.bs.getQueryData();
+    this.dataModel.tree = await this.bs.getTreeData();
+    this.dataModel.grid = await this.bs.getGridData();
+    this.$nextTick(() => {
+      this.gridAction('refresh');
+    });
+  }
+
+  mounted() {
+    // 设置分页总数 - 为所有视图设置分页总数
+    this.bs.getGridData().then(() => {
+      // 设置表格视图分页总数
+      if (this.$refs.grid && this.$refs.grid.ui) {
+        this.$refs.grid.ui.setTotalRecord(this.dataModel.pageTotal);
+      }
+      // 设置卡片视图分页总数
+      if (this.$refs.grid) {
+        this.$refs.grid.setTotalRecord(this.dataModel.pageTotal);
+      }
+      // 设置列表视图分页总数
+      if (this.$refs.grid && this.$refs.grid.list && this.$refs.grid.list.ui) {
+        this.$refs.grid.list.ui.setTotalRecord(this.dataModel.pageTotal);
+      }
+    });
+  }
+
+  methods() {
+    return {
+      query() {
+        // 查询方法
+        console.log('query.....', this.dataModel);
+      },
+      // 模板重置方法
+      reset() {
+        console.log('reset.....', this.dataModel);
+      },
+      treeSelect(node) {
+        // 树节点选择事件
+        console.log('node....', node);
+      },
+      handleAdd() {
+        this.$message('新增订单功能');
+      },
+      handleEdit() {
+        this.$message('编辑订单功能');
+      },
+      handleDelete() {
+        this.$nextTick(() => {
+          if (this.$refs.grid && this.$refs.grid.ui) {
+            this.$refs.grid.ui.refresh();
+            this.$refs.grid.ui.doResize();
+          }
+        });
+      },
+      handleImport() {
+        // 调用导入组件
+        this.$import();
+      },
+      handleExport() {
+        // 调用导出组件
+        this.$export();
+      },
+      // 二次搜索实现
+      handleSearchData(val) {
+        console.log('二次搜索:', val);
+      },
+      onStateChange(val) {
+        // 查询方案状态变化
+        this.stateModel = val;
+      },
+      setSolution() {
+        // 设置查询方案
+        if (this.$refs.searchPanelSolution) {
+          this.$refs.searchPanelSolution.setSolution('8a5c1e102c51-11ee-be95-431de9ac57c6', true);
+        }
+      },
+      handleBtnState(key, state) {
+        // 批量设置按钮状态
+        if (Array.isArray(key)) {
+          key.map((item) => {
+            this.stateModel[item] = YJState.STATE[state];
+          });
+        } else {
+          this.stateModel[key] = YJState.STATE[state];
+        }
+      },
+      handleViewSwitch(data) {
+        // 多视图切换
+        this.metaModel.showView = data;
+        if (data == 'yfxPivot') {
+          if (!this.metaModel.pivotRef) {
+            this.metaModel.pivotRef = this.$refs.grid.getRef('yfxPivot')[0];
+          }
+          this.handleBtnState(['add', 'edit', 'delete', 'import', 'export'], 'HIDE');
+        } else {
+          this.handleBtnState(['add', 'edit', 'delete', 'import', 'export'], 'SHOW');
+        }
+      }
+    };
+  }
+
+  watch() {
+    return {
+      'dataModel.query': {
+        handler() {
+          // 监听查询条件变化，动态更新查询条件显示
+          const {
+            orderNo,
+            customerName,
+            orderDate,
+            status
+          } = this.dataModel.query;
+
+          // 获取状态对应的标签值
+          let statusText = '';
+          if (status) {
+            const statusConfig = this.metaModel.query.find(item => item.name === 'status');
+            if (statusConfig && statusConfig.options) {
+              const statusItem = statusConfig.options.find(item => item.value === status);
+              statusText = statusItem ? statusItem.label : '';
+            }
+          }
+
+          const activeArr = [
+            orderNo ? '订单号：' + orderNo : '',
+            customerName ? '客户名称：' + customerName : '',
+            orderDate && orderDate.length ? '订单日期：' + orderDate.join(' 至 ') : '',
+            status ? '订单状态：' + statusText : ''
+          ].filter(val => val !== '' && val !== undefined);
+
+          this.metaModel.searchPanel.subTitle = activeArr.length > 0 ? `查询条件(${activeArr.length})：${activeArr.join('，')}` : '查询条件：无';
+        },
+        deep: true
+      }
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.query-page {
+  .query-grid-body {
+    overflow: hidden;
+  }
+}
+</style>
+</antml>

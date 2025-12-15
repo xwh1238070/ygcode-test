@@ -1,0 +1,49 @@
+<template>
+  <page extends="yjpl-template/page/form/group.yjpl">
+    <plugins type="remove" target=".form-header"></plugins>
+    <plugins type="remove" target=".form-footer"></plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import FormGroupTemplate from 'yjpl-template/page/form/group.yjpl';
+import GroupDialogTemplateBs from './group-dialog-template.ts';
+
+export default class GroupDialogExample extends FormGroupTemplate {
+  constructor () {
+    super();
+    this.bs = new GroupDialogTemplateBs();
+  }
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel:{
+        cols: 2,
+        tabletoolsbtn: [],
+        form:[],
+      },
+      dialogFormVisible:false,
+      eventsModel: {},     
+    }
+  }
+  async created () {
+    this.$pageModel.set('query', ['organization', 'makeDate']);
+    //this.$pageModel.set('btns', ['operate1', 'operate2']);
+    this.pageModel.form = await this.bs.getFormData();
+  }
+ 
+  methods () {
+    return {
+      query() {
+        console.log('query.....', this.dataModel);
+      },
+      // 模板重置方法
+      reset() {
+        console.log('reset.....', this.dataModel);
+      },
+    }
+  }
+ 
+}
+</script>
+

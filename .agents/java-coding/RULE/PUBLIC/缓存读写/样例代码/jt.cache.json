@@ -1,0 +1,21 @@
+[
+	{
+		"classId": "TestCache",
+		"typeId": "testcache",
+		"maxElementsInMemory": "1000",
+		"maxBytesInMemory": "20m",
+		"eternal": "false",
+		"cacheType": "ehcache",
+		"evcitionPolicy": "lru",
+		"maxElementsOnDisk": "0",
+		"maxBytesOnDisk": "20m",
+		"timeToIdleSeconds": "1m",
+		"timeToLiveSeconds": "1m",
+		"overflowToDisk": "false",
+		"transactionalMode": "off",
+		"replicatePut": "true",
+		"replicateUpdate": "true",
+		"replicateRemove": "true",
+		"replicateAsyn": "false"
+	}
+]

@@ -1,0 +1,250 @@
+<template>
+  <div class="dt-slot">
+    <dialog-template v-bind="metaModel.dlgCheck" @ok="doOk">
+    </dialog-template>
+    <dialog-template v-bind="metaModel.dlgExport" @ok="doOk">
+    </dialog-template>
+    <dialog-template v-bind="metaModel.dlgExport2" @ok="doOk">
+    </dialog-template>
+    <dialog-template v-bind="metaModel.dlgExport3" @ok="doOk">
+    </dialog-template>
+    <button @click="show">检查进度</button>
+    <button @click="dlgExport">导出进度</button>
+    <button @click="dlgExport2">导出详情</button>
+    <button @click="dlgExport3">导出详情 - 折叠</button>
+    <row>
+      <cols :span="24">
+        <tip-template v-bind="metaModel.pageTip1"></tip-template>
+      </cols>
+    </row>
+    <row>
+      <cols :span="24">
+        <tip-template v-bind="metaModel.pageTip2"></tip-template>
+      </cols>
+    </row>
+    <row>
+      <cols :span="24">
+        <row>
+          <cols :span="6">&nbsp;</cols>
+          <cols :span="12">
+            <span style="line-height: 30px;">
+              请核对以下信息
+            </span>
+            <detail-template :details="metaModel.pageTip2.details" :arrow="metaModel.pageTip2.arrow"></detail-template>
+          </cols>
+        </row>
+      </cols>
+    </row>
+    <row>
+      <cols :span="6">
+        &nbsp;
+      </cols>
+      <cols :span="4">
+        <tip-template v-bind="metaModel.pageTip3.pageInfo" />
+      </cols>
+      <cols :span="4">
+        <tip-template v-bind="metaModel.pageTip3.pageInfo2" />
+      </cols>
+      <cols :span="4">
+        <tip-template v-bind="metaModel.pageTip3.pageInfo3">
+        </tip-template>
+      </cols>
+      <cols :span="6">
+        &nbsp;
+      </cols>
+    </row>
+    <row>
+      <cols :span="6">
+        &nbsp;
+      </cols>
+      <cols :span="4">
+        <tip-template v-bind="metaModel.pageTip4.pageInfo"/>
+      </cols>
+      <cols :span="4">
+        <tip-template v-bind="metaModel.pageTip4.pageInfo2"/>
+      </cols>
+      <cols :span="4">
+        <tip-template v-bind="metaModel.pageTip4.pageInfo3">
+        </tip-template>
+      </cols>
+      <cols :span="6">
+        &nbsp;
+      </cols>
+    </row>
+    <row>
+      <cols :span="24" style="padding: 10px;">
+        <detail-template>
+          <el-input v-model="dataModel.tval"/>
+        </detail-template>
+      </cols>
+    </row>
+  </div>
+</template>
+
+<script>
+import { YJPage } from 'yjpl-core';
+import DialogTemplate from 'yjpl-template/dialog/message/base.yjpl';
+import TipTemplate from 'yjpl-template/components/message/tip.yjpl';
+import DetailTemplate from 'yjpl-template/components/message/detail.yjpl';
+export default class MyObj extends YJPage {
+  constructor() {
+    super();
+  }
+  data () {
+    return {
+      metaModel: {
+        dlgCheck: {
+          title: '检查进度',
+          icon: 'success',
+          message: '检查完成，全部通过',
+          show: false
+        },
+        dlgExport: {
+          title: '导出进度',
+          icon: 'progress',
+          percent: 60,
+          message: '批量导出',
+          show: false
+        },
+        dlgExport2: {
+          title: '导出进度',
+          icon: 'warning',
+          message: '导出失败',
+          arrow: false,
+          details: [
+            '没有导出结果数据',
+            '失败的详细数据',
+            '失败的原因',
+            '没有导出结果数据',
+            '失败的详细数据',
+            '失败的原因',
+            '没有导出结果数据',
+            '失败的详细数据',
+            '失败的原因',
+            '没有导出结果数据',
+            '失败的详细数据',
+            '失败的原因',
+          ],
+          show: false
+        },
+        dlgExport3: {
+          title: '导出进度',
+          icon: 'warning',
+          message: '导出失败',
+          details: [
+            '没有导出结果数据',
+            '失败的详细数据',
+            '失败的原因',
+            '没有导出结果数据',
+            '失败的详细数据',
+            '失败的原因',
+          ],
+          show: false
+        },
+        pageTip1: {
+          icon: 'el-icon-success',
+          iconcolor: '#4aad8f',
+          message: '检查通过，全部完成'
+        },
+        pageTip2: {
+          icon: 'error',
+          message: '检查失败',
+          details: ['没有导出结果数据', '失败的详细数据', '失败的原因'],
+          arrow: false
+        },
+
+        pageTip3: {
+
+          pageInfo: {
+            icon: 'success',
+            iconcolor: '#4aad8f',
+            message: '按稽核公式稽核',
+            // placeholder: '稽核异常',
+          },
+
+          pageInfo2: {
+            icon: 'progress',
+            message: '按取数公式稽核',
+            status: 'exception',
+            percent: 40,
+            placeholder: '稽核异常'
+          },
+
+          pageInfo3: {
+            icon: 'progress',
+            message: '按运算公式稽核',
+            placeholder: '正在进行中，请稍后...',
+            percent: 50
+          }
+        },
+
+        pageTip4: {
+
+          pageInfo: {
+            icon: 'success',
+            message: '按稽核公式稽核'
+          },
+
+          pageInfo2: {
+            icon: 'success',
+            message: '按取数公式稽核'
+          },
+
+          pageInfo3: {
+            icon: 'success',
+            message: '按运算公式稽核'
+          }
+        }
+      },
+      dataModel: {
+        visible: false,
+        tval: ''
+      }
+    };
+  }
+  components () {
+    return {
+      DialogTemplate,
+      TipTemplate,
+      DetailTemplate
+    };
+  }
+  mounted () {
+    console.info(this);
+  }
+  methods () {
+    return {
+      show () {
+        this.metaModel.dlgCheck.show = true;
+      },
+      dlgExport () {
+        this.metaModel.dlgExport.show = true;
+      },
+      dlgExport2 () {
+        this.metaModel.dlgExport2.show = true;
+      },
+      dlgExport3 () {
+        this.metaModel.dlgExport3.show = true;
+      },
+      hidden () {
+        this.metaModel.dlgCheck.show = false;
+        this.metaModel.dlgExport.show = false;
+        this.metaModel.dlgExport2.show = false;
+        this.metaModel.dlgExport3.show = false;
+      },
+      doOk () {
+        this.hidden();
+        console.info('ok le');
+      }
+
+    };
+  }
+}
+</script>
+
+<style>
+.dt-slot {
+  font-family: Microsoft YaHei;
+  font-size: 16px;
+}
+</style>

@@ -1,0 +1,23 @@
+<template>
+  <page class="lr-layout-template v-flex h_all scroll" ref="page">
+    <page-header class="flex-none head">page-header</page-header>
+    <page-content class="flex-none query-head">page-content-1</page-content>
+    <page-content class="flex-auto-size h-flex body">page-content-2</page-content>
+  </page>
+</template>
+
+<script lang="ts">
+import { YJPage } from 'yjpl-core';
+export default class QueryLayout extends YJPage {}
+</script>
+
+<style lang="scss" scoped>
+.lr-layout-template {
+  .head {
+    color: #fff;
+  }
+  .flex-auto-size {
+    background-color: skyblue;
+  }
+}
+</style>

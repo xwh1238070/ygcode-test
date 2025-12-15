@@ -1,0 +1,46 @@
+{
+    "id": "frontend-code-gen",
+    "name": "前端代码生成智能体",
+    "main": "frontend-code-gen-agent.md",
+    "description": "智能前端代码生成助手，专注于从需求文档生成UI4.0页面（基于YJPL框架）。支持查询界面、单据界面、对话框等多种界面类型。",
+    "version": "3.0.0",
+    "author": "UEC",
+    "category": "前端开发",
+    "usage": [
+        "安装智能体",
+        "打开cline",
+        "上传需求文档",
+        "输入命令：/frontend-code-gen-agent.md"
+    ],
+    "subagents": [
+        {
+            "id": "query-interface-agent",
+            "name": "查询界面子智能体",
+            "file": "SUBAGENT/PUBLIC/query-interface-agent.md",
+            "description": "生成查询类型的界面代码（查询面板、表格、工具栏）",
+            "triggers": ["查询", "列表", "搜索", "list-template"],
+            "version": "1.0.0"
+        },
+        {
+            "id": "bill-interface-agent",
+            "name": "单据界面子智能体",
+            "file": "SUBAGENT/PUBLIC/bill-interface-agent.md",
+            "description": "生成单据类型的界面代码（表单、子表、审批流程）",
+            "triggers": ["单据", "审批", "ywdj"],
+            "version": "1.0.0"
+        },
+        {
+            "id": "dialog-interface-agent",
+            "name": "对话框子智能体",
+            "file": "SUBAGENT/PUBLIC/dialog-interface-agent.md",
+            "description": "生成对话框类型的界面代码（确认框、输入框、选择框）",
+            "triggers": ["对话框", "弹窗", "模态框", "dialog"],
+            "version": "1.0.0"
+        }
+    ],
+    "knowledge": {
+        "guide": "KNOWLEDGE/PUBLIC/前端生成界面智能体综合指南.md",
+        "components": "KNOWLEDGE/PUBLIC/平台组件md文档/",
+        "examples": "KNOWLEDGE/PUBLIC/示例代码/"
+    }
+}

@@ -1,0 +1,154 @@
+<template>
+  <page extends="yjpl-template/page/operate/form.yjpl">
+    <plugins type="append" target=".operate-body">
+      <tl-foldbar ref="fold" class="right" :collapse.sync="dataModel.isCollapse" show-close>
+        <template slot="action">
+          <div class="header">
+            <div class="title">调整发布状态：格式对应测试</div>
+            <tl-button>保存</tl-button>
+          </div>
+        </template>
+        <tl-tree class="operate-tree" id="operateTree" ref="tree" :data="dataModel.tree" v-bind="pageModel.tree" v-on="eventsModel.tree"></tl-tree>
+      </tl-foldbar>
+    </plugins>
+    <plugins type="append" target=".operate-toolbar">
+      <template slot="content">
+        <tl-select v-model="dataModel.work" :data="dataModel.workData" id-field="id" text-field="text">
+        </tl-select>
+      </template>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import QueryFormTemplate from 'yjpl-template/page/query/form.yjpl';
+import FormTableGridTemplaeBs from './index';
+
+export default class FormTableGridTemplae extends QueryFormTemplate {
+  constructor() {
+    super();
+    this.bs = new FormTableGridTemplaeBs();
+  }
+
+  data() {
+    return {
+      ...this.bs.getData(),
+      pageModel: {
+        title: '列表右侧树模板',
+        // 表单列数
+        cols: 4,
+        // 是否查询表格
+        isQueryGrid: true,
+        // 工具栏
+        toolbar: {
+          layout: ['content', '->', 'button', 'search']
+        },
+        // 表单区域
+        form: [{
+            name: 'work',
+            dataType: 'combobox',
+            label: '任务：',
+            data: [{
+                id: '1',
+                text: '2022财务快报'
+              },
+              {
+                id: '2',
+                text: '2023财务快报'
+              }
+            ],
+            idField: 'id',
+            textField: 'text'
+          },
+          {
+            name: 'date',
+            dataType: 'date',
+            label: '日期：',
+          }
+        ],
+        // 表格区域
+        grid: {},
+        // 按钮区域
+        btns: [],
+        tree: {},
+      },
+      // 用于关联 business 内组件的事件，以组件的 key 为 key
+      eventsModel: {
+        work: {
+          change: this.handleChange
+        },
+        date: {
+          change: this.handleDateChange
+        },
+        publish: {
+          click: this.handelPublish
+        },
+        changePublish: {
+          click: this.handelChangePublish
+        }
+      }
+    };
+  }
+
+  async created() {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('tree', 'tree');
+    this.$pageModel.set('form', ['work', 'date']);
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['publish', 'cancelPublish', 'changePublish']);
+    this.dataModel.grid = await this.bs.getGridData();
+    this.dataModel.tree = await this.bs.getTreeData();
+    this.dataModel.workData = await this.bs.getWorkData();
+  }
+  methods() {
+    return {
+      handleChange(val) {
+        console.log(val);
+      },
+      handleDateChange(val) {
+        console.log(val);
+      },
+      handelPublish() {
+        console.log('点击了发布按钮');
+      },
+      handelChangePublish(){
+        console.log('点击了调整发布状态按钮');
+      }
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.operate-page .operate-body .operate-grid-body {
+  // width: initial;
+  flex: 1;
+  // flex-shrink: 0;
+  // overflow: hidden;
+  // position: initial;
+}
+
+.operate-grid-body .yj-container-card {
+  overflow: hidden;
+}
+
+.right {
+  .header {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+
+    .title {
+      margin-right: 16px;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  ::v-deep .tl-foldbar__action {
+    overflow: hidden;
+  }
+}
+</style>

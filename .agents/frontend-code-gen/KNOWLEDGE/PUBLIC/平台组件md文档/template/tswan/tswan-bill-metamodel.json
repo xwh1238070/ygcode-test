@@ -1,0 +1,570 @@
+{
+  "caption": "业务单据总表",
+  "dataType": "refPojo",
+  "class": "",
+  "required": false,
+  "showMessage": false,
+  "gid": {
+    "caption": "内部ID",
+    "dataType": "number",
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "summary": {
+    "caption": "摘要",
+    "dataType": "string",
+    "length": 200,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "ywbz": {
+    "caption": "业务币种",
+    "dataType": "string",
+    "length": 10,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "dwdh": {
+    "caption": "单位代号",
+    "dataType": "string",
+    "length": 8,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "compid": {
+    "caption": "所属组织",
+    "dataType": "string",
+    "length": 8,
+    "class": "",
+    "required": false,
+    "showMessage": false,
+    "rules": [
+      {
+        "required": true,
+        "message": "请选择组织",
+        "trigger": "change"
+      }
+    ],
+    "events": {}
+  },
+  "controlunit": {
+    "caption": "业务归属组织",
+    "dataType": "string",
+    "length": 8,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "summoney": {
+    "caption": "总金额",
+    "dataType": "money",
+    "length": 18,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "bzwc": {
+    "caption": "是否完成",
+    "dataType": "sysenum",
+    "length": 10,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "zfbz": {
+    "caption": "是否作废",
+    "dataType": "sysenum",
+    "length": 10,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "typeid": {
+    "caption": "单据类型",
+    "dataType": "ecp.tableentity",
+    "length": 100,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "fdzs": {
+    "caption": "附单张数",
+    "dataType": "number",
+    "length": 10,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "ttime": {
+    "caption": "制单日期",
+    "dataType": "date",
+    "length": 0,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "dept": {
+    "caption": "填报部门(总)",
+    "dataType": "string",
+    "length": 15,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "deptname": {
+    "caption": "填报部门名称(总)",
+    "dataType": "string",
+    "length": 50,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "typecode": {
+    "caption": "单据编号",
+    "dataType": "number",
+    "length": 10,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "code": {
+    "caption": "分类编号",
+    "dataType": "number",
+    "length": 10,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "createTime": {
+    "caption": "创建时间",
+    "dataType": "date",
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "refBizCode": {
+    "caption": "业务编码",
+    "dataType": "string",
+    "length": 100,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "bizStatus": {
+    "caption": "业务状态",
+    "dataType": "string",
+    "length": 20,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "refBillid": {
+    "caption": "凭证编号",
+    "dataType": "string",
+    "length": 500,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "createdRef": {
+    "caption": "关联是否生成",
+    "dataType": "number",
+    "length": 2,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "creator": {
+    "caption": "创建操作员",
+    "dataType": "string",
+    "length": 50,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "billDynamicStra": {
+    "caption": "待处理人",
+    "dataType": "string",
+    "length": 200,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "dwdh": {
+    "caption": "单位代号",
+    "dataType": "unitcode",
+    "length": 8,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "billid": {
+    "caption": "申请编号",
+    "dataType": "number",
+    "length": 9,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "year": {
+    "caption": "年份",
+    "dataType": "number",
+    "length": 9,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "gid": {
+    "caption": "内部ID",
+    "dataType": "number",
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "ywid": {
+    "caption": "业务ID",
+    "dataType": "number",
+    "length": 9,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "ZBZF": {
+    "caption": "主表字符",
+    "dataType": "string",
+    "length": 50,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "ZB1": {
+    "caption": "子表1",
+    "dataType": "table",
+    "length": 18,
+    "class": "",
+    "required": false,
+    "showMessage": false,
+    "dwdh": {
+      "caption": "单位代号",
+      "dataType": "unitcode",
+      "length": 8,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "billid": {
+      "caption": "申请编号",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "year": {
+      "caption": "年份",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "gid": {
+      "caption": "内部ID",
+      "dataType": "number",
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "ywid": {
+      "caption": "业务ID",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "billid1": {
+      "caption": "内部编号1",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "billid2": {
+      "caption": "内部编号2",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "bm": {
+      "caption": "编码",
+      "dataType": "string",
+      "length": 100,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "sort": {
+      "caption": "子表排序",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "ZF1": {
+      "caption": "字符1",
+      "dataType": "string",
+      "length": 50,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "SZ1": {
+      "caption": "数值1",
+      "dataType": "number",
+      "length": 18,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "RQ1": {
+      "caption": "日期1",
+      "dataType": "date",
+      "length": 0,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "JE1": {
+      "caption": "金额1",
+      "dataType": "money",
+      "length": 18,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "EJZB": {
+      "caption": "二级子表",
+      "dataType": "table",
+      "length": 18,
+      "class": "",
+      "required": false,
+      "showMessage": false,
+      "dwdh": {
+        "caption": "单位代号",
+        "dataType": "unitcode",
+        "length": 8,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "billid": {
+        "caption": "申请编号",
+        "dataType": "number",
+        "length": 9,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "year": {
+        "caption": "年份",
+        "dataType": "number",
+        "length": 9,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "gid": {
+        "caption": "内部ID",
+        "dataType": "number",
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "ywid": {
+        "caption": "业务ID",
+        "dataType": "number",
+        "length": 9,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "billid1": {
+        "caption": "内部编号1",
+        "dataType": "number",
+        "length": 9,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "billid2": {
+        "caption": "内部编号2",
+        "dataType": "number",
+        "length": 9,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "bm": {
+        "caption": "编码",
+        "dataType": "string",
+        "length": 100,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "sort": {
+        "caption": "子表排序",
+        "dataType": "number",
+        "length": 9,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "ZF12": {
+        "caption": "字符12",
+        "dataType": "string",
+        "length": 50,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      },
+      "SZ12": {
+        "caption": "数值12",
+        "dataType": "number",
+        "length": 18,
+        "class": "",
+        "required": false,
+        "showMessage": false
+      }
+    },
+    "RQ12": {
+      "caption": "日期12",
+      "dataType": "date",
+      "length": 0,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    }
+  },
+  "ZB2": {
+    "caption": "子表2",
+    "dataType": "table",
+    "length": 18,
+    "class": "",
+    "required": false,
+    "showMessage": false,
+    "dwdh": {
+      "caption": "单位代号",
+      "dataType": "unitcode",
+      "length": 8,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "billid": {
+      "caption": "申请编号",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "year": {
+      "caption": "年份",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "gid": {
+      "caption": "内部ID",
+      "dataType": "number",
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "ywid": {
+      "caption": "业务ID",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "billid1": {
+      "caption": "内部编号1",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "billid2": {
+      "caption": "内部编号2",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "bm": {
+      "caption": "编码",
+      "dataType": "string",
+      "length": 100,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "sort": {
+      "caption": "子表排序",
+      "dataType": "number",
+      "length": 9,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "ZF2": {
+      "caption": "字符2",
+      "dataType": "string",
+      "length": 50,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "SZ2": {
+      "caption": "数值2",
+      "dataType": "number",
+      "length": 18,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    },
+    "RQ2": {
+      "caption": "日期2",
+      "dataType": "date",
+      "length": 0,
+      "class": "",
+      "required": false,
+      "showMessage": false
+    }
+  },
+  "accessories": {
+    "caption": "附件",
+    "dataType": "blob",
+    "length": 2000,
+    "class": "",
+    "required": false,
+    "showMessage": false
+  },
+  "xtywbillVO.compid.disableConfirmOp": {}
+}

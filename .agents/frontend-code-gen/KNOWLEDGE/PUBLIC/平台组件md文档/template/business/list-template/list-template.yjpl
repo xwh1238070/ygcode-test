@@ -1,0 +1,71 @@
+<template>
+  <page extends="yjpl-template/business/list-template.yjpl">
+    <!-- 底部工具栏 -->
+    <plugins type="append" target=".query-page">
+      <tl-toolbar>
+        <tl-button type="primary">保存</tl-button>
+      </tl-toolbar>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import ListTemplate from 'yjpl-template/business/list-template.yjpl';
+import ListTemplateBs from './list-template';
+
+export default class ListPage extends ListTemplate {
+  constructor () {
+    super();
+    this.bs = new ListTemplateBs();
+  }
+  data () {
+    return {
+      ...this.bs.getData(),
+      useAi: true,
+      // 用于关联 business 内组件的事件，以组件的 name 为 key
+      eventsModel: {
+        delete: {
+          click: this.handleDelete
+        },
+        start: {
+          blur: this.handleStartBlur
+        }
+      }
+    };
+  }
+
+  async created () {
+    this.dataModel.query = await this.bs.getQueryData();
+    this.dataModel.tree = await this.bs.getTreeData();
+    this.dataModel.grid.grid1 = await this.bs.getGridData();
+    this.dataModel.grid.grid2 = await this.bs.getGridData();
+    this.$nextTick(() => {
+      this.gridAction('refresh');
+    });
+  }
+
+  methods () {
+    return {
+      query() {
+        console.log('query.....', this.dataModel);
+      },
+      // 模板重置方法
+      reset() {
+        console.log('reset.....', this.dataModel);
+      },
+      treeSelect(node) {
+        console.log('node....', node);
+      },
+      handleDelete () {
+        this.$nextTick(() => {
+          this.$refs.grid.ui.refresh();
+          this.$refs.grid.ui.doResize();
+        });
+      },
+      handleStartBlur () {
+        this.$message('触发了Start的blur事件');
+      }
+    };
+  }
+}
+</script>

@@ -1,0 +1,32 @@
+<template>
+  <page class="standard-layout-template v-flex scroll" ref="page">
+    <page-header class="flex-none head">
+      page-header
+    </page-header>
+    <page-content class="flex-auto-size body">
+      page-content
+    </page-content>
+    <page-footer class="footer">
+      page-footer
+    </page-footer>
+  </page>
+</template>
+
+<script lang="ts">
+  import { YJPage } from 'yjpl-core';
+  export default class StandardLayout extends YJPage {}
+</script>
+
+<style lang="scss" scoped>
+.standard-layout-template {
+  .head {
+    color: #fff;
+  }
+  .body {
+    background-color: skyblue;
+  }
+  .footer {
+    background-color: #99a9bf;
+  }
+}
+</style>

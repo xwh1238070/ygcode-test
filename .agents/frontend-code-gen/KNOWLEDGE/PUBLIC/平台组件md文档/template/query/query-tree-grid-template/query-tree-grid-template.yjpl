@@ -1,0 +1,120 @@
+<template>
+  <page extends="yjpl-template/page/query/tree.yjpl">
+  </page>
+</template>
+
+<script>
+import QueryTreeGridTemplate from 'yjpl-template/page/query/tree.yjpl';
+import QueryTreeGridTemplateBs from './query-tree-grid-template';
+
+export default class QueryTreeGridExample extends QueryTreeGridTemplate {
+  constructor () {
+    super();
+    this.bs = new QueryTreeGridTemplateBs();
+  }
+
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel: {
+        title: '基础查询',
+        // 表单列数
+        cols: 4,
+        // 是否查询表格
+        isQueryGrid: true,
+        // 工具栏
+        toolbar: {
+          layout: ['title', 'content', '->','button', 'content-switch', 'view-switch', 'search']
+        },
+        // 表单区域
+        form: [],
+        // 表格区域
+        grid: {},
+        // 按钮区域
+        btns: []
+      },
+      // 用于关联 business 内组件的事件，以组件的 key 为 key
+      eventsModel: {
+        start: {
+          change: this.handleChange
+        },
+        cancelAudit: {
+          click: this.handleCancelAudit
+        }
+      }
+    };
+  }
+
+  async created () {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('query', ['start', 'units']);
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['audit', 'cancelAudit', 'export', 'print']);
+    this.$pageModel.set('tree', 'tree');
+    this.dataModel.grid = await this.bs.getGridData();
+    this.dataModel.tree = await this.bs.getTreeData();
+  }
+  methods () {
+    return {
+      handleChange (val) {
+        console.log(val);
+        if (typeof val !== 'number') {
+          this.$nextTick(() => {
+            this.dataModel.form.start = '';
+          });
+        } else if (typeof val === 'string') {
+          // 将输入的数字转化成int
+          this.$nextTick(() => {
+            this.dataModel.form.start = parseInt(val);
+          });
+        }
+      },
+      handleAudit () {
+        this.$confirm('是否确认审批?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '审批成功!'
+          });
+        });
+      },
+      handleCancelAudit () {
+        this.$confirm('是否确认取消审批?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '取消审批!'
+          });
+        });
+      }
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  .operate-form {
+    position: relative;
+    font-size: 14px;
+
+    span {
+      color: #2663ff;
+    }
+  }
+
+  .operate-btns {
+    margin-right: 20px;
+  }
+
+  .operate-slot {
+    position: absolute;
+    bottom: 22px;
+    right: 16px;
+  }
+</style>

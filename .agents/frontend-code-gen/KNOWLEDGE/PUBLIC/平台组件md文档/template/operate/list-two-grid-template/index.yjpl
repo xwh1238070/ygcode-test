@@ -1,0 +1,180 @@
+<template>
+  <page extends="yjpl-template/page/operate/tree.yjpl">
+    <plugins type="remove" target=".operate-tree-body">
+    </plugins>
+    <plugins type="insert" position="before" target=".operate-grid-body">
+      <div class="operate-list-body">
+        <tl-select-list v-model="dataModel.list" :search-bar="dataModel.search" :data="dataModel.listData"></tl-select-list>
+      </div>
+    </plugins>
+    <plugins type="remove" target=".operate-grid-body">
+    </plugins>
+    <plugins type="append" target=".operate-body">
+        <div class="operate-grid-body">
+          <tl-section :collapsible="true">
+              <template #title>
+                <div class="grid-section">
+                  <div class="grid-section-title">单位组织权限</div>
+                  <div class="grid-section-opera">
+                    <yj-button-list :data="pageModel.btns" :state="stateModel" :events="eventsModel"></yj-button-list>
+                  </div>
+                </div>
+              </template>
+              <yj-container-card
+                ref="grid"
+                :title="pageModel.grid.title"
+                id="operateGrid"
+                :default="pageModel.defaultShow"
+                :show-grid="pageModel.showGrid"
+                :show-list="pageModel.showList"
+                :show-card="pageModel.showCard"
+                :is-query-grid="pageModel.isQueryGrid"
+                :option="pageModel.grid"
+                :data="dataModel.grid"
+              >
+              </yj-container-card>
+            </tl-section>
+            <tl-section :collapsible="true">
+              <template #title>
+                <div class="grid-section">
+                  <div class="grid-section-title">报表数据权限</div>
+                  <div class="grid-section-opera">
+                    <yj-button-list :data="pageModel.childBtns" :state="stateModel" :events="eventsModel"></yj-button-list>
+                  </div>
+                </div>
+              </template>
+              <yj-container-card
+                ref="childGrid"
+                :title="pageModel.childGrid.title"
+                id="operateGrid"
+                :default="pageModel.defaultShow"
+                :show-grid="pageModel.showGrid"
+                :show-list="pageModel.showList"
+                :show-card="pageModel.showCard"
+                :is-query-grid="pageModel.isQueryGrid"
+                :option="pageModel.childGrid"
+                :data="dataModel.childGrid"
+              >
+              </yj-container-card>
+            </tl-section>
+        </div>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import QueryFormTemplate from 'yjpl-template/page/query/form.yjpl';
+import ListTwoGridTemplateTemplateBs from './index';
+
+export default class ListTwoGridTemplateTemplate extends QueryFormTemplate {
+  constructor() {
+    super();
+    this.bs = new ListTwoGridTemplateTemplateBs();
+  }
+
+  data() {
+    return {
+      ...this.bs.getData(),
+      pageModel: {
+        title: '双列表选择列表模板',
+        // 表单列数
+        // 是否查询表格
+        isQueryGrid: true,
+        // 工具栏
+        toolbar: {
+          layout: ['content', '->', 'button', 'search']
+        },
+        // 表格区域
+        grid: {},
+        childGrid: {},
+        // 按钮区域
+        btns: [],
+        childBtns: []
+      },
+      // 用于关联 business 内组件的事件，以组件的 key 为 key
+      eventsModel: {
+        work: {
+          change: this.handleChange
+        },
+        date: {
+          change: this.handleDateChange
+        },
+        publish: {
+          click: this.handelPublish
+        },
+        changePublish: {
+          click: this.handelChangePublish
+        }
+      }
+    };
+  }
+
+  async created() {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('childGrid', 'childGrid');
+    this.$pageModel.set('btns', ['agree', 'refuse', 'batchAgree', 'batchRefuse']);
+    this.$pageModel.set('childBtns', ['childAgree', 'childRefuse', 'childBatchAgree', 'childBatchRefuse']);
+    this.dataModel.grid = await this.bs.getGridData();
+    this.dataModel.childGrid = await this.bs.getGridData();
+    this.dataModel.listData = await this.bs.getListData();
+  }
+  methods() {
+    return {
+      handleChange(val) {
+        console.log(val);
+      },
+      handleDateChange(val) {
+        console.log(val);
+      },
+      handelPublish() {
+        console.log('点击了发布按钮');
+      },
+      handelChangePublish() {
+        console.log('点击了调整发布状态按钮');
+      }
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.operate-body {
+  .operate-list-body {
+    ::v-deep .tl-select-list-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      .list-content {
+        flex: 1;
+      }
+    }
+  }
+  .operate-grid-body {
+    display: flex;
+    flex-direction: column;
+    ::v-deep .tl-section{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      & + .tl-section{
+        margin-top: 16px;
+      }
+      .tl-section__detail{
+        flex: 1;
+      }
+    }
+  }
+  .yj-container-card {
+    position: relative;
+  }
+}
+.grid-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    margin-right: 16px;
+}
+</style>

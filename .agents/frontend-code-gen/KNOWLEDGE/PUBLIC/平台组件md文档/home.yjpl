@@ -1,0 +1,211 @@
+<template>
+  <div class="app-home">
+    <div class="home-top">
+      <div class="home-logo">
+        远光九天
+        <br/>
+        统一界面描述语言
+      </div>
+      <div class="home-subtitle">更易用、更灵活、更高效，适用场景丰富的 web 前端框架。</div>
+      <div class="home-button">
+        <a href="http://10.51.150.7:9090/necp/mapp/dqd/docs/yjpl/#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83" target="_blank" class="quick">快速上手 <i class="el-icon-right"></i></a>
+        <a href="#" class="install">安装</a>
+        <a href="#" class="more">获取更多 YJPL 的支持 <i class="yj-p-export"></i></a>
+      </div>
+    </div>
+    <div class="home-bottom">
+      <div class="home-bottom-text">
+        <h2>更易用</h2>
+        只要会HTML、CSS、JavaScript，即可开始使用。
+      </div>
+      <div class="home-bottom-text">
+        <h2>更灵活</h2>
+        模板继承与UI解耦，实渐进式框架，更加灵活。
+      </div>
+      <div class="home-bottom-text">
+        <h2>更高效</h2>
+        真正的按需加载，精确到方法。超快虚拟DOM和最省心的优化。
+      </div>
+    </div>
+    <div class="home-link">
+      <div class="home-link-list">
+        <div class="home-link-item">
+          <h4>文档</h4>
+          <ul>
+            <li><a href="http://10.51.150.7:9090/necp/mapp/dqd/docs/yjpl/">YJPL 文档</a></li>
+            <li><a href="http://10.51.150.7:9090/necp/mapp/dqd/docs/yjpl/features/cdn.html">CDN 文档</a></li>
+            <li><a href="http://10.51.150.7:9090/necp/mapp/dqd/docs/yjpl/utils/utils.html">工具类文档</a></li>
+            <li><a href="http://10.51.150.7:9090/necp/mapp/dqd/docs/yjpl/template/template.html">模板文档</a></li>
+            <li><a href="http://10.51.150.7:9090/necp/mapp/dqd/docs/yjpl/test/test.html">单元测试</a></li>
+          </ul>
+        </div>
+        <div class="home-link-item">
+          <h4>资源</h4>
+          <ul>
+            <li><a href="https://pan.ygsoft.com/v/link/view/b6a3719073d14b8ea6bd7c810e66139d">常用软件</a></li>
+            <li><a href="https://pan.ygsoft.com/v/link/view/b6a3719073d14b8ea6bd7c810e66139d">培训视频</a></li>
+            <li><a href="https://pan.ygsoft.com/v/link/view/b6a3719073d14b8ea6bd7c810e66139d">培训文档</a></li>
+          </ul>
+        </div>
+        <div class="home-link-item">
+          <h4>帮助</h4>
+          <ul>
+            <li><a href="https://pan.ygsoft.com/v/link/view/b6a3719073d14b8ea6bd7c810e66139d">家园交流群</a></li>
+            <li><a href="http://10.51.150.7:9090/necp/mapp/dqd/docs/yjpl/problem/versions.html">常见问题</a></li>
+            <li><a href="https://devcloud.ygsoft.com/fmp-grm/fmp-bud-estimate/gris/mapp/hqreviewmodeldesign/onlineWorkbench/excel/index.html?_d=bW9kZWxEYXRhR2lkPTNiMDMyYTgxNjdhNjRkYWJiZDY4Y2M1ODUzOTNlNjMzJm1vZGVsR2lkPWZlZDIwYWY4OWFlNDE2NTQzYjI1MzMxY2RhNWU2MDQ0Jl9haz1rZHd0ZTNlY2Q4YTk3ZGFiZTI1ZTYxYzk1YTVmYjE0NWFhY2Eyc20yJl9oPS0xMTYzNjk0Mzk4">问题反馈</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="home-footer">©2024 远光软件 版权所有 粤ICP备09066656号</div>
+  </div>
+</template>
+
+<script>
+import { YJPage } from 'yjpl-core';
+
+export default class Home extends YJPage {
+
+  data() {
+    return {
+      isHideOuter: false
+    }
+  }
+
+  mounted() {
+    this.$router.onReady(() => {
+      this.isHideOuter = this.$route.query.HideOuter;
+    })
+  }
+}
+</script>
+
+<style lang="scss">
+.app-home {
+  min-width: 960px;
+}
+
+.home-top {
+  padding: 96px 32px;
+  text-align: center;
+  line-height: 1.25;
+}
+  
+.home-logo {
+  width: 100%;
+  background: linear-gradient(315deg, red, #0c88f4);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  font-weight: 900;
+  font-size: 64px;
+  letter-spacing: -1.5px;
+}
+
+.home-subtitle {
+  margin: 24px auto 40px;
+  font-size: 22px;
+  color: rgba(60, 60, 60, .7);
+}
+
+.home-button {
+  a {
+    display: inline-block;
+    padding: 8px 1em;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff !important;
+    border: 2px solid #0c88f4;
+    border-radius: 8px;
+    background-color: #0c88f4;
+
+    &.quick:hover {
+      color: #fff !important;
+    }
+
+    &.install,
+    &.more {
+      border-color: #f1f1f1;
+      background-color: #fff;
+      color: #476582 !important;
+    }
+
+    &.more {
+      border-color: transparent;
+      background: linear-gradient(#fff, #fff) padding-box, linear-gradient(45deg,#0c88f4, red) border-box;
+    }
+  }
+
+  a + a {
+    margin-left: 18px;
+  }
+}
+
+.home-bottom {
+  display: flex;
+  padding: 0 32px 42px;
+  max-width: 960px;
+  margin: auto;
+  
+  .home-bottom-text {
+    flex: 0 33.33%;
+    padding: 28px 36px;
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(60, 60, 60, .7);
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #213547;
+      margin-bottom: .75em;
+    }
+  }
+}
+
+.home-link {
+  display: flex;
+  padding: 42px 32px;
+  background-color: #f9f9f9;
+
+  .home-link-list {
+    width: 900px;
+    padding: 24px 32px;
+    margin: 0 auto;
+    columns: 3;
+  }
+
+  .home-link-item {
+    break-inside: avoid;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  h4 {
+    margin: 0;
+    margin-bottom: .25em;
+    color: #213547;
+  }
+  
+  a {
+    font-size: .9em;;
+    color: rgba(60, 60, 60, .7) !important;
+  }
+}
+
+.home-footer {
+  padding: 24px;
+  background-color: #f9f9f9;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 20px;
+  color: rgba(60, 60, 60, .7);
+}
+</style>

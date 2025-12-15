@@ -1,0 +1,48 @@
+<template>
+  <page extends="yjpl-template/page/query/dialog.yjpl"></page>
+</template>
+
+<script lang="ts">
+import ListDialogTemplate from 'yjpl-template/page/query/dialog.yjpl';
+import ListDialogTemplateBs from './query-dialog-template';
+import { Export, Import } from 'yjpl-ui';
+
+export default class ListDialogExample extends ListDialogTemplate {
+  constructor () {
+    super();
+    this.bs = new ListDialogTemplateBs();
+  }
+
+  data () {
+    return {
+      ...this.bs.getData(),
+      visible: true,
+      pageModel: {
+        title: '查询分析',
+        // 表单区域
+        query: [],
+        // 表格区域
+        grid: {},
+        // 按钮区域
+        btns: []
+      },
+      // 用于关联 business 内组件的事件，以组件的 key 为 key
+      eventsModel: {}
+    };
+  }
+
+  async created () {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('query', ['T_YWDJTYPE', 'T_TTIME', 'T_BILLID',  'T_FISTYHDM']);
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('btns', ['export']);
+    this.dataModel.grid = this.bs.getGridData();
+  }
+
+  mounted() {
+   setTimeout(() => {
+    this.opened();
+   }, 1000); 
+  }
+}
+</script>

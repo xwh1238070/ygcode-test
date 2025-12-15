@@ -1,0 +1,41 @@
+<template>
+  <tl-dialog width="90%" title="向导弹窗模板" :visible.sync="dialogVisible" customClass="dialog-class">
+    <div :style="{ height: height +'px'}">
+      <guide-template ref="templateSimple"></guide-template>
+    </div>
+    <span slot="footer" class="dialog-footer">
+      <tl-button @click="pre">上一步</tl-button>
+      <tl-button type="primary" @click="next">下一步</tl-button>
+    </span>
+  </tl-dialog>
+</template>
+<script>
+  import GuideTemplate from './components/guide-vertical.yjpl';
+  export default {
+    data() {
+      return {
+        dialogVisible: true,
+        height: ''
+      };
+    },
+    components: { 
+      GuideTemplate
+    },
+    mounted() {
+          this.height = document.documentElement.clientHeight - 200
+          // 监听窗口大小变化
+          window.onresize = () => {
+            this.height = document.documentElement.clientHeight - 200
+          }
+        },
+    methods: {
+      pre() {
+        this.$refs.templateSimple.handlePrevious();
+      },
+      next() {
+        this.$refs.templateSimple.handleNext();
+      }
+    }
+  };
+</script>
+<style></style>

@@ -1,0 +1,71 @@
+<template>
+  <page extends="yjpl-template/page/form/group.yjpl">
+    <plugins type="insert" target="tl-section" position="before">
+      <tl-tabs :tab-position="tabPosition">
+        <tl-tab-pane label="选项卡1" name="0"></tl-tab-pane>
+        <tl-tab-pane label="选项卡2" name="1"></tl-tab-pane>
+        <tl-tab-pane label="选项卡3" name="2"></tl-tab-pane>
+        <tl-tab-pane label="选项卡4" name="3"></tl-tab-pane>
+      </tl-tabs>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import GroupFormTemplate from 'yjpl-template/page/form/group.yjpl';
+import GrouptabTemplateBs from './group-tab-template';
+
+export default class GroupTabExample extends GroupFormTemplate {
+  constructor () {
+    super();
+    this.bs = new GrouptabTemplateBs();
+  }
+  data () {
+    return {
+      ...this.bs.getData(),
+      pageModel:{
+        title: '向导和分组',
+        // 查询面板的配置项,具体参考tl-searchPanel组件文档
+        searchPanel: {}, 
+        cols: 3,
+        tabletoolsbtn: [],
+        form:[]
+      },
+      eventsModel: {}, 
+       tabPosition: 'left'    
+    }
+  }
+  async created () {
+    this.$pageModel.set('query', ['makeDate']);
+    this.$pageModel.set('btns', ['operate1', 'operate2']);
+    this.pageModel.form = await this.bs.getFormData();
+  }
+ 
+  methods () {
+    return {
+      query() {
+        console.log('query.....', this.dataModel);
+      },
+      // 模板重置方法
+      reset() {
+        console.log('reset.....', this.dataModel);
+      },
+    }
+  }
+ 
+}
+</script>
+<style lang="scss" scoped>
+  .tl-tabs{
+    float:left;
+    padding-top:13px;
+    width:10%;
+    height:90%;  
+  }
+  .tl-section{
+    float:right;
+    width:85%;
+  }
+
+</style>
+

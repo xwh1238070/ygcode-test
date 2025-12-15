@@ -1,0 +1,15 @@
+{
+    "id": "java-coding",
+    "name": "后端代码编写",
+    "main": "java-coding-agent.md",
+    "description": "后端代码生成",
+    "version": "1.0.0",
+    "author": "Ghb",
+    "category": "编码",
+    "usage":[
+      "安装智能体",
+      "打开cline",
+      "上传需求规格说明书、详情设计文档（可选）,MD格式",
+      "输入命令：/java-coding-agent.md"
+    ]
+}

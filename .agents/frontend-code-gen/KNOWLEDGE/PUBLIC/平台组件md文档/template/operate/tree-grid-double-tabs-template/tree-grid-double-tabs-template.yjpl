@@ -1,0 +1,111 @@
+<template>
+  <page extends="yjpl-template/page/operate/tree.yjpl">
+     <plugins type="insert" target=".operate-body" position="before">
+      <div class="tabs-panel">
+        <tl-tabs type="border-card">
+          <tl-tab-pane>
+            <span slot="label"><i class="el-icon-date"></i> 工作安排</span>
+          </tl-tab-pane>
+          <tl-tab-pane label="选项卡2"></tl-tab-pane>
+          <tl-tab-pane label="选项卡3"></tl-tab-pane>
+          <tl-tab-pane label="选项卡4"></tl-tab-pane>
+        </tl-tabs>
+      </div>
+    </plugins>
+    <plugins type="insert" target=".operate-body" position="before">
+      <div class="tabs-panel-2">
+        <tl-tabs>
+          <tl-tab-pane>
+            <span slot="label"><i class="el-icon-date"></i> 工作安排</span>
+          </tl-tab-pane>
+          <tl-tab-pane label="选项卡2"></tl-tab-pane>
+          <tl-tab-pane label="选项卡3"></tl-tab-pane>
+          <tl-tab-pane label="选项卡4"></tl-tab-pane>
+        </tl-tabs>
+      </div>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+  import QueryFormTemplate from 'yjpl-template/page/operate/tree.yjpl';
+  import QueryFormTemplateBs from './tree-grid-double-tabs-template';
+
+  export default class QueryFormExample extends QueryFormTemplate {
+    constructor() {
+      super();
+      this.bs = new QueryFormTemplateBs();
+    }
+
+    data() {
+      return {
+        ...this.bs.getData(),
+        pageModel: {
+          title: '表单树表双选项卡样例',
+          // 是否查询表格
+          isQueryGrid: true,
+          // 工具栏
+          toolbar: {
+            layout: ['button', '->', 'search']
+          },
+          // 树区域
+          tree: {},
+          // 表格区域
+          grid: {},
+          // 按钮区域
+          btns: [],
+          // 树按钮区域
+          treeBtns: []
+        },
+        // 用于关联 business 内组件的事件，以组件的 name 为 key
+        eventsModel: {}
+      };
+    }
+
+    async created() {
+      // 设置组件至对应 pageModel 区域
+      this.$pageModel.set('tree', 'tree');
+      this.$pageModel.set('grid', 'grid');
+      this.$pageModel.set('btns', ['add', 'edit', 'delete']);
+      this.$pageModel.set('treeBtns', ['treeAdd', 'treeDelete']);
+      this.dataModel.grid = await this.bs.getGridData();
+      this.dataModel.tree = await this.bs.getTreeData();
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .operate-form {
+    position: relative;
+    font-size: 14px;
+
+    span {
+      color: #2663ff;
+    }
+  }
+
+  .operate-btns {
+    margin-right: 20px;
+  }
+
+  .operate-slot {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+  .tabs-panel{
+    .el-tabs--border-card {
+        border: none;
+        box-shadow: none;
+        ::v-deep .el-tabs__content  {
+          padding: 5px 0;
+        }
+      }
+  }
+  .tabs-panel-2{
+        ::v-deep .el-tabs--top  {
+          background:white;
+          padding: 0 0 0 20px;
+        }
+  }
+</style>

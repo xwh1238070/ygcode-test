@@ -1,0 +1,38 @@
+<template>
+  <page class="lr-layout-template v-flex h_all scroll" ref="page">
+    <page-header class="flex-none head">page-header</page-header>
+    <page-content class="flex-auto-size h-flex body">
+      <page-content class="body_left">page-content-left</page-content>
+      <page-content class="flex-auto-size body_right">page-content-right</page-content>
+    </page-content>
+  </page>
+</template>
+
+<script lang="ts">
+import { YJPage } from 'yjpl-core';
+export default class LeftAndRightLayout extends YJPage {}
+</script>
+
+<style scoped lang="scss">
+.lr-layout-template {
+  background-color: rgb(232, 234, 240);
+  flex-direction: column;
+  .head {
+    display: flex;
+    height: 45px;
+    background-color: rgb(2, 53, 109);
+    color: #fff;
+  }
+  .body {
+    padding: 15px;
+    .body_left {
+      flex: 0 0 220px;
+      margin-right: 15px;
+      background-color: #fff;
+    }
+    .body_right {
+      background-color: #fff;
+    }
+  }
+}
+</style>

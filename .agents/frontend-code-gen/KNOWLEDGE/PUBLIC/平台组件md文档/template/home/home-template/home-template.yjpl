@@ -1,0 +1,60 @@
+<template>
+  <page extends="yjpl-template/page/home/index.yjpl">
+  </page>
+</template>
+
+<script>
+import HomeTemplate from 'yjpl-template/page/home/index.yjpl';
+
+export default class HomePage extends HomeTemplate {
+  constructor() {
+    super();
+  }
+
+  data() {
+    return {
+      title: '样例页面',
+      menu: [
+        {
+          title: '首页',
+          path: '/template/home6',
+          icon: 'yj-icon yj-p-pc',
+          children: [
+            {
+              title: '首页1',
+              path: '/template/home1',
+              icon: 'yj-icon yj-p-pc',
+              children: [
+                {
+                  title: '首页3',
+                  path: '/template/home3',
+                  icon: 'yj-icon yj-p-pc'
+                },
+                {
+                  title: '首页4',
+                  path: '/template/home4',
+                  icon: 'yj-icon yj-p-pc'
+                }
+              ]
+            },
+            {
+              title: '首页2',
+              path: '/template/home2',
+              icon: 'yj-icon yj-p-pc'
+            }
+          ]
+        },
+        {
+          title: '首页5',
+          path: '/template/home',
+          icon: 'yj-icon yj-p-pc'
+        }
+      ]
+    }
+  }
+
+  mounted () {
+    console.log(this.$route)
+  }
+}
+</script>

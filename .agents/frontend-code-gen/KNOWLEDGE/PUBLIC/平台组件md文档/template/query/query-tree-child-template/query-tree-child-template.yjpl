@@ -1,0 +1,197 @@
+<template>
+  <page extends="yjpl-template/page/query/tree-child.yjpl">
+    <plugins type="append" target=".query-search-panel">
+      <template slot="solution">
+        <tl-search-panel-solution
+          :vip-address="'/jt/mapp/tleadcpdemo'"
+          yw-key="20230724"
+          user-id="132325"
+          :data="dataModel.query"
+          @set-default="defaultSelectValue"
+        ></tl-search-panel-solution>
+      </template>
+    </plugins>
+
+    <!-- <plugins type="append" target=".query-btns">
+      <tl-popover trigger="click" width="450" @show="popoverShow">
+        <tl-button slot="reference">更多</tl-button>
+        <yj-container
+          v-if="pshow"
+          :cols="1"
+          :auto-width="false"
+          v-model="dataModel.query"
+          label-postion="right"
+          slot="content"
+          :data="formItem">
+        </yj-container>
+      </tl-popover>
+    </plugins> -->
+  </page>
+</template>
+
+<script lang="ts">
+import ListTemplate from 'yjpl-template/page/query/tree-child.yjpl';
+import ListTemplateBs from './query-tree-child-template';
+import { Export, Import } from 'yjpl-ui';
+import Utils from 'yjpl-utils';
+
+export default class ListChildExample extends ListTemplate {
+  constructor () {
+    super();
+    this.bs = new ListTemplateBs();
+  }
+
+  data () {
+    return {
+      ...this.bs.getData(),
+      pshow: false,
+      dialogVisible: false,
+      pageModel: {
+        title: '查询分析',
+        // 表单区域
+        query: [],
+        // 表格区域
+        grid: {},
+        // 按钮区域
+        btns: []
+      },
+      formItem: [
+      {
+        label: '总金额',
+        dataType: 'tl-range-number',
+        name: 'T_SUMMONEY',
+        precision: 2,
+        format: {
+          type: 'separation'
+        }
+      },
+      {
+        name: 'T_BZWC',
+        label: '完成状态',
+        dataType: 'combobox',
+        textFiled: 'text',
+        idFiled: 'id',
+        data: [
+          { id: 1, text: '已完成' },
+          { id: 0, text: '未完成' }
+        ]
+      }],
+      // 用于关联 business 内组件的事件，以组件的 key 为 key
+      eventsModel: {
+        add: {
+          click: this.handleListAdd
+        },
+        copy: {
+          click: this.handleCopy
+        },
+        delete: {
+          click: this.handleDelete
+        },
+        import: {
+          click: this.handleImport
+        },
+        export: {
+          click: this.handleExport
+        }
+      }
+    };
+  }
+
+  async created () {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('query', ['T_YWDJTYPE', 'T_TTIME', 'T_BILLID',  'T_FISTYHDM']);
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('childGrid', 'childGrid');
+    this.$pageModel.set('btns', ['export']);
+    this.$pageModel.set('tree', 'tree');
+    this.dataModel.grid = this.bs.getGridData();
+    this.dataModel.childGrid = this.bs.getGridData();
+    this.dataModel.tree = this.bs.getTreeData();
+    this.pageModel.searchPanel = {
+      subTitle: '查询条件：无'
+    }
+    const that = this;
+  }
+  methods () {
+    return {
+      popoverShow() {
+        this.pshow = true;
+      },
+      defaultSelectValue(value) {
+        this.dataModel.query = value;
+      },
+      handleCopy() {},
+      handleDelete() {},
+      handleImport() {
+        Import();
+      },
+      handleExport() {
+        Export();
+      },
+      query() {
+        this.dataModel.grid = this.bs.getGridData(this.dataModel.query);
+      }
+    };
+  }
+
+  watch() {
+    return {
+      'dataModel.query': {
+        handler(val) {
+          const strings = [];
+          const keys = Object.keys(val);
+          keys.forEach(item => {
+            if (val[item] && (typeof val[item] === 'number' || val[item].length > 0)) {
+              let valString = val[item];
+              if (typeof val[item] === 'object') {
+                let value = val[item];
+                if (item === 'T_TTIME') value = value.map(v => Utils.dateToStr(v));
+                if (item === 'T_FISTYHDM') {
+                  valString = value.join(',');
+                } else {
+                  valString = value.join('至');
+                }
+              }
+              // if (item === 'T_BZWC') {
+              //   valString = val[item] === 1 ? '已完成' : '未完成';
+              // }
+              strings.push(`${this.metaModel[item].label}:${valString}`)
+            }
+          });
+          if (strings.length > 0) {
+            this.pageModel.searchPanel = {
+              subTitle: `查询条件(${strings.length})：${strings.join(',')}`
+            };
+          } else {
+            this.pageModel.searchPanel = {
+              subTitle: '查询条件：无'
+            };
+          }
+        },
+        deep: true
+      }
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  .operate-form {
+    position: relative;
+    font-size: 14px;
+
+    span {
+      color: #2663ff;
+    }
+  }
+
+  .operate-btns {
+    margin-right: 20px;
+  }
+
+  .operate-slot {
+    position: absolute;
+    bottom: 22px;
+    right: 16px;
+  }
+</style>

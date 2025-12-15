@@ -1,0 +1,164 @@
+<template>
+  <page extends="yjpl-template/page/operate/form.yjpl">
+    <plugins type="insert" position="before" target=".operate-grid-body">
+      <div class="operate-tree-body">
+        <tl-select class="operate-type" v-model="dataModel.type" :data="dataModel.typeData" id-field="id" text-field="text"></tl-select>
+        <tl-tree class="operate-tree" id="operateTree" ref="tree" :data="dataModel.tree" v-bind="pageModel.tree" v-on="eventsModel.tree"></tl-tree>
+      </div>
+    </plugins>
+    <plugins type="append" target=".operate-toolbar">
+      <template slot="title">
+        <div class="grid-title">表格标题</div>
+      </template>
+    </plugins>
+    <plugins type="append" target=".operate-grid-body">
+      <yj-container-card ref="childGrid" class="operate-toolbar child" :title="pageModel.childGrid.title" 
+      id="operateGrid" :default="pageModel.defaultShow" :show-grid="pageModel.showGrid" :show-list="pageModel.showList"
+       :show-card="pageModel.showCard" :is-query-grid="pageModel.isQueryGrid" :option="pageModel.childGrid" :data="dataModel.childGrid">
+        <tl-table-tools slot="toolbar" class="operate-toolbar" v-bind="pageModel.childToolbar" v-on="eventsModel.childToolbar">
+          <template slot="title">
+            <div class="grid-title">子表标题</div>
+          </template>
+          <template slot="button">
+            <yj-button-list :data="pageModel.childBtns" :state="stateModel" :events="eventsModel"></yj-button-list>
+          </template>
+        </tl-table-tools>
+      </yj-container-card>
+    </plugins>
+  </page>
+</template>
+
+<script lang="ts">
+import QueryFormTemplate from 'yjpl-template/page/query/form.yjpl';
+import FormTreeTwoGridTemplateBs from './index';
+
+export default class FormTreeTwoGridTemplate extends QueryFormTemplate {
+  constructor() {
+    super();
+    this.bs = new FormTreeTwoGridTemplateBs();
+  }
+
+  data() {
+    return {
+      ...this.bs.getData(),
+      pageModel: {
+        title: '双列表树表单模板',
+        // 表单列数
+        cols: 4,
+        // 是否查询表格
+        isQueryGrid: true,
+        // 工具栏
+        toolbar: {
+          layout: ['title', '->', 'button', 'search']
+        },
+        childToolbar: {
+          layout: ['title', '->', 'button', 'search']
+        },
+        // 表单区域
+        form: [{
+            name: 'work',
+            dataType: 'combobox',
+            label: '任务：',
+            data: [{
+                id: '1',
+                text: '2022财务快报'
+              },
+              {
+                id: '2',
+                text: '2023财务快报'
+              }
+            ],
+            idField: 'id',
+            textField: 'text'
+          },
+          {
+            name: 'date',
+            dataType: 'date',
+            label: '日期：',
+          }
+        ],
+        // 表格区域
+        grid: {},
+        childGrid: {},
+        // 按钮区域
+        btns: [],
+        childBtns: [],
+        tree: {},
+      },
+      // 用于关联 business 内组件的事件，以组件的 key 为 key
+      eventsModel: {
+        add: {
+          click: this.handleAdd
+        },
+        edit: {
+          click: this.handleEdit
+        },
+        childAdd: {
+          click: this.handelChildAdd
+        },
+        childEdit: {
+          click: this.handelChildEdit
+        }
+      }
+    };
+  }
+
+  async created() {
+    // 设置组件至对应 pageModel 区域
+    this.$pageModel.set('tree', 'tree');
+    this.$pageModel.set('form', ['work', 'date']);
+    this.$pageModel.set('grid', 'grid');
+    this.$pageModel.set('childGrid', 'childGrid');
+    this.$pageModel.set('btns', ['add', 'edit', 'del', 'upload', 'print', 'more']);
+    this.$pageModel.set('childBtns', ['save', 'childAdd', 'childEdit', 'childDel', 'childUpload', 'childPrint', 'childMore']);
+    this.dataModel.grid = await this.bs.getGridData();
+    this.dataModel.childGrid = await this.bs.getGridData();
+    this.dataModel.tree = await this.bs.getTreeData();
+    this.dataModel.typeData = await this.bs.getTypeData();
+  }
+  methods() {
+    return {
+      handleAdd(val) {
+        console.log('点击了主表新增按钮');
+      },
+      handleEdit(val) {
+        console.log('点击了主表修改按钮');
+      },
+      handelChildAdd() {
+        console.log('点击了子表新增按钮');
+      },
+      handelChildEdit() {
+        console.log('点击了子表修改按钮');
+      }
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.operate-page .operate-body .operate-tree-body {
+  width: 300px;
+  padding: 0;
+  border: none;
+}
+
+.operate-page {
+  .operate-type {
+    margin-bottom: 16px;
+  }
+
+  .operate-grid-body {
+    display: flex;
+    flex-direction: column;
+    .operate-toolbar.child{
+      width: auto;
+      background-color: #f0f3f6;
+      margin: -16px 16px 16px 16px;
+    }
+  }
+
+  .yj-container-card {
+    position: relative;
+  }
+}
+</style>

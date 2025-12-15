@@ -1,0 +1,4059 @@
+{
+  "qrcode": "gris.ywdj_1004194_0",
+  "title": "左右布局licz 1004194",
+  "viewId": "50502102132164556641022430450251",
+  "head_area": {
+      "container": [
+          {
+              "itemXpath": "summary",
+              "maxlength": 200,
+              "length": 200,
+              "option": {
+                  "inputCode": "ecp.ui.datafield.ValidateBox"
+              }
+          },
+          {
+              "itemXpath": "ywbz",
+              "maxlength": 10,
+              "dataType": "string",
+              "length": 10,
+              "cols": 1,
+              "option": {
+                  "parent": "XT1004194YWBILL_xtywbill",
+                  "gid": "XT1004194YWBILL_xtywbill_ywbz",
+                  "fixFlag": 1,
+                  "dataType": "newCurrency",
+                  "length": 10,
+                  "caption": "业务币种",
+                  "scale": 0,
+                  "localType": "number",
+                  "itemXpath": "ywbz",
+                  "isReferenceItem": false,
+                  "entityTypeGid": "40513361020144626450434543013462",
+                  "inputer": {
+                      "code": "com.ygsoft.gris.basemanage.currency.entitySelector",
+                      "name": "default",
+                      "caption": "币种选择器",
+                      "valueMap": {}
+                  },
+                  "stoped": false,
+                  "name": "ywbz",
+                  "valueMap": {},
+                  "isExtItem": false,
+                  "state": 0,
+                  "inputCode": "com.ygsoft.gris.basemanage.currency.entitySelector"
+              }
+          },
+          {
+              "itemXpath": "controlunit",
+              "maxlength": 8,
+              "length": 8,
+              "option": {
+                  "dataType": "organise",
+                  "itemXpath": "controlunit",
+                  "inputCode": "com.ygsoft.ecp.basicOrgSelect"
+              }
+          }
+      ],
+      "showTab": false,
+      "areaId": "head_area",
+      "labelPosition": "right",
+      "areaType": "form",
+      "noRowReverse": true,
+      "cols": 3,
+      "showArea": false,
+      "id": "head_area",
+      "sort": 3
+  },
+  "title_area": {
+      "container": [
+          {
+              "itemXpath": "billid",
+              "dataType": "number",
+              "label": "申请编号",
+              "option": {
+                  "inputCode": "ecp.ui.datafield.NumberBox"
+              }
+          },
+          {
+              "itemXpath": "ttime",
+              "dataType": "date",
+              "label": "制单日期",
+              "option": {
+                  "inputCode": "ecp.ui.datafield.DatePicker"
+              }
+          }
+      ],
+      "showTab": false,
+      "areaId": "title_area",
+      "areaType": "title",
+      "noRowReverse": true,
+      "cols": 3,
+      "showArea": false,
+      "id": "title_area",
+      "sort": 0
+  },
+  "title_func_area": {
+      "container": [
+          {
+              "itemXpath": "stdExportByFormDataBtn",
+              "dataType": "button",
+              "icon": "iconfont icondaochu",
+              "label": "导出",
+              "option": {
+                  "param": [
+                      "manager",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "export"
+                      }
+                  ],
+                  "action": "doAction"
+              }
+          },
+          {
+              "itemXpath": "stdPrintBtn",
+              "dataType": "button",
+              "icon": "iconfont icondayin",
+              "label": "打印",
+              "option": {
+                  "param": [],
+                  "action": "print"
+              }
+          },
+          {
+              "itemXpath": "stdProcessGraphBtn",
+              "dataType": "button",
+              "icon": "iconfont iconflowchart",
+              "label": "流程图",
+              "option": {
+                  "param": [
+                      "manager",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "processGraph"
+                      }
+                  ],
+                  "action": "doAction"
+              }
+          },
+          {
+              "itemXpath": "stdProcessTraceLogBtn",
+              "dataType": "button",
+              "icon": "iconfont iconflow-path",
+              "label": "流程轨迹",
+              "option": {
+                  "param": [
+                      "manager",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "processTraceLog"
+                      }
+                  ],
+                  "action": "doAction"
+              }
+          }
+      ],
+      "showTab": false,
+      "areaId": "title_func_area",
+      "areaType": "title",
+      "noRowReverse": true,
+      "showArea": false,
+      "id": "title_func_area",
+      "sort": 1
+  },
+  "main_area": {
+      "container": [
+          {
+              "itemXpath": "compid",
+              "maxlength": 8,
+              "length": 8,
+              "option": {
+                  "refTypeValues": [
+                      {
+                          "multiKeyType": 0,
+                          "classId": "organise",
+                          "refTypeId": "",
+                          "valueMap": {},
+                          "refDefined": false,
+                          "typeId": ""
+                      }
+                  ],
+                  "pageOption": {
+                      "vipAddress": "/necp/mapp/dem",
+                      "ecp": false
+                  },
+                  "entityClassId": "gris.ywdj",
+                  "itemXpath": "compid",
+                  "inputCode": "com.ygsoft.gris.basemanage.multiunit.Unit"
+              }
+          },
+          {
+              "itemXpath": "summoney",
+              "maxlength": 18,
+              "length": 18,
+              "format": {
+                  "options": {
+                      "separation": true
+                  },
+                  "type": "separation",
+                  "decimal": 2
+              },
+              "type": "num",
+              "decimal": 2,
+              "align": "right",
+              "cols": 1,
+              "option": {
+                  "originalConfig": {
+                      "precision": 2,
+                      "maxlength": 18,
+                      "itemXpath": "summoney"
+                  },
+                  "inputCode": "ecp.ui.datafield.NumberBox"
+              },
+              "precision": 2
+          },
+          {
+              "itemXpath": "fdzs",
+              "maxlength": 10,
+              "length": 10,
+              "format": {
+                  "options": {
+                      "separation": false
+                  },
+                  "type": "num",
+                  "decimal": 0
+              },
+              "type": "num",
+              "decimal": 0,
+              "align": "right",
+              "cols": 1,
+              "option": {
+                  "inputCode": "ecp.ui.datafield.NumberBox"
+              }
+          }
+      ],
+      "showTab": false,
+      "areaId": "main_area",
+      "areaName": "基本信息",
+      "labelPosition": "right",
+      "areaType": "form",
+      "noRowReverse": true,
+      "cols": 4,
+      "showArea": false,
+      "id": "main_area",
+      "sort": 4
+  },
+  "column_area": {
+      "container": [
+          {
+              "container": [
+                  {
+                      "dataType": "group",
+                      "name": "group",
+                      "caption": "组一"
+                  },
+                  {
+                      "itemXpath": "dept",
+                      "maxlength": 15,
+                      "length": 15
+                  },
+                  {
+                      "itemXpath": "typecode",
+                      "maxlength": 10,
+                      "length": 10,
+                      "format": {
+                          "options": {
+                              "separation": false
+                          },
+                          "type": "num",
+                          "decimal": 0
+                      },
+                      "type": "num",
+                      "decimal": 0,
+                      "align": "right",
+                      "cols": 1
+                  },
+                  {
+                      "itemXpath": "code",
+                      "maxlength": 10,
+                      "length": 10,
+                      "format": {
+                          "options": {
+                              "separation": false
+                          },
+                          "type": "num",
+                          "decimal": 0
+                      },
+                      "type": "num",
+                      "decimal": 0,
+                      "align": "right",
+                      "cols": 1
+                  },
+                  {
+                      "itemXpath": "ZBZF",
+                      "maxlength": 50,
+                      "length": 50
+                  }
+              ],
+              "gid": "549575bd0e6a8a612b92ebe18b686530",
+              "label": "A区域",
+              "cols": 2,
+              "itemCaption": "<分栏>",
+              "option": {}
+          },
+          {
+              "container": [
+                  {
+                      "dataType": "group",
+                      "name": "group",
+                      "caption": "组B"
+                  },
+                  {
+                      "itemXpath": "deptname",
+                      "maxlength": 50,
+                      "length": 50
+                  },
+                  {
+                      "itemXpath": "createTime",
+                      "cols": 1,
+                      "ecpDate": true
+                  },
+                  {
+                      "itemXpath": "bizStatus",
+                      "maxlength": 20,
+                      "length": 20,
+                      "type": "string",
+                      "cols": 1
+                  },
+                  {
+                      "itemXpath": "refBillid",
+                      "maxlength": 500,
+                      "length": 500,
+                      "type": "string"
+                  },
+                  {
+                      "itemXpath": "xtywbillVO"
+                  }
+              ],
+              "gid": "ad093f8740556bd2c3e3448148f0f66c",
+              "label": "B区域",
+              "cols": 2,
+              "itemCaption": "<分栏>",
+              "option": {}
+          }
+      ],
+      "showTab": false,
+      "areaId": "column_area",
+      "areaName": "分栏信息",
+      "labelPosition": "right",
+      "areaType": "form",
+      "noRowReverse": true,
+      "cols": 4,
+      "showArea": false,
+      "id": "column_area",
+      "buttons": [
+          {
+              "readOnlyModel": "0",
+              "dataType": "button",
+              "icon": "iconfont downQuery",
+              "printModel": "1",
+              "label": "A按钮",
+              "queryModel": "0",
+              "option": {
+                  "param": [
+                      "manager",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "downQuery"
+                      }
+                  ],
+                  "action": "doAction"
+              }
+          },
+          {
+              "readOnlyModel": "0",
+              "dataType": "button",
+              "icon": "iconfont processSubmit",
+              "printModel": "1",
+              "label": "B按钮",
+              "queryModel": "0",
+              "option": {
+                  "param": [
+                      "manager",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "processSubmit"
+                      }
+                  ],
+                  "action": "doAction"
+              }
+          }
+      ],
+      "sort": -1
+  },
+  "attachment_area": {
+      "container": [
+          {
+              "itemXpath": "accessories",
+              "option": {
+                  "itemXpath": "accessories",
+                  "vipAddress": "/necp/mapp/dem",
+                  "optype": "save"
+              }
+          }
+      ],
+      "showTab": false,
+      "areaId": "attachment_area",
+      "areaName": "附件信息",
+      "areaType": "upload",
+      "noRowReverse": true,
+      "showArea": false,
+      "id": "attachment_area",
+      "sort": 6
+  },
+  "workflow_area": {
+      "showTab": false,
+      "areaId": "workflow_area",
+      "areaName": "流程轨迹",
+      "areaType": "workflow",
+      "noRowReverse": true,
+      "showArea": false,
+      "id": "workflow_area",
+      "sort": 7
+  },
+  "right_storage_strip_area": {
+      "showTab": false,
+      "areaId": "right_storage_strip_area",
+      "areaType": "form",
+      "noRowReverse": true,
+      "showArea": false,
+      "id": "right_storage_strip_area",
+      "sort": -1
+  },
+  "ywdjAudit": true,
+  "subTables": [
+      {
+          "itemXpath": "ZB1",
+          "gridTopBtns": [
+              {
+                  "param": [
+                      "ZB1"
+                  ],
+                  "action": "addRow",
+                  "itemXpath": "ZB1_stdAddBtn",
+                  "text": "新增"
+              },
+              {
+                  "param": [
+                      "ZB1"
+                  ],
+                  "action": "insertRow",
+                  "itemXpath": "ZB1_stdInsertRow",
+                  "text": "插入"
+              },
+              {
+                  "param": [
+                      "ZB1"
+                  ],
+                  "action": "batchCopy",
+                  "itemXpath": "ZB1_stdBatchCopy",
+                  "text": "复制"
+              },
+              {
+                  "param": [
+                      "ZB1"
+                  ],
+                  "action": "deleteRow",
+                  "itemXpath": "ZB1_stdDeleteBtn",
+                  "text": "删除"
+              },
+              {
+                  "param": [
+                      "ZB1"
+                  ],
+                  "action": "moveUpRow",
+                  "itemXpath": "ZB1_stdUpRow",
+                  "text": "上移"
+              },
+              {
+                  "param": [
+                      "ZB1"
+                  ],
+                  "action": "moveDownRow",
+                  "itemXpath": "ZB1_stdDownRow",
+                  "text": "下移"
+              },
+              {
+                  "param": [
+                      "ZB1",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "billSimpleImport"
+                      }
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "ZB1_billSimpleImport",
+                  "text": "导入"
+              },
+              {
+                  "param": [
+                      "ZB1",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "export"
+                      }
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "ZB1_export",
+                  "text": "导出"
+              },
+              {
+                  "param": [
+                      "ZB1",
+                      "copyFill"
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "ZB1_copyFill",
+                  "text": "复制填充"
+              }
+          ],
+          "table": {
+              "container": [
+                  {
+                      "container": [],
+                      "itemXpath": "ZB1.EJZB",
+                      "dataType": "table",
+                      "label": "二级子表",
+                      "events": [],
+                      "option": {
+                          "colModels": [
+                              {
+                                  "itemXpath": "ZB1.EJZB.ZF12",
+                                  "showInList": true,
+                                  "name": "ZF12",
+                                  "length": 50,
+                                  "editType": "string",
+                                  "caption": "字符12",
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.ValidateBox"
+                                  },
+                                  "width": 889,
+                                  "colIndex": 0,
+                                  "format": "",
+                                  "hidden": false,
+                                  "_defWidth": 100,
+                                  "csMsg": ""
+                              },
+                              {
+                                  "noFormat": true,
+                                  "itemXpath": "ZB1.EJZB.SZ12",
+                                  "showInList": true,
+                                  "dataType": "number",
+                                  "name": "SZ12",
+                                  "format": "",
+                                  "length": 18,
+                                  "editType": "number",
+                                  "caption": "数值12",
+                                  "scale": 0,
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.NumberBox"
+                                  },
+                                  "width": 889,
+                                  "colIndex": 1,
+                                  "hidden": false,
+                                  "_defWidth": 100,
+                                  "csMsg": ""
+                              }
+                          ],
+                          "Align": "alTop",
+                          "suitHeight": true,
+                          "post": true,
+                          "colNames": [
+                              [
+                                  "字符12",
+                                  "数值12"
+                              ]
+                          ],
+                          "absolute": false,
+                          "maxRow": 20,
+                          "mutipleColumnOptions": [],
+                          "autoEcpWidth": true,
+                          "columnSetupId": "gris.ywdj_1004194_10001_50502102132164556641022430450251_ZB1.EJZB",
+                          "inVue": true,
+                          "width": 1832,
+                          "height": 138,
+                          "margin": "",
+                          "fontSize": "",
+                          "defFontSize": 14,
+                          "designer": false,
+                          "top": 0,
+                          "left": 0,
+                          "skinConfig": {
+                              "name": "default",
+                              "fontSize": 14,
+                              "grid": {
+                                  "titleRowHeight": 32,
+                                  "rowHeight": 32,
+                                  "sumRowHeight": 32
+                              },
+                              "paged": {
+                                  "pageStyle": "UI4.0",
+                                  "height": 32,
+                                  "pageSizeList": [
+                                      20,
+                                      50,
+                                      100,
+                                      200
+                                  ]
+                              }
+                          },
+                          "canClear": true,
+                          "cellEdit": true,
+                          "readOnly": false,
+                          "autoEcpHeight": false,
+                          "filter": true,
+                          "shrinkToFit": true,
+                          "suitToFit": false,
+                          "virtual": false,
+                          "rownumbers": true,
+                          "treeGrid": false,
+                          "colDesign": true,
+                          "EnterDown": false,
+                          "pager": false,
+                          "sumAllLevel": false,
+                          "showTime": false,
+                          "titleRowHeight": 32,
+                          "sumRowHeight": 32,
+                          "pageRowHeight": 32,
+                          "rowHeight": 32,
+                          "reverGJ": false,
+                          "defSelect": true,
+                          "zebraIndex": 1,
+                          "emptyColor": "#ACA899",
+                          "emptyText": "<暂无数据>",
+                          "primaryKey": "gid",
+                          "defColNames": [
+                              [
+                                  "字符12",
+                                  "数值12"
+                              ]
+                          ],
+                          "defColModels": [
+                              {
+                                  "itemXpath": "ZB1.EJZB.ZF12",
+                                  "showInList": true,
+                                  "name": "ZF12",
+                                  "length": 50,
+                                  "editType": "string",
+                                  "caption": "字符12",
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.ValidateBox"
+                                  }
+                              },
+                              {
+                                  "noFormat": true,
+                                  "itemXpath": "ZB1.EJZB.SZ12",
+                                  "showInList": true,
+                                  "dataType": "number",
+                                  "name": "SZ12",
+                                  "format": {
+                                      "options": {
+                                          "separation": false
+                                      }
+                                  },
+                                  "length": 18,
+                                  "editType": "number",
+                                  "caption": "数值12",
+                                  "scale": 0,
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.NumberBox"
+                                  }
+                              }
+                          ],
+                          "gridWidth": 200,
+                          "titleSheets": [
+                              null,
+                              [
+                                  {
+                                      "caption": "字符12",
+                                      "rowspan": 1,
+                                      "rowIndex": 1,
+                                      "colIndex": 0,
+                                      "isBand": false
+                                  },
+                                  {
+                                      "caption": "数值12",
+                                      "rowspan": 1,
+                                      "rowIndex": 1,
+                                      "colIndex": 1,
+                                      "isBand": false
+                                  }
+                              ]
+                          ],
+                          "titleRowCount": 2,
+                          "colCount": 5,
+                          "colModelJson": {
+                              "ZF12": {
+                                  "itemXpath": "ZB1.EJZB.ZF12",
+                                  "showInList": true,
+                                  "name": "ZF12",
+                                  "length": 50,
+                                  "editType": "string",
+                                  "caption": "字符12",
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.ValidateBox"
+                                  },
+                                  "width": 889,
+                                  "colIndex": 0,
+                                  "format": "",
+                                  "hidden": false,
+                                  "_defWidth": 100,
+                                  "csMsg": ""
+                              },
+                              "SZ12": {
+                                  "noFormat": true,
+                                  "itemXpath": "ZB1.EJZB.SZ12",
+                                  "showInList": true,
+                                  "dataType": "number",
+                                  "name": "SZ12",
+                                  "format": "",
+                                  "length": 18,
+                                  "editType": "number",
+                                  "caption": "数值12",
+                                  "scale": 0,
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.NumberBox"
+                                  },
+                                  "width": 889,
+                                  "colIndex": 1,
+                                  "hidden": false,
+                                  "_defWidth": 100,
+                                  "csMsg": ""
+                              }
+                          }
+                      },
+                      "child": [
+                          {
+                              "itemXpath": "ZB1.EJZB_stdAddBtn",
+                              "dataType": "button",
+                              "icon": "iconfont iconxinzeng",
+                              "label": "新增",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "addRow",
+                                  "itemXpath": "ZB1.EJZB_stdAddBtn",
+                                  "text": "新增"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdInsertRow",
+                              "dataType": "button",
+                              "icon": "iconfont iconcharu",
+                              "label": "插入",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "insertRow",
+                                  "itemXpath": "ZB1.EJZB_stdInsertRow",
+                                  "text": "插入"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdBatchCopy",
+                              "dataType": "button",
+                              "icon": "iconfont iconfuzhi",
+                              "label": "复制",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "batchCopy",
+                                  "itemXpath": "ZB1.EJZB_stdBatchCopy",
+                                  "text": "复制"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdDeleteBtn",
+                              "dataType": "button",
+                              "icon": "iconfont iconshanchu",
+                              "label": "删除",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "deleteRow",
+                                  "itemXpath": "ZB1.EJZB_stdDeleteBtn",
+                                  "text": "删除"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdUpRow",
+                              "dataType": "button",
+                              "icon": "iconfont iconshangyi",
+                              "label": "上移",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "moveUpRow",
+                                  "itemXpath": "ZB1.EJZB_stdUpRow",
+                                  "text": "上移"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdDownRow",
+                              "dataType": "button",
+                              "icon": "iconfont iconxiayi",
+                              "label": "下移",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "moveDownRow",
+                                  "itemXpath": "ZB1.EJZB_stdDownRow",
+                                  "text": "下移"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_billSimpleImport",
+                              "dataType": "button",
+                              "icon": "iconfont icondaoru",
+                              "label": "导入",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB",
+                                      "ecpOperatorAction",
+                                      {
+                                          "operatorName": "billSimpleImport"
+                                      }
+                                  ],
+                                  "action": "doAction",
+                                  "itemXpath": "ZB1.EJZB_billSimpleImport",
+                                  "text": "导入"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_export",
+                              "dataType": "button",
+                              "icon": "iconfont icondaochu",
+                              "label": "导出",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB",
+                                      "ecpOperatorAction",
+                                      {
+                                          "operatorName": "export"
+                                      }
+                                  ],
+                                  "action": "doAction",
+                                  "itemXpath": "ZB1.EJZB_export",
+                                  "text": "导出"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_copyFill",
+                              "dataType": "button",
+                              "icon": "iconfont iconfuzhi",
+                              "label": "复制填充",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB",
+                                      "copyFill"
+                                  ],
+                                  "action": "doAction",
+                                  "itemXpath": "ZB1.EJZB_copyFill",
+                                  "text": "复制填充"
+                              }
+                          }
+                      ],
+                      "height": "auto"
+                  }
+              ],
+              "itemXpath": "ZB1",
+              "dataType": "table",
+              "label": "子表1",
+              "events": [],
+              "option": {
+                  "colModels": [
+                      {
+                          "itemXpath": "ZB1.ZF1",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF1",
+                          "caption": "字符1",
+                          "editType": "string",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          },
+                          "width": 355,
+                          "colIndex": 0,
+                          "format": "",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      {
+                          "itemXpath": "ZB1.SZ1",
+                          "noFormat": true,
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "SZ1",
+                          "format": "",
+                          "length": 18,
+                          "caption": "数值1",
+                          "scale": 0,
+                          "editType": "number",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 355,
+                          "colIndex": 1,
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      {
+                          "itemXpath": "ZB1.RQ1",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ1",
+                          "editType": "date",
+                          "caption": "日期1",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 355,
+                          "colIndex": 2,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      {
+                          "itemXpath": "ZB1.JE1",
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "JE1",
+                          "length": 18,
+                          "format": "",
+                          "editType": "number",
+                          "scale": 2,
+                          "caption": "金额1",
+                          "showHint": true,
+                          "option": {
+                              "originalConfig": {
+                                  "precision": 2,
+                                  "maxlength": 18,
+                                  "itemXpath": "ZB1.JE1"
+                              },
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 355,
+                          "colIndex": 3,
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      {
+                          "itemXpath": "ZB1.RQ12",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ12",
+                          "caption": "日期12",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 358,
+                          "colIndex": 4,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      }
+                  ],
+                  "Align": "alTop",
+                  "post": true,
+                  "colNames": [
+                      [
+                          "字符1",
+                          "数值1",
+                          "日期1",
+                          "金额1",
+                          "日期12"
+                      ]
+                  ],
+                  "suitHeight": true,
+                  "absolute": false,
+                  "maxRow": 20,
+                  "mutipleColumnOptions": [],
+                  "autoEcpWidth": true,
+                  "columnSetupId": "gris.ywdj_1004194_10001_50502102132164556641022430450251_ZB1",
+                  "inVue": true,
+                  "width": 1832,
+                  "height": 138,
+                  "margin": "",
+                  "fontSize": "",
+                  "defFontSize": 14,
+                  "designer": false,
+                  "top": 0,
+                  "left": 0,
+                  "skinConfig": {
+                      "name": "default",
+                      "fontSize": 14,
+                      "grid": {
+                          "titleRowHeight": 32,
+                          "rowHeight": 32,
+                          "sumRowHeight": 32
+                      },
+                      "paged": {
+                          "pageStyle": "UI4.0",
+                          "height": 32,
+                          "pageSizeList": [
+                              20,
+                              50,
+                              100,
+                              200
+                          ]
+                      }
+                  },
+                  "canClear": true,
+                  "cellEdit": true,
+                  "readOnly": false,
+                  "autoEcpHeight": false,
+                  "filter": true,
+                  "shrinkToFit": true,
+                  "suitToFit": false,
+                  "virtual": false,
+                  "rownumbers": true,
+                  "treeGrid": false,
+                  "colDesign": true,
+                  "EnterDown": false,
+                  "pager": false,
+                  "sumAllLevel": false,
+                  "showTime": false,
+                  "titleRowHeight": 32,
+                  "sumRowHeight": 32,
+                  "pageRowHeight": 32,
+                  "rowHeight": 32,
+                  "reverGJ": false,
+                  "defSelect": true,
+                  "zebraIndex": 1,
+                  "emptyColor": "#ACA899",
+                  "emptyText": "<暂无数据>",
+                  "primaryKey": "gid",
+                  "defColNames": [
+                      [
+                          "字符1",
+                          "数值1",
+                          "日期1",
+                          "金额1",
+                          "日期12"
+                      ]
+                  ],
+                  "defColModels": [
+                      {
+                          "itemXpath": "ZB1.ZF1",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF1",
+                          "caption": "字符1",
+                          "editType": "string",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB1.SZ1",
+                          "noFormat": true,
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "SZ1",
+                          "format": {
+                              "options": {
+                                  "separation": false
+                              }
+                          },
+                          "length": 18,
+                          "caption": "数值1",
+                          "scale": 0,
+                          "editType": "number",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB1.RQ1",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ1",
+                          "editType": "date",
+                          "caption": "日期1",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB1.JE1",
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "JE1",
+                          "length": 18,
+                          "format": {
+                              "options": {
+                                  "separation": true
+                              }
+                          },
+                          "editType": "number",
+                          "scale": 2,
+                          "caption": "金额1",
+                          "showHint": true,
+                          "option": {
+                              "originalConfig": {
+                                  "precision": 2,
+                                  "maxlength": 18,
+                                  "itemXpath": "ZB1.JE1"
+                              },
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB1.RQ12",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ12",
+                          "caption": "日期12",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          }
+                      }
+                  ],
+                  "gridWidth": 500,
+                  "titleSheets": [
+                      null,
+                      [
+                          {
+                              "caption": "字符1",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 0,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "数值1",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 1,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "日期1",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 2,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "金额1",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 3,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "日期12",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 4,
+                              "isBand": false
+                          }
+                      ]
+                  ],
+                  "titleRowCount": 2,
+                  "colCount": 8,
+                  "colModelJson": {
+                      "ZF1": {
+                          "itemXpath": "ZB1.ZF1",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF1",
+                          "caption": "字符1",
+                          "editType": "string",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          },
+                          "width": 355,
+                          "colIndex": 0,
+                          "format": "",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      "SZ1": {
+                          "itemXpath": "ZB1.SZ1",
+                          "noFormat": true,
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "SZ1",
+                          "format": "",
+                          "length": 18,
+                          "caption": "数值1",
+                          "scale": 0,
+                          "editType": "number",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 355,
+                          "colIndex": 1,
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      "RQ1": {
+                          "itemXpath": "ZB1.RQ1",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ1",
+                          "editType": "date",
+                          "caption": "日期1",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 355,
+                          "colIndex": 2,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      "JE1": {
+                          "itemXpath": "ZB1.JE1",
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "JE1",
+                          "length": 18,
+                          "format": "",
+                          "editType": "number",
+                          "scale": 2,
+                          "caption": "金额1",
+                          "showHint": true,
+                          "option": {
+                              "originalConfig": {
+                                  "precision": 2,
+                                  "maxlength": 18,
+                                  "itemXpath": "ZB1.JE1"
+                              },
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 355,
+                          "colIndex": 3,
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      "RQ12": {
+                          "itemXpath": "ZB1.RQ12",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ12",
+                          "caption": "日期12",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 358,
+                          "colIndex": 4,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      }
+                  }
+              },
+              "child": [
+                  {
+                      "itemXpath": "ZB1_stdAddBtn",
+                      "dataType": "button",
+                      "icon": "iconfont iconxinzeng",
+                      "label": "新增",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "addRow",
+                          "itemXpath": "ZB1_stdAddBtn",
+                          "text": "新增"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdInsertRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconcharu",
+                      "label": "插入",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "insertRow",
+                          "itemXpath": "ZB1_stdInsertRow",
+                          "text": "插入"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdBatchCopy",
+                      "dataType": "button",
+                      "icon": "iconfont iconfuzhi",
+                      "label": "复制",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "batchCopy",
+                          "itemXpath": "ZB1_stdBatchCopy",
+                          "text": "复制"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdDeleteBtn",
+                      "dataType": "button",
+                      "icon": "iconfont iconshanchu",
+                      "label": "删除",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "deleteRow",
+                          "itemXpath": "ZB1_stdDeleteBtn",
+                          "text": "删除"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdUpRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconshangyi",
+                      "label": "上移",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "moveUpRow",
+                          "itemXpath": "ZB1_stdUpRow",
+                          "text": "上移"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdDownRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconxiayi",
+                      "label": "下移",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "moveDownRow",
+                          "itemXpath": "ZB1_stdDownRow",
+                          "text": "下移"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_billSimpleImport",
+                      "dataType": "button",
+                      "icon": "iconfont icondaoru",
+                      "label": "导入",
+                      "option": {
+                          "param": [
+                              "ZB1",
+                              "ecpOperatorAction",
+                              {
+                                  "operatorName": "billSimpleImport"
+                              }
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB1_billSimpleImport",
+                          "text": "导入"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_export",
+                      "dataType": "button",
+                      "icon": "iconfont icondaochu",
+                      "label": "导出",
+                      "option": {
+                          "param": [
+                              "ZB1",
+                              "ecpOperatorAction",
+                              {
+                                  "operatorName": "export"
+                              }
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB1_export",
+                          "text": "导出"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_copyFill",
+                      "dataType": "button",
+                      "icon": "iconfont iconfuzhi",
+                      "label": "复制填充",
+                      "option": {
+                          "param": [
+                              "ZB1",
+                              "copyFill"
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB1_copyFill",
+                          "text": "复制填充"
+                      }
+                  }
+              ],
+              "height": "auto"
+          },
+          "tableTitle": "子表1",
+          "gridOption": {
+              "colModels": [
+                  {
+                      "itemXpath": "ZB1.ZF1",
+                      "showInList": true,
+                      "length": 50,
+                      "name": "ZF1",
+                      "caption": "字符1",
+                      "editType": "string",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.ValidateBox"
+                      },
+                      "width": 355,
+                      "colIndex": 0,
+                      "format": "",
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  },
+                  {
+                      "itemXpath": "ZB1.SZ1",
+                      "noFormat": true,
+                      "showInList": true,
+                      "dataType": "number",
+                      "name": "SZ1",
+                      "format": "",
+                      "length": 18,
+                      "caption": "数值1",
+                      "scale": 0,
+                      "editType": "number",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      },
+                      "width": 355,
+                      "colIndex": 1,
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  },
+                  {
+                      "itemXpath": "ZB1.RQ1",
+                      "showInList": true,
+                      "length": 0,
+                      "name": "RQ1",
+                      "editType": "date",
+                      "caption": "日期1",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      },
+                      "width": 355,
+                      "colIndex": 2,
+                      "format": "",
+                      "dataType": "date",
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  },
+                  {
+                      "itemXpath": "ZB1.JE1",
+                      "showInList": true,
+                      "dataType": "number",
+                      "name": "JE1",
+                      "length": 18,
+                      "format": "",
+                      "editType": "number",
+                      "scale": 2,
+                      "caption": "金额1",
+                      "showHint": true,
+                      "option": {
+                          "originalConfig": {
+                              "precision": 2,
+                              "maxlength": 18,
+                              "itemXpath": "ZB1.JE1"
+                          },
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      },
+                      "width": 355,
+                      "colIndex": 3,
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  },
+                  {
+                      "itemXpath": "ZB1.RQ12",
+                      "showInList": true,
+                      "length": 0,
+                      "name": "RQ12",
+                      "caption": "日期12",
+                      "editType": "date",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      },
+                      "width": 358,
+                      "colIndex": 4,
+                      "format": "",
+                      "dataType": "date",
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  }
+              ],
+              "Align": "alTop",
+              "post": true,
+              "colNames": [
+                  [
+                      "字符1",
+                      "数值1",
+                      "日期1",
+                      "金额1",
+                      "日期12"
+                  ]
+              ],
+              "suitHeight": true,
+              "absolute": false,
+              "maxRow": 20,
+              "mutipleColumnOptions": [],
+              "autoEcpWidth": true,
+              "columnSetupId": "gris.ywdj_1004194_10001_50502102132164556641022430450251_ZB1",
+              "inVue": true,
+              "width": 1832,
+              "height": 138,
+              "margin": "",
+              "fontSize": "",
+              "defFontSize": 14,
+              "designer": false,
+              "top": 0,
+              "left": 0,
+              "skinConfig": {
+                  "name": "default",
+                  "fontSize": 14,
+                  "grid": {
+                      "titleRowHeight": 32,
+                      "rowHeight": 32,
+                      "sumRowHeight": 32
+                  },
+                  "paged": {
+                      "pageStyle": "UI4.0",
+                      "height": 32,
+                      "pageSizeList": [
+                          20,
+                          50,
+                          100,
+                          200
+                      ]
+                  }
+              },
+              "canClear": true,
+              "cellEdit": true,
+              "readOnly": false,
+              "autoEcpHeight": false,
+              "filter": true,
+              "shrinkToFit": true,
+              "suitToFit": false,
+              "virtual": false,
+              "rownumbers": true,
+              "treeGrid": false,
+              "colDesign": true,
+              "EnterDown": false,
+              "pager": false,
+              "sumAllLevel": false,
+              "showTime": false,
+              "titleRowHeight": 32,
+              "sumRowHeight": 32,
+              "pageRowHeight": 32,
+              "rowHeight": 32,
+              "reverGJ": false,
+              "defSelect": true,
+              "zebraIndex": 1,
+              "emptyColor": "#ACA899",
+              "emptyText": "<暂无数据>",
+              "primaryKey": "gid",
+              "defColNames": [
+                  [
+                      "字符1",
+                      "数值1",
+                      "日期1",
+                      "金额1",
+                      "日期12"
+                  ]
+              ],
+              "defColModels": [
+                  {
+                      "itemXpath": "ZB1.ZF1",
+                      "showInList": true,
+                      "length": 50,
+                      "name": "ZF1",
+                      "caption": "字符1",
+                      "editType": "string",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.ValidateBox"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1.SZ1",
+                      "noFormat": true,
+                      "showInList": true,
+                      "dataType": "number",
+                      "name": "SZ1",
+                      "format": {
+                          "options": {
+                              "separation": false
+                          }
+                      },
+                      "length": 18,
+                      "caption": "数值1",
+                      "scale": 0,
+                      "editType": "number",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1.RQ1",
+                      "showInList": true,
+                      "length": 0,
+                      "name": "RQ1",
+                      "editType": "date",
+                      "caption": "日期1",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1.JE1",
+                      "showInList": true,
+                      "dataType": "number",
+                      "name": "JE1",
+                      "length": 18,
+                      "format": {
+                          "options": {
+                              "separation": true
+                          }
+                      },
+                      "editType": "number",
+                      "scale": 2,
+                      "caption": "金额1",
+                      "showHint": true,
+                      "option": {
+                          "originalConfig": {
+                              "precision": 2,
+                              "maxlength": 18,
+                              "itemXpath": "ZB1.JE1"
+                          },
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1.RQ12",
+                      "showInList": true,
+                      "length": 0,
+                      "name": "RQ12",
+                      "caption": "日期12",
+                      "editType": "date",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      }
+                  }
+              ],
+              "gridWidth": 500,
+              "titleSheets": [
+                  null,
+                  [
+                      {
+                          "caption": "字符1",
+                          "rowspan": 1,
+                          "rowIndex": 1,
+                          "colIndex": 0,
+                          "isBand": false
+                      },
+                      {
+                          "caption": "数值1",
+                          "rowspan": 1,
+                          "rowIndex": 1,
+                          "colIndex": 1,
+                          "isBand": false
+                      },
+                      {
+                          "caption": "日期1",
+                          "rowspan": 1,
+                          "rowIndex": 1,
+                          "colIndex": 2,
+                          "isBand": false
+                      },
+                      {
+                          "caption": "金额1",
+                          "rowspan": 1,
+                          "rowIndex": 1,
+                          "colIndex": 3,
+                          "isBand": false
+                      },
+                      {
+                          "caption": "日期12",
+                          "rowspan": 1,
+                          "rowIndex": 1,
+                          "colIndex": 4,
+                          "isBand": false
+                      }
+                  ]
+              ],
+              "titleRowCount": 2,
+              "colCount": 8,
+              "colModelJson": {
+                  "ZF1": {
+                      "itemXpath": "ZB1.ZF1",
+                      "showInList": true,
+                      "length": 50,
+                      "name": "ZF1",
+                      "caption": "字符1",
+                      "editType": "string",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.ValidateBox"
+                      },
+                      "width": 355,
+                      "colIndex": 0,
+                      "format": "",
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  },
+                  "SZ1": {
+                      "itemXpath": "ZB1.SZ1",
+                      "noFormat": true,
+                      "showInList": true,
+                      "dataType": "number",
+                      "name": "SZ1",
+                      "format": "",
+                      "length": 18,
+                      "caption": "数值1",
+                      "scale": 0,
+                      "editType": "number",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      },
+                      "width": 355,
+                      "colIndex": 1,
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  },
+                  "RQ1": {
+                      "itemXpath": "ZB1.RQ1",
+                      "showInList": true,
+                      "length": 0,
+                      "name": "RQ1",
+                      "editType": "date",
+                      "caption": "日期1",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      },
+                      "width": 355,
+                      "colIndex": 2,
+                      "format": "",
+                      "dataType": "date",
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  },
+                  "JE1": {
+                      "itemXpath": "ZB1.JE1",
+                      "showInList": true,
+                      "dataType": "number",
+                      "name": "JE1",
+                      "length": 18,
+                      "format": "",
+                      "editType": "number",
+                      "scale": 2,
+                      "caption": "金额1",
+                      "showHint": true,
+                      "option": {
+                          "originalConfig": {
+                              "precision": 2,
+                              "maxlength": 18,
+                              "itemXpath": "ZB1.JE1"
+                          },
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      },
+                      "width": 355,
+                      "colIndex": 3,
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  },
+                  "RQ12": {
+                      "itemXpath": "ZB1.RQ12",
+                      "showInList": true,
+                      "length": 0,
+                      "name": "RQ12",
+                      "caption": "日期12",
+                      "editType": "date",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      },
+                      "width": 358,
+                      "colIndex": 4,
+                      "format": "",
+                      "dataType": "date",
+                      "hidden": false,
+                      "_defWidth": 100,
+                      "csMsg": ""
+                  }
+              }
+          },
+          "gridData": []
+      },
+      {
+          "itemXpath": "ZB2",
+          "gridTopBtns": [
+              {
+                  "param": [
+                      "ZB2"
+                  ],
+                  "action": "addRow",
+                  "itemXpath": "ZB2_stdAddBtn",
+                  "text": "新增"
+              },
+              {
+                  "param": [
+                      "ZB2"
+                  ],
+                  "action": "insertRow",
+                  "itemXpath": "ZB2_stdInsertRow",
+                  "text": "插入"
+              },
+              {
+                  "param": [
+                      "ZB2"
+                  ],
+                  "action": "batchCopy",
+                  "itemXpath": "ZB2_stdBatchCopy",
+                  "text": "复制"
+              },
+              {
+                  "param": [
+                      "ZB2"
+                  ],
+                  "action": "deleteRow",
+                  "itemXpath": "ZB2_stdDeleteBtn",
+                  "text": "删除"
+              },
+              {
+                  "param": [
+                      "ZB2"
+                  ],
+                  "action": "moveUpRow",
+                  "itemXpath": "ZB2_stdUpRow",
+                  "text": "上移"
+              },
+              {
+                  "param": [
+                      "ZB2"
+                  ],
+                  "action": "moveDownRow",
+                  "itemXpath": "ZB2_stdDownRow",
+                  "text": "下移"
+              },
+              {
+                  "param": [
+                      "ZB2",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "billSimpleImport"
+                      }
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "ZB2_billSimpleImport",
+                  "text": "导入"
+              },
+              {
+                  "param": [
+                      "ZB2",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "export"
+                      }
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "ZB2_export",
+                  "text": "导出"
+              },
+              {
+                  "param": [
+                      "ZB2",
+                      "copyFill"
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "ZB2_copyFill",
+                  "text": "复制填充"
+              }
+          ],
+          "table": {
+              "container": [],
+              "itemXpath": "ZB2",
+              "dataType": "table",
+              "label": "子表2",
+              "events": [],
+              "option": {
+                  "colModels": [
+                      {
+                          "itemXpath": "ZB2.ZF2",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF2",
+                          "editType": "string",
+                          "caption": "字符2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          },
+                          "width": 100,
+                          "colIndex": 0,
+                          "format": "",
+                          "hidden": false,
+                          "_defWidth": 100
+                      },
+                      {
+                          "noFormat": true,
+                          "itemXpath": "ZB2.SZ2",
+                          "showInList": true,
+                          "dataType": "number",
+                          "length": 18,
+                          "name": "SZ2",
+                          "format": "",
+                          "scale": 0,
+                          "editType": "number",
+                          "caption": "数值2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 100,
+                          "colIndex": 1,
+                          "hidden": false,
+                          "_defWidth": 100
+                      },
+                      {
+                          "itemXpath": "ZB2.RQ2",
+                          "showInList": true,
+                          "name": "RQ2",
+                          "length": 0,
+                          "caption": "日期2",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 100,
+                          "colIndex": 2,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100
+                      }
+                  ],
+                  "Align": "alTop",
+                  "suitHeight": true,
+                  "post": true,
+                  "colNames": [
+                      [
+                          "字符2",
+                          "数值2",
+                          "日期2"
+                      ]
+                  ],
+                  "absolute": false,
+                  "maxRow": 20,
+                  "mutipleColumnOptions": [],
+                  "autoEcpWidth": true,
+                  "columnSetupId": "gris.ywdj_1004194_10001_50502102132164556641022430450251_ZB2",
+                  "inVue": true,
+                  "width": 0,
+                  "height": 30,
+                  "margin": "",
+                  "fontSize": "",
+                  "defFontSize": 14,
+                  "designer": false,
+                  "top": 0,
+                  "left": 0,
+                  "skinConfig": {
+                      "name": "default",
+                      "fontSize": 14,
+                      "grid": {
+                          "titleRowHeight": 32,
+                          "rowHeight": 32,
+                          "sumRowHeight": 32
+                      },
+                      "paged": {
+                          "pageStyle": "UI4.0",
+                          "height": 32,
+                          "pageSizeList": [
+                              20,
+                              50,
+                              100,
+                              200
+                          ]
+                      }
+                  },
+                  "canClear": true,
+                  "cellEdit": true,
+                  "readOnly": false,
+                  "autoEcpHeight": false,
+                  "filter": true,
+                  "shrinkToFit": true,
+                  "suitToFit": false,
+                  "virtual": false,
+                  "rownumbers": true,
+                  "treeGrid": false,
+                  "colDesign": true,
+                  "EnterDown": false,
+                  "pager": false,
+                  "sumAllLevel": false,
+                  "showTime": false,
+                  "titleRowHeight": 32,
+                  "sumRowHeight": 32,
+                  "pageRowHeight": 32,
+                  "rowHeight": 32,
+                  "reverGJ": false,
+                  "defSelect": true,
+                  "zebraIndex": 1,
+                  "emptyColor": "#ACA899",
+                  "emptyText": "<暂无数据>",
+                  "primaryKey": "gid",
+                  "defColNames": [
+                      [
+                          "字符2",
+                          "数值2",
+                          "日期2"
+                      ]
+                  ],
+                  "defColModels": [
+                      {
+                          "itemXpath": "ZB2.ZF2",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF2",
+                          "editType": "string",
+                          "caption": "字符2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          }
+                      },
+                      {
+                          "noFormat": true,
+                          "itemXpath": "ZB2.SZ2",
+                          "showInList": true,
+                          "dataType": "number",
+                          "length": 18,
+                          "name": "SZ2",
+                          "format": {
+                              "options": {
+                                  "separation": false
+                              }
+                          },
+                          "scale": 0,
+                          "editType": "number",
+                          "caption": "数值2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB2.RQ2",
+                          "showInList": true,
+                          "name": "RQ2",
+                          "length": 0,
+                          "caption": "日期2",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          }
+                      }
+                  ],
+                  "gridWidth": 300,
+                  "titleSheets": [
+                      null,
+                      [
+                          {
+                              "caption": "字符2",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 0,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "数值2",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 1,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "日期2",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 2,
+                              "isBand": false
+                          }
+                      ]
+                  ],
+                  "titleRowCount": 2,
+                  "colCount": 6,
+                  "colModelJson": {
+                      "ZF2": {
+                          "itemXpath": "ZB2.ZF2",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF2",
+                          "editType": "string",
+                          "caption": "字符2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          },
+                          "width": 100,
+                          "colIndex": 0,
+                          "format": "",
+                          "hidden": false,
+                          "_defWidth": 100
+                      },
+                      "SZ2": {
+                          "noFormat": true,
+                          "itemXpath": "ZB2.SZ2",
+                          "showInList": true,
+                          "dataType": "number",
+                          "length": 18,
+                          "name": "SZ2",
+                          "format": "",
+                          "scale": 0,
+                          "editType": "number",
+                          "caption": "数值2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 100,
+                          "colIndex": 1,
+                          "hidden": false,
+                          "_defWidth": 100
+                      },
+                      "RQ2": {
+                          "itemXpath": "ZB2.RQ2",
+                          "showInList": true,
+                          "name": "RQ2",
+                          "length": 0,
+                          "caption": "日期2",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 100,
+                          "colIndex": 2,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100
+                      }
+                  }
+              },
+              "child": [
+                  {
+                      "itemXpath": "ZB2_stdAddBtn",
+                      "dataType": "button",
+                      "icon": "iconfont iconxinzeng",
+                      "label": "新增",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "addRow",
+                          "itemXpath": "ZB2_stdAddBtn",
+                          "text": "新增"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdInsertRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconcharu",
+                      "label": "插入",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "insertRow",
+                          "itemXpath": "ZB2_stdInsertRow",
+                          "text": "插入"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdBatchCopy",
+                      "dataType": "button",
+                      "icon": "iconfont iconfuzhi",
+                      "label": "复制",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "batchCopy",
+                          "itemXpath": "ZB2_stdBatchCopy",
+                          "text": "复制"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdDeleteBtn",
+                      "dataType": "button",
+                      "icon": "iconfont iconshanchu",
+                      "label": "删除",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "deleteRow",
+                          "itemXpath": "ZB2_stdDeleteBtn",
+                          "text": "删除"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdUpRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconshangyi",
+                      "label": "上移",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "moveUpRow",
+                          "itemXpath": "ZB2_stdUpRow",
+                          "text": "上移"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdDownRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconxiayi",
+                      "label": "下移",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "moveDownRow",
+                          "itemXpath": "ZB2_stdDownRow",
+                          "text": "下移"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_billSimpleImport",
+                      "dataType": "button",
+                      "icon": "iconfont icondaoru",
+                      "label": "导入",
+                      "option": {
+                          "param": [
+                              "ZB2",
+                              "ecpOperatorAction",
+                              {
+                                  "operatorName": "billSimpleImport"
+                              }
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB2_billSimpleImport",
+                          "text": "导入"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_export",
+                      "dataType": "button",
+                      "icon": "iconfont icondaochu",
+                      "label": "导出",
+                      "option": {
+                          "param": [
+                              "ZB2",
+                              "ecpOperatorAction",
+                              {
+                                  "operatorName": "export"
+                              }
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB2_export",
+                          "text": "导出"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_copyFill",
+                      "dataType": "button",
+                      "icon": "iconfont iconfuzhi",
+                      "label": "复制填充",
+                      "option": {
+                          "param": [
+                              "ZB2",
+                              "copyFill"
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB2_copyFill",
+                          "text": "复制填充"
+                      }
+                  }
+              ],
+              "height": "auto"
+          },
+          "tableTitle": "子表2",
+          "gridOption": {
+              "colModels": [
+                  {
+                      "itemXpath": "ZB2.ZF2",
+                      "showInList": true,
+                      "length": 50,
+                      "name": "ZF2",
+                      "editType": "string",
+                      "caption": "字符2",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.ValidateBox"
+                      },
+                      "width": 100,
+                      "colIndex": 0,
+                      "format": "",
+                      "hidden": false,
+                      "_defWidth": 100
+                  },
+                  {
+                      "noFormat": true,
+                      "itemXpath": "ZB2.SZ2",
+                      "showInList": true,
+                      "dataType": "number",
+                      "length": 18,
+                      "name": "SZ2",
+                      "format": "",
+                      "scale": 0,
+                      "editType": "number",
+                      "caption": "数值2",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      },
+                      "width": 100,
+                      "colIndex": 1,
+                      "hidden": false,
+                      "_defWidth": 100
+                  },
+                  {
+                      "itemXpath": "ZB2.RQ2",
+                      "showInList": true,
+                      "name": "RQ2",
+                      "length": 0,
+                      "caption": "日期2",
+                      "editType": "date",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      },
+                      "width": 100,
+                      "colIndex": 2,
+                      "format": "",
+                      "dataType": "date",
+                      "hidden": false,
+                      "_defWidth": 100
+                  }
+              ],
+              "Align": "alTop",
+              "suitHeight": true,
+              "post": true,
+              "colNames": [
+                  [
+                      "字符2",
+                      "数值2",
+                      "日期2"
+                  ]
+              ],
+              "absolute": false,
+              "maxRow": 20,
+              "mutipleColumnOptions": [],
+              "autoEcpWidth": true,
+              "columnSetupId": "gris.ywdj_1004194_10001_50502102132164556641022430450251_ZB2",
+              "inVue": true,
+              "width": 0,
+              "height": 30,
+              "margin": "",
+              "fontSize": "",
+              "defFontSize": 14,
+              "designer": false,
+              "top": 0,
+              "left": 0,
+              "skinConfig": {
+                  "name": "default",
+                  "fontSize": 14,
+                  "grid": {
+                      "titleRowHeight": 32,
+                      "rowHeight": 32,
+                      "sumRowHeight": 32
+                  },
+                  "paged": {
+                      "pageStyle": "UI4.0",
+                      "height": 32,
+                      "pageSizeList": [
+                          20,
+                          50,
+                          100,
+                          200
+                      ]
+                  }
+              },
+              "canClear": true,
+              "cellEdit": true,
+              "readOnly": false,
+              "autoEcpHeight": false,
+              "filter": true,
+              "shrinkToFit": true,
+              "suitToFit": false,
+              "virtual": false,
+              "rownumbers": true,
+              "treeGrid": false,
+              "colDesign": true,
+              "EnterDown": false,
+              "pager": false,
+              "sumAllLevel": false,
+              "showTime": false,
+              "titleRowHeight": 32,
+              "sumRowHeight": 32,
+              "pageRowHeight": 32,
+              "rowHeight": 32,
+              "reverGJ": false,
+              "defSelect": true,
+              "zebraIndex": 1,
+              "emptyColor": "#ACA899",
+              "emptyText": "<暂无数据>",
+              "primaryKey": "gid",
+              "defColNames": [
+                  [
+                      "字符2",
+                      "数值2",
+                      "日期2"
+                  ]
+              ],
+              "defColModels": [
+                  {
+                      "itemXpath": "ZB2.ZF2",
+                      "showInList": true,
+                      "length": 50,
+                      "name": "ZF2",
+                      "editType": "string",
+                      "caption": "字符2",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.ValidateBox"
+                      }
+                  },
+                  {
+                      "noFormat": true,
+                      "itemXpath": "ZB2.SZ2",
+                      "showInList": true,
+                      "dataType": "number",
+                      "length": 18,
+                      "name": "SZ2",
+                      "format": {
+                          "options": {
+                              "separation": false
+                          }
+                      },
+                      "scale": 0,
+                      "editType": "number",
+                      "caption": "数值2",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2.RQ2",
+                      "showInList": true,
+                      "name": "RQ2",
+                      "length": 0,
+                      "caption": "日期2",
+                      "editType": "date",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      }
+                  }
+              ],
+              "gridWidth": 300,
+              "titleSheets": [
+                  null,
+                  [
+                      {
+                          "caption": "字符2",
+                          "rowspan": 1,
+                          "rowIndex": 1,
+                          "colIndex": 0,
+                          "isBand": false
+                      },
+                      {
+                          "caption": "数值2",
+                          "rowspan": 1,
+                          "rowIndex": 1,
+                          "colIndex": 1,
+                          "isBand": false
+                      },
+                      {
+                          "caption": "日期2",
+                          "rowspan": 1,
+                          "rowIndex": 1,
+                          "colIndex": 2,
+                          "isBand": false
+                      }
+                  ]
+              ],
+              "titleRowCount": 2,
+              "colCount": 6,
+              "colModelJson": {
+                  "ZF2": {
+                      "itemXpath": "ZB2.ZF2",
+                      "showInList": true,
+                      "length": 50,
+                      "name": "ZF2",
+                      "editType": "string",
+                      "caption": "字符2",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.ValidateBox"
+                      },
+                      "width": 100,
+                      "colIndex": 0,
+                      "format": "",
+                      "hidden": false,
+                      "_defWidth": 100
+                  },
+                  "SZ2": {
+                      "noFormat": true,
+                      "itemXpath": "ZB2.SZ2",
+                      "showInList": true,
+                      "dataType": "number",
+                      "length": 18,
+                      "name": "SZ2",
+                      "format": "",
+                      "scale": 0,
+                      "editType": "number",
+                      "caption": "数值2",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.NumberBox"
+                      },
+                      "width": 100,
+                      "colIndex": 1,
+                      "hidden": false,
+                      "_defWidth": 100
+                  },
+                  "RQ2": {
+                      "itemXpath": "ZB2.RQ2",
+                      "showInList": true,
+                      "name": "RQ2",
+                      "length": 0,
+                      "caption": "日期2",
+                      "editType": "date",
+                      "showHint": true,
+                      "option": {
+                          "inputCode": "ecp.ui.datafield.DatePicker"
+                      },
+                      "width": 100,
+                      "colIndex": 2,
+                      "format": "",
+                      "dataType": "date",
+                      "hidden": false,
+                      "_defWidth": 100
+                  }
+              }
+          },
+          "gridData": []
+      }
+  ],
+  "detail_area": {
+      "container": [
+          {
+              "container": [
+                  {
+                      "container": [],
+                      "itemXpath": "ZB1.EJZB",
+                      "dataType": "table",
+                      "label": "二级子表",
+                      "events": [],
+                      "option": {
+                          "colModels": [
+                              {
+                                  "itemXpath": "ZB1.EJZB.ZF12",
+                                  "showInList": true,
+                                  "name": "ZF12",
+                                  "length": 50,
+                                  "editType": "string",
+                                  "caption": "字符12",
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.ValidateBox"
+                                  },
+                                  "width": 889,
+                                  "colIndex": 0,
+                                  "format": "",
+                                  "hidden": false,
+                                  "_defWidth": 100,
+                                  "csMsg": ""
+                              },
+                              {
+                                  "noFormat": true,
+                                  "itemXpath": "ZB1.EJZB.SZ12",
+                                  "showInList": true,
+                                  "dataType": "number",
+                                  "name": "SZ12",
+                                  "format": "",
+                                  "length": 18,
+                                  "editType": "number",
+                                  "caption": "数值12",
+                                  "scale": 0,
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.NumberBox"
+                                  },
+                                  "width": 889,
+                                  "colIndex": 1,
+                                  "hidden": false,
+                                  "_defWidth": 100,
+                                  "csMsg": ""
+                              }
+                          ],
+                          "Align": "alTop",
+                          "suitHeight": true,
+                          "post": true,
+                          "colNames": [
+                              [
+                                  "字符12",
+                                  "数值12"
+                              ]
+                          ],
+                          "absolute": false,
+                          "maxRow": 20,
+                          "mutipleColumnOptions": [],
+                          "autoEcpWidth": true,
+                          "columnSetupId": "gris.ywdj_1004194_10001_50502102132164556641022430450251_ZB1.EJZB",
+                          "inVue": true,
+                          "width": 1832,
+                          "height": 138,
+                          "margin": "",
+                          "fontSize": "",
+                          "defFontSize": 14,
+                          "designer": false,
+                          "top": 0,
+                          "left": 0,
+                          "skinConfig": {
+                              "name": "default",
+                              "fontSize": 14,
+                              "grid": {
+                                  "titleRowHeight": 32,
+                                  "rowHeight": 32,
+                                  "sumRowHeight": 32
+                              },
+                              "paged": {
+                                  "pageStyle": "UI4.0",
+                                  "height": 32,
+                                  "pageSizeList": [
+                                      20,
+                                      50,
+                                      100,
+                                      200
+                                  ]
+                              }
+                          },
+                          "canClear": true,
+                          "cellEdit": true,
+                          "readOnly": false,
+                          "autoEcpHeight": false,
+                          "filter": true,
+                          "shrinkToFit": true,
+                          "suitToFit": false,
+                          "virtual": false,
+                          "rownumbers": true,
+                          "treeGrid": false,
+                          "colDesign": true,
+                          "EnterDown": false,
+                          "pager": false,
+                          "sumAllLevel": false,
+                          "showTime": false,
+                          "titleRowHeight": 32,
+                          "sumRowHeight": 32,
+                          "pageRowHeight": 32,
+                          "rowHeight": 32,
+                          "reverGJ": false,
+                          "defSelect": true,
+                          "zebraIndex": 1,
+                          "emptyColor": "#ACA899",
+                          "emptyText": "<暂无数据>",
+                          "primaryKey": "gid",
+                          "defColNames": [
+                              [
+                                  "字符12",
+                                  "数值12"
+                              ]
+                          ],
+                          "defColModels": [
+                              {
+                                  "itemXpath": "ZB1.EJZB.ZF12",
+                                  "showInList": true,
+                                  "name": "ZF12",
+                                  "length": 50,
+                                  "editType": "string",
+                                  "caption": "字符12",
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.ValidateBox"
+                                  }
+                              },
+                              {
+                                  "noFormat": true,
+                                  "itemXpath": "ZB1.EJZB.SZ12",
+                                  "showInList": true,
+                                  "dataType": "number",
+                                  "name": "SZ12",
+                                  "format": {
+                                      "options": {
+                                          "separation": false
+                                      }
+                                  },
+                                  "length": 18,
+                                  "editType": "number",
+                                  "caption": "数值12",
+                                  "scale": 0,
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.NumberBox"
+                                  }
+                              }
+                          ],
+                          "gridWidth": 200,
+                          "titleSheets": [
+                              null,
+                              [
+                                  {
+                                      "caption": "字符12",
+                                      "rowspan": 1,
+                                      "rowIndex": 1,
+                                      "colIndex": 0,
+                                      "isBand": false
+                                  },
+                                  {
+                                      "caption": "数值12",
+                                      "rowspan": 1,
+                                      "rowIndex": 1,
+                                      "colIndex": 1,
+                                      "isBand": false
+                                  }
+                              ]
+                          ],
+                          "titleRowCount": 2,
+                          "colCount": 5,
+                          "colModelJson": {
+                              "ZF12": {
+                                  "itemXpath": "ZB1.EJZB.ZF12",
+                                  "showInList": true,
+                                  "name": "ZF12",
+                                  "length": 50,
+                                  "editType": "string",
+                                  "caption": "字符12",
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.ValidateBox"
+                                  },
+                                  "width": 889,
+                                  "colIndex": 0,
+                                  "format": "",
+                                  "hidden": false,
+                                  "_defWidth": 100,
+                                  "csMsg": ""
+                              },
+                              "SZ12": {
+                                  "noFormat": true,
+                                  "itemXpath": "ZB1.EJZB.SZ12",
+                                  "showInList": true,
+                                  "dataType": "number",
+                                  "name": "SZ12",
+                                  "format": "",
+                                  "length": 18,
+                                  "editType": "number",
+                                  "caption": "数值12",
+                                  "scale": 0,
+                                  "showHint": true,
+                                  "option": {
+                                      "inputCode": "ecp.ui.datafield.NumberBox"
+                                  },
+                                  "width": 889,
+                                  "colIndex": 1,
+                                  "hidden": false,
+                                  "_defWidth": 100,
+                                  "csMsg": ""
+                              }
+                          }
+                      },
+                      "child": [
+                          {
+                              "itemXpath": "ZB1.EJZB_stdAddBtn",
+                              "dataType": "button",
+                              "icon": "iconfont iconxinzeng",
+                              "label": "新增",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "addRow",
+                                  "itemXpath": "ZB1.EJZB_stdAddBtn",
+                                  "text": "新增"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdInsertRow",
+                              "dataType": "button",
+                              "icon": "iconfont iconcharu",
+                              "label": "插入",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "insertRow",
+                                  "itemXpath": "ZB1.EJZB_stdInsertRow",
+                                  "text": "插入"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdBatchCopy",
+                              "dataType": "button",
+                              "icon": "iconfont iconfuzhi",
+                              "label": "复制",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "batchCopy",
+                                  "itemXpath": "ZB1.EJZB_stdBatchCopy",
+                                  "text": "复制"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdDeleteBtn",
+                              "dataType": "button",
+                              "icon": "iconfont iconshanchu",
+                              "label": "删除",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "deleteRow",
+                                  "itemXpath": "ZB1.EJZB_stdDeleteBtn",
+                                  "text": "删除"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdUpRow",
+                              "dataType": "button",
+                              "icon": "iconfont iconshangyi",
+                              "label": "上移",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "moveUpRow",
+                                  "itemXpath": "ZB1.EJZB_stdUpRow",
+                                  "text": "上移"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_stdDownRow",
+                              "dataType": "button",
+                              "icon": "iconfont iconxiayi",
+                              "label": "下移",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB"
+                                  ],
+                                  "action": "moveDownRow",
+                                  "itemXpath": "ZB1.EJZB_stdDownRow",
+                                  "text": "下移"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_billSimpleImport",
+                              "dataType": "button",
+                              "icon": "iconfont icondaoru",
+                              "label": "导入",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB",
+                                      "ecpOperatorAction",
+                                      {
+                                          "operatorName": "billSimpleImport"
+                                      }
+                                  ],
+                                  "action": "doAction",
+                                  "itemXpath": "ZB1.EJZB_billSimpleImport",
+                                  "text": "导入"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_export",
+                              "dataType": "button",
+                              "icon": "iconfont icondaochu",
+                              "label": "导出",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB",
+                                      "ecpOperatorAction",
+                                      {
+                                          "operatorName": "export"
+                                      }
+                                  ],
+                                  "action": "doAction",
+                                  "itemXpath": "ZB1.EJZB_export",
+                                  "text": "导出"
+                              }
+                          },
+                          {
+                              "itemXpath": "ZB1.EJZB_copyFill",
+                              "dataType": "button",
+                              "icon": "iconfont iconfuzhi",
+                              "label": "复制填充",
+                              "option": {
+                                  "param": [
+                                      "ZB1.EJZB",
+                                      "copyFill"
+                                  ],
+                                  "action": "doAction",
+                                  "itemXpath": "ZB1.EJZB_copyFill",
+                                  "text": "复制填充"
+                              }
+                          }
+                      ],
+                      "height": "auto"
+                  }
+              ],
+              "itemXpath": "ZB1",
+              "dataType": "table",
+              "label": "子表1",
+              "events": [],
+              "option": {
+                  "colModels": [
+                      {
+                          "itemXpath": "ZB1.ZF1",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF1",
+                          "caption": "字符1",
+                          "editType": "string",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          },
+                          "width": 355,
+                          "colIndex": 0,
+                          "format": "",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      {
+                          "itemXpath": "ZB1.SZ1",
+                          "noFormat": true,
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "SZ1",
+                          "format": "",
+                          "length": 18,
+                          "caption": "数值1",
+                          "scale": 0,
+                          "editType": "number",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 355,
+                          "colIndex": 1,
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      {
+                          "itemXpath": "ZB1.RQ1",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ1",
+                          "editType": "date",
+                          "caption": "日期1",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 355,
+                          "colIndex": 2,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      {
+                          "itemXpath": "ZB1.JE1",
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "JE1",
+                          "length": 18,
+                          "format": "",
+                          "editType": "number",
+                          "scale": 2,
+                          "caption": "金额1",
+                          "showHint": true,
+                          "option": {
+                              "originalConfig": {
+                                  "precision": 2,
+                                  "maxlength": 18,
+                                  "itemXpath": "ZB1.JE1"
+                              },
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 355,
+                          "colIndex": 3,
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      {
+                          "itemXpath": "ZB1.RQ12",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ12",
+                          "caption": "日期12",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 358,
+                          "colIndex": 4,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      }
+                  ],
+                  "Align": "alTop",
+                  "post": true,
+                  "colNames": [
+                      [
+                          "字符1",
+                          "数值1",
+                          "日期1",
+                          "金额1",
+                          "日期12"
+                      ]
+                  ],
+                  "suitHeight": true,
+                  "absolute": false,
+                  "maxRow": 20,
+                  "mutipleColumnOptions": [],
+                  "autoEcpWidth": true,
+                  "columnSetupId": "gris.ywdj_1004194_10001_50502102132164556641022430450251_ZB1",
+                  "inVue": true,
+                  "width": 1832,
+                  "height": 138,
+                  "margin": "",
+                  "fontSize": "",
+                  "defFontSize": 14,
+                  "designer": false,
+                  "top": 0,
+                  "left": 0,
+                  "skinConfig": {
+                      "name": "default",
+                      "fontSize": 14,
+                      "grid": {
+                          "titleRowHeight": 32,
+                          "rowHeight": 32,
+                          "sumRowHeight": 32
+                      },
+                      "paged": {
+                          "pageStyle": "UI4.0",
+                          "height": 32,
+                          "pageSizeList": [
+                              20,
+                              50,
+                              100,
+                              200
+                          ]
+                      }
+                  },
+                  "canClear": true,
+                  "cellEdit": true,
+                  "readOnly": false,
+                  "autoEcpHeight": false,
+                  "filter": true,
+                  "shrinkToFit": true,
+                  "suitToFit": false,
+                  "virtual": false,
+                  "rownumbers": true,
+                  "treeGrid": false,
+                  "colDesign": true,
+                  "EnterDown": false,
+                  "pager": false,
+                  "sumAllLevel": false,
+                  "showTime": false,
+                  "titleRowHeight": 32,
+                  "sumRowHeight": 32,
+                  "pageRowHeight": 32,
+                  "rowHeight": 32,
+                  "reverGJ": false,
+                  "defSelect": true,
+                  "zebraIndex": 1,
+                  "emptyColor": "#ACA899",
+                  "emptyText": "<暂无数据>",
+                  "primaryKey": "gid",
+                  "defColNames": [
+                      [
+                          "字符1",
+                          "数值1",
+                          "日期1",
+                          "金额1",
+                          "日期12"
+                      ]
+                  ],
+                  "defColModels": [
+                      {
+                          "itemXpath": "ZB1.ZF1",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF1",
+                          "caption": "字符1",
+                          "editType": "string",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB1.SZ1",
+                          "noFormat": true,
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "SZ1",
+                          "format": {
+                              "options": {
+                                  "separation": false
+                              }
+                          },
+                          "length": 18,
+                          "caption": "数值1",
+                          "scale": 0,
+                          "editType": "number",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB1.RQ1",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ1",
+                          "editType": "date",
+                          "caption": "日期1",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB1.JE1",
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "JE1",
+                          "length": 18,
+                          "format": {
+                              "options": {
+                                  "separation": true
+                              }
+                          },
+                          "editType": "number",
+                          "scale": 2,
+                          "caption": "金额1",
+                          "showHint": true,
+                          "option": {
+                              "originalConfig": {
+                                  "precision": 2,
+                                  "maxlength": 18,
+                                  "itemXpath": "ZB1.JE1"
+                              },
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB1.RQ12",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ12",
+                          "caption": "日期12",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          }
+                      }
+                  ],
+                  "gridWidth": 500,
+                  "titleSheets": [
+                      null,
+                      [
+                          {
+                              "caption": "字符1",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 0,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "数值1",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 1,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "日期1",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 2,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "金额1",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 3,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "日期12",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 4,
+                              "isBand": false
+                          }
+                      ]
+                  ],
+                  "titleRowCount": 2,
+                  "colCount": 8,
+                  "colModelJson": {
+                      "ZF1": {
+                          "itemXpath": "ZB1.ZF1",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF1",
+                          "caption": "字符1",
+                          "editType": "string",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          },
+                          "width": 355,
+                          "colIndex": 0,
+                          "format": "",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      "SZ1": {
+                          "itemXpath": "ZB1.SZ1",
+                          "noFormat": true,
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "SZ1",
+                          "format": "",
+                          "length": 18,
+                          "caption": "数值1",
+                          "scale": 0,
+                          "editType": "number",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 355,
+                          "colIndex": 1,
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      "RQ1": {
+                          "itemXpath": "ZB1.RQ1",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ1",
+                          "editType": "date",
+                          "caption": "日期1",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 355,
+                          "colIndex": 2,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      "JE1": {
+                          "itemXpath": "ZB1.JE1",
+                          "showInList": true,
+                          "dataType": "number",
+                          "name": "JE1",
+                          "length": 18,
+                          "format": "",
+                          "editType": "number",
+                          "scale": 2,
+                          "caption": "金额1",
+                          "showHint": true,
+                          "option": {
+                              "originalConfig": {
+                                  "precision": 2,
+                                  "maxlength": 18,
+                                  "itemXpath": "ZB1.JE1"
+                              },
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 355,
+                          "colIndex": 3,
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      },
+                      "RQ12": {
+                          "itemXpath": "ZB1.RQ12",
+                          "showInList": true,
+                          "length": 0,
+                          "name": "RQ12",
+                          "caption": "日期12",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 358,
+                          "colIndex": 4,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100,
+                          "csMsg": ""
+                      }
+                  }
+              },
+              "child": [
+                  {
+                      "itemXpath": "ZB1_stdAddBtn",
+                      "dataType": "button",
+                      "icon": "iconfont iconxinzeng",
+                      "label": "新增",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "addRow",
+                          "itemXpath": "ZB1_stdAddBtn",
+                          "text": "新增"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdInsertRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconcharu",
+                      "label": "插入",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "insertRow",
+                          "itemXpath": "ZB1_stdInsertRow",
+                          "text": "插入"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdBatchCopy",
+                      "dataType": "button",
+                      "icon": "iconfont iconfuzhi",
+                      "label": "复制",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "batchCopy",
+                          "itemXpath": "ZB1_stdBatchCopy",
+                          "text": "复制"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdDeleteBtn",
+                      "dataType": "button",
+                      "icon": "iconfont iconshanchu",
+                      "label": "删除",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "deleteRow",
+                          "itemXpath": "ZB1_stdDeleteBtn",
+                          "text": "删除"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdUpRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconshangyi",
+                      "label": "上移",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "moveUpRow",
+                          "itemXpath": "ZB1_stdUpRow",
+                          "text": "上移"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_stdDownRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconxiayi",
+                      "label": "下移",
+                      "option": {
+                          "param": [
+                              "ZB1"
+                          ],
+                          "action": "moveDownRow",
+                          "itemXpath": "ZB1_stdDownRow",
+                          "text": "下移"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_billSimpleImport",
+                      "dataType": "button",
+                      "icon": "iconfont icondaoru",
+                      "label": "导入",
+                      "option": {
+                          "param": [
+                              "ZB1",
+                              "ecpOperatorAction",
+                              {
+                                  "operatorName": "billSimpleImport"
+                              }
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB1_billSimpleImport",
+                          "text": "导入"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_export",
+                      "dataType": "button",
+                      "icon": "iconfont icondaochu",
+                      "label": "导出",
+                      "option": {
+                          "param": [
+                              "ZB1",
+                              "ecpOperatorAction",
+                              {
+                                  "operatorName": "export"
+                              }
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB1_export",
+                          "text": "导出"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB1_copyFill",
+                      "dataType": "button",
+                      "icon": "iconfont iconfuzhi",
+                      "label": "复制填充",
+                      "option": {
+                          "param": [
+                              "ZB1",
+                              "copyFill"
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB1_copyFill",
+                          "text": "复制填充"
+                      }
+                  }
+              ],
+              "height": "auto"
+          },
+          {
+              "container": [],
+              "itemXpath": "ZB2",
+              "dataType": "table",
+              "label": "子表2",
+              "events": [],
+              "option": {
+                  "colModels": [
+                      {
+                          "itemXpath": "ZB2.ZF2",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF2",
+                          "editType": "string",
+                          "caption": "字符2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          },
+                          "width": 100,
+                          "colIndex": 0,
+                          "format": "",
+                          "hidden": false,
+                          "_defWidth": 100
+                      },
+                      {
+                          "noFormat": true,
+                          "itemXpath": "ZB2.SZ2",
+                          "showInList": true,
+                          "dataType": "number",
+                          "length": 18,
+                          "name": "SZ2",
+                          "format": "",
+                          "scale": 0,
+                          "editType": "number",
+                          "caption": "数值2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 100,
+                          "colIndex": 1,
+                          "hidden": false,
+                          "_defWidth": 100
+                      },
+                      {
+                          "itemXpath": "ZB2.RQ2",
+                          "showInList": true,
+                          "name": "RQ2",
+                          "length": 0,
+                          "caption": "日期2",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 100,
+                          "colIndex": 2,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100
+                      }
+                  ],
+                  "Align": "alTop",
+                  "suitHeight": true,
+                  "post": true,
+                  "colNames": [
+                      [
+                          "字符2",
+                          "数值2",
+                          "日期2"
+                      ]
+                  ],
+                  "absolute": false,
+                  "maxRow": 20,
+                  "mutipleColumnOptions": [],
+                  "autoEcpWidth": true,
+                  "columnSetupId": "gris.ywdj_1004194_10001_50502102132164556641022430450251_ZB2",
+                  "inVue": true,
+                  "width": 0,
+                  "height": 30,
+                  "margin": "",
+                  "fontSize": "",
+                  "defFontSize": 14,
+                  "designer": false,
+                  "top": 0,
+                  "left": 0,
+                  "skinConfig": {
+                      "name": "default",
+                      "fontSize": 14,
+                      "grid": {
+                          "titleRowHeight": 32,
+                          "rowHeight": 32,
+                          "sumRowHeight": 32
+                      },
+                      "paged": {
+                          "pageStyle": "UI4.0",
+                          "height": 32,
+                          "pageSizeList": [
+                              20,
+                              50,
+                              100,
+                              200
+                          ]
+                      }
+                  },
+                  "canClear": true,
+                  "cellEdit": true,
+                  "readOnly": false,
+                  "autoEcpHeight": false,
+                  "filter": true,
+                  "shrinkToFit": true,
+                  "suitToFit": false,
+                  "virtual": false,
+                  "rownumbers": true,
+                  "treeGrid": false,
+                  "colDesign": true,
+                  "EnterDown": false,
+                  "pager": false,
+                  "sumAllLevel": false,
+                  "showTime": false,
+                  "titleRowHeight": 32,
+                  "sumRowHeight": 32,
+                  "pageRowHeight": 32,
+                  "rowHeight": 32,
+                  "reverGJ": false,
+                  "defSelect": true,
+                  "zebraIndex": 1,
+                  "emptyColor": "#ACA899",
+                  "emptyText": "<暂无数据>",
+                  "primaryKey": "gid",
+                  "defColNames": [
+                      [
+                          "字符2",
+                          "数值2",
+                          "日期2"
+                      ]
+                  ],
+                  "defColModels": [
+                      {
+                          "itemXpath": "ZB2.ZF2",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF2",
+                          "editType": "string",
+                          "caption": "字符2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          }
+                      },
+                      {
+                          "noFormat": true,
+                          "itemXpath": "ZB2.SZ2",
+                          "showInList": true,
+                          "dataType": "number",
+                          "length": 18,
+                          "name": "SZ2",
+                          "format": {
+                              "options": {
+                                  "separation": false
+                              }
+                          },
+                          "scale": 0,
+                          "editType": "number",
+                          "caption": "数值2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          }
+                      },
+                      {
+                          "itemXpath": "ZB2.RQ2",
+                          "showInList": true,
+                          "name": "RQ2",
+                          "length": 0,
+                          "caption": "日期2",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          }
+                      }
+                  ],
+                  "gridWidth": 300,
+                  "titleSheets": [
+                      null,
+                      [
+                          {
+                              "caption": "字符2",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 0,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "数值2",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 1,
+                              "isBand": false
+                          },
+                          {
+                              "caption": "日期2",
+                              "rowspan": 1,
+                              "rowIndex": 1,
+                              "colIndex": 2,
+                              "isBand": false
+                          }
+                      ]
+                  ],
+                  "titleRowCount": 2,
+                  "colCount": 6,
+                  "colModelJson": {
+                      "ZF2": {
+                          "itemXpath": "ZB2.ZF2",
+                          "showInList": true,
+                          "length": 50,
+                          "name": "ZF2",
+                          "editType": "string",
+                          "caption": "字符2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.ValidateBox"
+                          },
+                          "width": 100,
+                          "colIndex": 0,
+                          "format": "",
+                          "hidden": false,
+                          "_defWidth": 100
+                      },
+                      "SZ2": {
+                          "noFormat": true,
+                          "itemXpath": "ZB2.SZ2",
+                          "showInList": true,
+                          "dataType": "number",
+                          "length": 18,
+                          "name": "SZ2",
+                          "format": "",
+                          "scale": 0,
+                          "editType": "number",
+                          "caption": "数值2",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.NumberBox"
+                          },
+                          "width": 100,
+                          "colIndex": 1,
+                          "hidden": false,
+                          "_defWidth": 100
+                      },
+                      "RQ2": {
+                          "itemXpath": "ZB2.RQ2",
+                          "showInList": true,
+                          "name": "RQ2",
+                          "length": 0,
+                          "caption": "日期2",
+                          "editType": "date",
+                          "showHint": true,
+                          "option": {
+                              "inputCode": "ecp.ui.datafield.DatePicker"
+                          },
+                          "width": 100,
+                          "colIndex": 2,
+                          "format": "",
+                          "dataType": "date",
+                          "hidden": false,
+                          "_defWidth": 100
+                      }
+                  }
+              },
+              "child": [
+                  {
+                      "itemXpath": "ZB2_stdAddBtn",
+                      "dataType": "button",
+                      "icon": "iconfont iconxinzeng",
+                      "label": "新增",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "addRow",
+                          "itemXpath": "ZB2_stdAddBtn",
+                          "text": "新增"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdInsertRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconcharu",
+                      "label": "插入",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "insertRow",
+                          "itemXpath": "ZB2_stdInsertRow",
+                          "text": "插入"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdBatchCopy",
+                      "dataType": "button",
+                      "icon": "iconfont iconfuzhi",
+                      "label": "复制",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "batchCopy",
+                          "itemXpath": "ZB2_stdBatchCopy",
+                          "text": "复制"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdDeleteBtn",
+                      "dataType": "button",
+                      "icon": "iconfont iconshanchu",
+                      "label": "删除",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "deleteRow",
+                          "itemXpath": "ZB2_stdDeleteBtn",
+                          "text": "删除"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdUpRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconshangyi",
+                      "label": "上移",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "moveUpRow",
+                          "itemXpath": "ZB2_stdUpRow",
+                          "text": "上移"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_stdDownRow",
+                      "dataType": "button",
+                      "icon": "iconfont iconxiayi",
+                      "label": "下移",
+                      "option": {
+                          "param": [
+                              "ZB2"
+                          ],
+                          "action": "moveDownRow",
+                          "itemXpath": "ZB2_stdDownRow",
+                          "text": "下移"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_billSimpleImport",
+                      "dataType": "button",
+                      "icon": "iconfont icondaoru",
+                      "label": "导入",
+                      "option": {
+                          "param": [
+                              "ZB2",
+                              "ecpOperatorAction",
+                              {
+                                  "operatorName": "billSimpleImport"
+                              }
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB2_billSimpleImport",
+                          "text": "导入"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_export",
+                      "dataType": "button",
+                      "icon": "iconfont icondaochu",
+                      "label": "导出",
+                      "option": {
+                          "param": [
+                              "ZB2",
+                              "ecpOperatorAction",
+                              {
+                                  "operatorName": "export"
+                              }
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB2_export",
+                          "text": "导出"
+                      }
+                  },
+                  {
+                      "itemXpath": "ZB2_copyFill",
+                      "dataType": "button",
+                      "icon": "iconfont iconfuzhi",
+                      "label": "复制填充",
+                      "option": {
+                          "param": [
+                              "ZB2",
+                              "copyFill"
+                          ],
+                          "action": "doAction",
+                          "itemXpath": "ZB2_copyFill",
+                          "text": "复制填充"
+                      }
+                  }
+              ],
+              "height": "auto"
+          }
+      ],
+      "showTab": true,
+      "areaId": "detail_area",
+      "areaName": "详情信息",
+      "areaType": "form",
+      "noRowReverse": true,
+      "showArea": false,
+      "id": "detail_area",
+      "sort": 5
+  },
+  "func_area": {
+      "container": [
+          {
+              "itemXpath": "stdPassBtn",
+              "readOnlyModel": "0",
+              "dataType": "button",
+              "icon": "iconfont icontransfer",
+              "printModel": "1",
+              "label": "传递",
+              "queryModel": "2",
+              "type": "primary",
+              "option": {
+                  "param": [
+                      "manager",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "processSubmit"
+                      }
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "stdPassBtn",
+                  "text": "传递",
+                  "printModel": "1",
+                  "queryModel": "2",
+                  "readOnlyModel": "0"
+              }
+          },
+          {
+              "itemXpath": "stdExitBtn",
+              "dataType": "button",
+              "icon": "iconfont iconquit",
+              "label": "退出",
+              "option": {
+                  "param": [],
+                  "action": "exit",
+                  "itemXpath": "stdExitBtn",
+                  "text": "退出"
+              }
+          },
+          {
+              "itemXpath": "stdSaveBtn",
+              "readOnlyModel": "1",
+              "dataType": "button",
+              "icon": "iconfont iconbaocun",
+              "printModel": "1",
+              "label": "保存",
+              "queryModel": "2",
+              "option": {
+                  "param": [
+                      "manager",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "save"
+                      }
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "stdSaveBtn",
+                  "text": "保存",
+                  "printModel": "1",
+                  "queryModel": "2",
+                  "readOnlyModel": "1"
+              }
+          },
+          {
+              "itemXpath": "stdBackBtn",
+              "readOnlyModel": "0",
+              "dataType": "button",
+              "icon": "iconfont iconrollback",
+              "printModel": "1",
+              "label": "回退",
+              "queryModel": "1",
+              "option": {
+                  "param": [
+                      "manager",
+                      "ecpOperatorAction",
+                      {
+                          "operatorName": "processBack"
+                      }
+                  ],
+                  "action": "doAction",
+                  "itemXpath": "stdBackBtn",
+                  "text": "回退",
+                  "printModel": "1",
+                  "queryModel": "1",
+                  "readOnlyModel": "0"
+              }
+          }
+      ],
+      "showTab": false,
+      "areaId": "func_area",
+      "areaType": "footer",
+      "noRowReverse": true,
+      "showArea": false,
+      "id": "func_area",
+      "sort": 11
+  }
+}
